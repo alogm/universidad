@@ -31,17 +31,15 @@ class Admin
         $foto = $data['foto'];
         $id_maestro = $data['id_maestro'];
 
-        $res = $this->connection->query("INSERT INTO  maestro (maestro, email, contrasena, direccion, telefono, foto, id_maestro)
-VALUES ('$maestro', '$email', '$contrasena', '$direccion', '$telefono', '$foto', '$id_maestro')");
+        $res = $this->connection->query("INSERT INTO  maestros (maestro, email, contrasena, direccion, telefono, foto, id_maestro)
+                VALUES ('$maestro', '$email', '$contrasena', '$direccion', '$telefono', '$foto', '$id_maestro')");
 
-if($res){
-    return true;
-  }
-  return false;
+                if($res){
+                    return true;
+                }
+                return false;
     }
-    public function __destruct() {
-        $this->connection = null; // Cierra la conexión a la base de datos.
-    }
+   
     
 
 }

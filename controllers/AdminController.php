@@ -13,11 +13,18 @@ class AdminController
         $data = $maestros->all();
         include $_SERVER["DOCUMENT_ROOT"] . "/views/viewsAdmin/viewsMaestrosadmin/VistaMaestroAdmin.php";
     }
+    public function create()
+    {
+        include $_SERVER["DOCUMENT_ROOT"] . "/views/viewsAdmin/viewsMaestrosAdmin/AddMaestroAdmin.php";
+    }
     public function add($data)
     {
         $maestro = new Admin();
         $newmaestro = $maestro->add($data);
-        include $_SERVER["DOCUMENT_ROOT"] . "/views/viewsAdmin/viewsMaestrosadmin/AddMaestroAdmin.php";
+
+        $newmaestro === true && header("Location: /index.php");
+        
+        var_dump($newmaestro);
     }
 
 }

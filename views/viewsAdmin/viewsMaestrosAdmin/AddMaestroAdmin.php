@@ -67,7 +67,7 @@
             <p class="text-left">Selecciona la acción que quieras realizar en las pestañas del menú de la izquierda</p>
         </section>
 
-        <form action="index.php/add" method="post" class="mt-4">
+        <form action="/index.php/create" method="post" class="mt-4">
             <div class="mb-2">
                 <label class="block">1.-Maestro:</label>
                 <input type="text" name="maestro" class="border border-gray-300 w-full rounded p-2">
@@ -100,7 +100,7 @@
 
             <div class="mb-2">
                 <label class="block">2.-Id Maestro:</label>
-                <input type="text" name="id_maestro" class="border border-gray-300 w-full rounded p-2">
+                <input type="number" name="id_maestro" class="border border-gray-300 w-full rounded p-2">
             </div>
 
             <button type="submit" name="guardar" class="bg-blue-500 hover:bg-blue-600 text-white rounded p-2 mt-4">
