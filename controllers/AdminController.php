@@ -22,9 +22,41 @@ class AdminController
         $maestro = new Admin();
         $newmaestro = $maestro->add($data);
 
-        $newmaestro === true && header("Location: /index.php");
-        
-        var_dump($newmaestro);
+        $newmaestro === true && header("Location: /index.php");  
     }
+    public function delete($id)
+    {
+        $maestro = new Admin();
+        $delete = $maestro->Delete($id); // Asegúrate de que Delete reciba el ID
+    
+        if ($delete === true) {
+            header("Location: /index.php");
+            die();
+        }
+    }
+    
+    public function actualizar()
+    {
+        include $_SERVER["DOCUMENT_ROOT"] . "/views/viewsAdmin/viewsMaestrosAdmin/EditarMaestroAdmin.php";
+    }
+
+    public function update($id, $maestro, $email, $contrasena, $direccion, $telefono, $id_maestro)
+    {
+        // Crea una instancia de AdminController en lugar de Admin
+        $controller = new AdminController();
+        
+        // Llama a la función update del controlador con los parámetros correctos
+        $result = $controller->update($id, $maestro, $email, $contrasena, $direccion, $telefono, $id_maestro);
+        
+        // Procede con el manejo de resultados
+        if ($result !== false) {
+            header("Location: /views/viewsAdmin/viewsMaestrosAdmin/VistaMaestroAdmin.php");
+        } else {
+            header("Location: index.php");
+        }
+    }
+    
+    
+    
 
 }

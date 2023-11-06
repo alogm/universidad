@@ -99,13 +99,18 @@
                         <td class="border border-gray-300"><?= $admin["direccion"] ?></td>
                         <td class="border border-gray-300"><?= $admin["id_maestro"] ?></td>
                         <td class="border border-gray-300 ">
-                            <button>
+
+                           <form action="/index.php/delete?id=<?= $admin['id'] ?> " method="post">
+                           <input type="hidden" name="id" value="<?= $admin['id'] ?>"> 
+                           <button type="submit">
                                 <span class="material-symbols-outlined text-red-600">delete</span>
                             </button>
+                           </form>
+
                             <button>
-                                <span class="material-symbols-outlined">
+                               <a href="/views/viewsAdmin/viewsMaestrosAdmin/EditarMaestroAdmin.php"> <span class="material-symbols-outlined">
                                     edit_square
-                                </span>
+                                </span></a>
                             </button>
                         </td>
 
