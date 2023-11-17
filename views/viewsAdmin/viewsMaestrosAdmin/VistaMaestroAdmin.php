@@ -27,19 +27,19 @@
             <div class="flex flex-col items-center">
                 <div>
                     <span class="material-symbols-outlined">manage_accounts</span>
-                    <a href="/views/viewsAdmin/adminPermisos.php" class="ml-2">Permisos</a>
+                    <a href="/vista-permisos" class="ml-2">Permisos</a>
                 </div>
                 <div>
                     <span class="material-symbols-outlined">tv_signin</span>
-                    <a href="/views/Admin/Maestros.php" class="ml-2">Maestros</a>
+                    <a href="/vista-maestros" class="ml-2">Maestros</a>
                 </div>
                 <div>
                     <span class="material-symbols-outlined">school</span>
-                    <a href="/views/Admin/Alumnos.php" class="ml-2">Alumnos</a>
+                    <a href="/vista-alumnos" class="ml-2">Alumnos</a>
                 </div>
                 <div>
                     <span class="material-symbols-outlined">table_restaurant</span>
-                    <a href="/views/Admin/Clases.php" class="ml-2">Clases</a>
+                    <a href="/vista-clases" class="ml-2">Clases</a>
                 </div>
             </div>
         </section>
@@ -65,7 +65,7 @@
 
         <section id="bienvenido" class="w-full bg-white p-6 max-w-screen-xl flex items-center">
     <h6 class="text-left">Informacion de Maestros</h6>
-    <a href="/views/viewsAdmin/viewsMaestrosadmin/AddMaestroAdmin.php" class="bg-blue-500 hover:bg-blue-600 rounded-lg px-4 py-2 text-white ml-auto">
+    <a href="/crear-maestros" class="bg-blue-500 hover:bg-blue-600 rounded-lg px-4 py-2 text-white ml-auto">
         Agregar Maestro
     </a>
 </section>

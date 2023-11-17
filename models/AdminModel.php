@@ -15,7 +15,7 @@ class Admin
     }
     public function all()
     {
-        $res = $this->connection->query("SELECT * FROM maestros");
+        $res = $this->connection->query("SELECT * FROM usuarios");
         $data = $res->fetchAll(PDO::FETCH_ASSOC);
 
         return $data;
@@ -27,11 +27,10 @@ class Admin
         $contrasena = $data['contrasena'];
         $direccion = $data['direccion'];
         $telefono = $data['telefono'];
-        $foto = $data['foto'];
         $id_maestro = $data['id_maestro'];
 
-        $res = $this->connection->query("INSERT INTO  maestros (maestro, email, contrasena, direccion, telefono, foto, id_maestro)
-                VALUES ('$maestro', '$email', '$contrasena', '$direccion', '$telefono', '$foto', '$id_maestro')");
+        $res = $this->connection->query("INSERT INTO  maestros (maestro, email, contrasena, direccion, telefono, id_maestro)
+                VALUES ('$maestro', '$email', '$contrasena', '$direccion', '$telefono', '$id_maestro')");
 
         if ($res) {
             return true;

@@ -26,19 +26,19 @@
             <div class="flex flex-col items-center">
                 <div>
                     <span class="material-symbols-outlined">manage_accounts</span>
-                    <a href="/views/viewsAdmin/adminPermisos.php" class="ml-2">Permisos</a>
+                    <a href="/vista-permisos" class="ml-2">Permisos</a>
                 </div>
                 <div>
                     <span class="material-symbols-outlined">tv_signin</span>
-                    <a href="/views/viewsAdmin/adminMaestro.php" class="ml-2">Maestros</a>
+                    <a href="/vista-maestros" class="ml-2">Maestros</a>
                 </div>
                 <div>
                     <span class="material-symbols-outlined">school</span>
-                    <a href="" class="ml-2">Alumnos</a>
+                    <a href="/vista-alumnos" class="ml-2">Alumnos</a>
                 </div>
                 <div>
                     <span class="material-symbols-outlined">table_restaurant</span>
-                    <a href="" class="ml-2">Clases</a>
+                    <a href="/vista-clases" class="ml-2">Clases</a>
                 </div>
             </div>
         </section>
@@ -47,8 +47,8 @@
     <section class="w-1/2 p-4">
         <section id="home" class="flex w-full bg-white p-4 " style="width: 1450px;">
             <div>
-                <p class="ml-2"><span class="material-symbols-outlined">menu</span>
-                    home</p>
+                <a href="/vista-home" class="ml-2"><span class="material-symbols-outlined">menu</span>Home</a>
+                    
             </div>
             <div class="ml-auto">
                 <button> <span class="material-symbols-outlined">
@@ -59,52 +59,15 @@
         </section>
 
         <section id="Dashboard" class="mb-4">
-            <h1 class="text-center text-4xl text-black p-6">Agregar Nuevo Maestro</h1>
+            <h1 class="text-center text-4xl text-black p-6">vista alumno</h1>
         </section>
 
-        <section id="bienvenido" class="w-full bg-white p-6 max-w-screen-xl">
+        <section id="bienvenido" class="w-full bg-white p- max-w-screen-xl">
             <h6 class="text-left">Bienvenido</h6>
             <p class="text-left">Selecciona la acción que quieras realizar en las pestañas del menú de la izquierda</p>
         </section>
-
-        <form action="index.php/add" method="post" class="mt-4">
-            <div class="mb-2">
-                <label class="block">1.-Maestro:</label>
-                <input type="text" name="maestro" class="border border-gray-300 w-full rounded p-2">
-            </div>
-
-            <div class="mb-2">
-                <label class="block">2.-Clase:</label>
-                <input type="text" name="clase" class="border border-gray-300 w-full rounded p-2">
-            </div>
-
-            <div class="mb-2">
-                <label class="block">3.-ID clase:</label>
-                <input type="text" name="id_clase" class="border border-gray-300 w-full rounded p-2">
-            </div>
-
-            <div class="mb-2">
-                <label class="block">4.-Email:</label>
-                <input type="text" name="email" class="border border-gray-300 w-full rounded p-2">
-            </div>
-
-            <div class="mb-2">
-                <label class="block">5.-Contraseña:</label>
-                <input type="text" name="contrasena" class="border border-gray-300 w-full rounded p-2">
-            </div>
-
-            <div class="mb-2">
-                <label class="block">6.-Telefono:</label>
-                <input type="number" name="telefono" class="border border-gray-300 w-full rounded p-2">
-            </div>
-
-            <button type="submit" name="guardar" class="bg-blue-500 hover:bg-blue-600 text-white rounded p-2 mt-4">
-                Guardar
-            </button>
-        </form>
     </section>
 </body>
-
 
 
 </html>
