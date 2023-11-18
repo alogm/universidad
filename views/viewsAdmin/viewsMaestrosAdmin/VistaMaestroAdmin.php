@@ -49,7 +49,7 @@
         <section id="home" class="flex w-full bg-white p-4 " style="width: 1450px;">
             <div>
                 <p class="ml-2"><span class="material-symbols-outlined">menu</span>
-                <a href="/views/Admin.php">Home</a> </p>
+                <a href="/vista-home">Home</a> </p>
             </div>
             <div class="ml-auto">
                 <button> <span class="material-symbols-outlined">
@@ -75,14 +75,12 @@
             <table class="w-full border border-gray-300">
                 <thead>
                     <tr>
-                        <th class="border border-gray-300 text-left align-middle">Foto</th>
-                        <th class="border border-gray-300 text-left align-middle">ID</th>
-                        <th class="border border-gray-300 text-left align-middle">Maestro</th>
+                        <th class="border border-gray-300 text-left align-middle">#</th>
+                        <th class="border border-gray-300 text-left align-middle">Nombre</th>
                         <th class="border border-gray-300 text-left align-middle">Email</th>
-                        <th class="border border-gray-300 text-left align-middle">Contraseña</th>
-                        <th class="border border-gray-300 text-left align-middle">Teléfono</th>
-                        <th class="border border-gray-300 text-left align-middle">Dirección</th>
-                        <th class="border border-gray-300 text-left align-middle">ID Maestro</th>
+                        <th class="border border-gray-300 text-left align-middle">Diresccion</th>
+                        <th class="border border-gray-300 text-left align-middle">Fecha de Nacimiento</th>
+                        <th class="border border-gray-300 text-left align-middle">Clase Asignada</th>
                         <th class="border border-gray-300 text-left align-middle">Acciones</th>
                     </tr>
                 </thead>
@@ -90,17 +88,15 @@
                 <tbody>
                     <?php foreach ($data as $index => $admin) { ?>
                     <tr class="<?= $index % 2 === 0 ? 'bg-slate-300' : 'bg-white' ?>">
-                        <td class="border border-gray-300"><?= $admin["foto"] ?></td>
+                        
                         <td class="border border-gray-300"><?= $admin["id"] ?></td>
-                        <td class="border border-gray-300"><?= $admin["maestro"] ?></td>
-                        <td class="border border-gray-300"><?= $admin["email"] ?></td>
-                        <td class="border border-gray-300"><?= $admin["contrasena"] ?></td>
-                        <td class="border border-gray-300"><?= $admin["telefono"] ?></td>
+                        <td class="border border-gray-300"><?= $admin["nombre"] ?></td>
+                        <td class="border border-gray-300"><?= $admin["correo"] ?></td>
                         <td class="border border-gray-300"><?= $admin["direccion"] ?></td>
-                        <td class="border border-gray-300"><?= $admin["id_maestro"] ?></td>
+                        <td class="border border-gray-300"><?= $admin["fecha_nacimieno"] ?></td>
                         <td class="border border-gray-300 ">
 
-                           <form action="/index.php/delete?id=<?= $admin['id'] ?> " method="post">
+                           <form action="/maestro-delete" method="post">
                            <input type="hidden" name="id" value="<?= $admin['id'] ?>"> 
                            <button type="submit">
                                 <span class="material-symbols-outlined text-red-600">delete</span>

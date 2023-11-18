@@ -10,27 +10,23 @@ class Admin
         $data = new Data();
         $this->connection = $data->connect();
     }
-    public function index()
-    {
-    }
     public function all()
     {
-        $res = $this->connection->query("SELECT * FROM usuarios");
+        $res = $this->connection->query("SELECT * FROM maestros");
         $data = $res->fetchAll(PDO::FETCH_ASSOC);
 
         return $data;
     }
     public function add($data)
     {
-        $maestro = $data['maestro'];
-        $email = $data['email'];
-        $contrasena = $data['contrasena'];
+        $nombre = $data['nombre'];
+        $correo = $data['correo'];
         $direccion = $data['direccion'];
-        $telefono = $data['telefono'];
-        $id_maestro = $data['id_maestro'];
+        $fechaNacimieno = $data['fecha_nacimieno'];
 
-        $res = $this->connection->query("INSERT INTO  maestros (maestro, email, contrasena, direccion, telefono, id_maestro)
-                VALUES ('$maestro', '$email', '$contrasena', '$direccion', '$telefono', '$id_maestro')");
+
+        $res = $this->connection->query("INSERT INTO  maestros (nombre, correo, direccion, fecha_nacimieno)
+                VALUES ('$nombre', '$correo', '$direccion', '$fechaNacimieno')");
 
         if ($res) {
             return true;
@@ -39,31 +35,33 @@ class Admin
     }
     public function Delete($id)
     {
-        echo "Eliminando ID: " . $id; // Verifica si el método se ejecuta y muestra el ID
-        $res = $this->connection->query("DELETE FROM maestros WHERE id ='$id'");
-        var_dump($res); // Verifica si la consulta de eliminación devuelve algún error
-    
-        return $res !== false; // Devuelve true si la eliminación fue exitosa, de lo contrario, devuelve false
+        $this->connection->query("DELETE FROM maestros WHERE id=$id");
     }
     
 
-    public function update($id, $maestro, $email, $contrasena, $direccion, $telefono, $id_maestro)
+    public function update($id, $nombre, $correo, $direccion, $fecha_nacimieno)
     {
-        // Prepara la consulta SQL
-        $stament = $this->connection->prepare("UPDATE maestros SET maestro = :maestro, email = :email, contrasena = :contrasena, direccion = :direccion, telefono = :telefono, id_maestro = :id_maestro WHERE id = :id");
-        
-        // Enlaza los valores a los marcadores de posición
-        $stament->bindParam(":maestro", $maestro);
-        $stament->bindParam(":email", $email);
-        $stament->bindParam(":contrasena", $contrasena);
-        $stament->bindParam(":direccion", $direccion);
-        $stament->bindParam(":telefono", $telefono);
-        $stament->bindParam(":id_maestro", $id_maestro);
-        $stament->bindParam(":id", $id);
+        try {
+            
+            $statement = $this->connection->prepare("UPDATE maestros SET nombre = :nombre, correo = :correo, direccion = :direccion, fecha_nacimieno = :fecha_nacimieno WHERE id = :id");
+            
     
-        // Ejecuta la consulta
-        return ($stament->execute()) ? $id : false;
+            $statement->bindParam(":nombre", $nombre);
+            $statement->bindParam(":correo", $correo);
+            $statement->bindParam(":direccion", $direccion);
+            $statement->bindParam(":fecha_nacimieno", $fecha_nacimieno);
+            $statement->bindParam(":id", $id);
+        
+            // Ejecuta la consulta
+            $result = $statement->execute();
+    
+            return $result !== false;
+        } catch (PDOException $e) {
+            echo "Error en la consulta de actualización: " . $e->getMessage();
+            return false;
+        }
     }
+    
     
 }
 

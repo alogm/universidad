@@ -5,44 +5,6 @@ require_once($_SERVER["DOCUMENT_ROOT"] . "/models/LoginModel.php");
 
 class AdminController
 {
-    //inicio enrutado
-    public function home()
-    {
-
-        include $_SERVER['DOCUMENT_ROOT'] . "/views/PrincipalAdmin.php";
-    }
-    public function vistapermiso()
-    {
-
-        include $_SERVER['DOCUMENT_ROOT'] . "/views/viewsAdmin/viewsPermisos/AdminPermisos.php";
-    }
-    public function vistamestros()
-    {
-
-        include $_SERVER['DOCUMENT_ROOT'] . "/views/viewsAdmin/viewsMaestrosAdmin/VistaMaestroAdmin.php";
-    }
-    public function vistaalumnos()
-    {
-
-        include $_SERVER['DOCUMENT_ROOT'] . "/views/viewsAdmin/viewsAdminEstudiante/VistaAEstudianteAdmin.php";
-    }
-    public function vistaclases()
-    {
-        include $_SERVER['DOCUMENT_ROOT'] . "/views/viewsAdmin/viewsClasesAdmin/VistaClasesAdmin.php";
-    }
-    public function crearMaestro()
-    {
-        include $_SERVER['DOCUMENT_ROOT'] . "/views/viewsAdmin/viewsMaestrosAdmin/AddMaestroAdmin.php";
-    }
-
-    //acaba enrutaado
-
-    public function index()
-    {
-
-        include $_SERVER["DOCUMENT_ROOT"] . "/views/login.php";
-    }
-
     public function login($data)
     {
 
@@ -80,33 +42,25 @@ class AdminController
             }
         }
     }
-
-    public function all()
+    public function vistamestros()
     {
         $maestros = new Admin();
         $data = $maestros->all();
-        include $_SERVER["DOCUMENT_ROOT"] . "/views/viewsAdmin/viewsMaestrosadmin/VistaMaestroAdmin.php";
+        include $_SERVER['DOCUMENT_ROOT'] . "/views/viewsAdmin/viewsMaestrosAdmin/VistaMaestroAdmin.php";
     }
-    public function create()
-    {
-        include $_SERVER["DOCUMENT_ROOT"] . "/views/viewsAdmin/viewsMaestrosAdmin/AddMaestroAdmin.php";
-    }
-    public function add($data)
+    public function crearMaestro($data)
     {
         $maestro = new Admin();
         $newmaestro = $maestro->add($data);
 
-        $newmaestro === true && header("Location: /index.php");
+        include $_SERVER['DOCUMENT_ROOT'] . "/views/viewsAdmin/viewsMaestrosAdmin/VistaMaestroAdmin.php";
     }
     public function delete($id)
     {
         $maestro = new Admin();
-        $delete = $maestro->Delete($id); // Asegúrate de que Delete reciba el ID
+        $delete = $maestro->Delete($id); 
 
-        if ($delete === true) {
-            header("Location: /index.php");
-            die();
-        }
+        include $_SERVER['DOCUMENT_ROOT'] . "/views/viewsAdmin/viewsMaestrosAdmin/VistaMaestroAdmin.php";
     }
 
     public function actualizar()
@@ -114,19 +68,11 @@ class AdminController
         include $_SERVER["DOCUMENT_ROOT"] . "/views/viewsAdmin/viewsMaestrosAdmin/EditarMaestroAdmin.php";
     }
 
-    public function update($id, $maestro, $email, $contrasena, $direccion, $telefono, $id_maestro)
+    public function update($id, $nombre, $correo, $direccion, $fecha_nacimieno)
     {
-        // Crea una instancia de AdminController en lugar de Admin
-        $controller = new AdminController();
+      $maestro = new Admin();
+      $update = $maestro->update($id, $nombre, $correo, $direccion, $fecha_nacimieno);
 
-        // Llama a la función update del controlador con los parámetros correctos
-        $result = $controller->update($id, $maestro, $email, $contrasena, $direccion, $telefono, $id_maestro);
-
-        // Procede con el manejo de resultados
-        if ($result !== false) {
-            header("Location: /views/viewsAdmin/viewsMaestrosAdmin/VistaMaestroAdmin.php");
-        } else {
-            header("Location: index.php");
-        }
+      include $_SERVER['DOCUMENT_ROOT'] . "/views/viewsAdmin/viewsMaestrosAdmin/VistaMaestroAdmin.php";
     }
 }

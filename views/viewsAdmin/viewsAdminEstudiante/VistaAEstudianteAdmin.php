@@ -9,6 +9,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <title>Document</title>
 </head>
+
 <body class="flex bg-gray-100">
     <section id="bloque" class="bg-zinc-700 text-gray-400 h-screen flex flex-col justify-between p-4">
         <section id="logo" class="flex items-center">
@@ -47,8 +48,8 @@
     <section class="w-1/2 p-4">
         <section id="home" class="flex w-full bg-white p-4 " style="width: 1450px;">
             <div>
-                <a href="/vista-home" class="ml-2"><span class="material-symbols-outlined">menu</span>Home</a>
-                    
+                <p class="ml-2"><span class="material-symbols-outlined">menu</span>
+                <a href="/vista-home">Home</a> </p>
             </div>
             <div class="ml-auto">
                 <button> <span class="material-symbols-outlined">
@@ -59,15 +60,70 @@
         </section>
 
         <section id="Dashboard" class="mb-4">
-            <h1 class="text-center text-4xl text-black p-6">vista alumno</h1>
+            <h1 class="text-center text-4xl text-black p-6">Lista de Alumnos</h1>
         </section>
 
-        <section id="bienvenido" class="w-full bg-white p- max-w-screen-xl">
-            <h6 class="text-left">Bienvenido</h6>
-            <p class="text-left">Selecciona la acción que quieras realizar en las pestañas del menú de la izquierda</p>
-        </section>
+        <section id="bienvenido" class="w-full bg-white p-6 max-w-screen-xl flex items-center">
+    <h6 class="text-left">Informacion de Maestros</h6>
+    <a href="/crear-alumnoo" class="bg-blue-500 hover:bg-blue-600 rounded-lg px-4 py-2 text-white ml-auto">
+        Agregar Alumno
+    </a>
+</section>
+
+
+        <div class="w-full p-4 overflow-x-auto">
+            <table class="w-full border border-gray-300">
+                <thead>
+                    <tr>
+                        <th class="border border-gray-300 text-left align-middle">#</th>
+                        <th class="border border-gray-300 text-left align-middle">DNI</th>
+                        <th class="border border-gray-300 text-left align-middle">Nombre</th>
+                        <th class="border border-gray-300 text-left align-middle">Correo</th>
+                        <th class="border border-gray-300 text-left align-middle">Direccion</th>
+                        <th class="border border-gray-300 text-left align-middle">Fecha de Nacimiento</th>
+                        <th class="border border-gray-300 text-left align-middle">Acciones</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <?php foreach ($data as $index => $admin) { ?>
+                    <tr class="<?= $index % 2 === 0 ? 'bg-slate-300' : 'bg-white' ?>">
+                        
+                        <td class="border border-gray-300"><?= $admin["id"] ?></td>
+                        <td class="border border-gray-300"><?= $admin["nombre"] ?></td>
+                        <td class="border border-gray-300"><?= $admin["email"] ?></td>
+                        <td class="border border-gray-300"><?= $admin["direccion"] ?></td>
+                        <td class="border border-gray-300"><?= $admin["fecha"] ?></td>
+                        <td class="border border-gray-300"><?= $admin["clase"] ?></td>
+                        <td class="border border-gray-300 ">
+
+                           <form action="/index.php/delete?id=<?= $admin['id'] ?> " method="post">
+                           <input type="hidden" name="id" value="<?= $admin['id'] ?>"> 
+                           <button type="submit">
+                                <span class="material-symbols-outlined text-red-600">delete</span>
+                            </button>
+                           </form>
+
+                            <button>
+                               <a href=""> <span class="material-symbols-outlined">
+                                    edit_square
+                                </span></a>
+                            </button>
+                        </td>
+
+                    </tr>
+
+                    <?php } ?>
+
+                </tbody>
+            </table>
+        </div>
+
+
     </section>
-</body>
 
+
+
+</body>
 
 </html>

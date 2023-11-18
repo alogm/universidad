@@ -1,5 +1,6 @@
 <?php
 require_once("./controllers/AdminController.php");
+require_once("./controllers/VistasAdminController.php");
 require_once("./models/AdminModel.php");
 
 $urlCompleta = $_SERVER["REQUEST_URI"];
@@ -7,40 +8,50 @@ $partes = explode("?", $urlCompleta);
 $url = $partes[0];
 
 $controller = new AdminController();
+$vistasControl = new VistasController();
 
 if ($_SERVER["REQUEST_METHOD"] === "GET") {
 
     switch ($url) {
         case '/index.php':
-            $controller->index();
+            $vistasControl->index();
             break;
 
-            case '/vista-home':
-                $controller->home();
-                break;
+        case '/vista-home':
+            $vistasControl->home();
+            break;
 
         case '/vista-permisos':
-            $controller->vistapermiso();
+            $vistasControl->vistapermiso();
+            break;
+
+        case '/vista-edid-permisos':
+            $vistasControl->edidPermisos();
             break;
 
         case '/vista-maestros':
             $controller->vistamestros();
             break;
+
+        case '/crear-maestros':
+            $vistasControl->crearMaestro();
+            break;
+
         case '/vista-alumnos':
-            $controller->vistaalumnos();
+            $Controller->all();
             break;
 
         case '/vista-clases':
-            $controller->vistaclases();
+            $vistasControl->vistaclases();
             break;
 
         case '/crear-maestros':
-            $controller->crearMaestro();
+            $vistasControl->crearMaestro();
             break;
 
 
         default:
-            # code...
+            echo "la pagina no esta disponible ";
             break;
     }
 }
@@ -51,6 +62,14 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         case '/inicio':
             $controller->login($_POST);
             break;
+
+            case '/crear-maestro':
+                $controller->crearMaestro($_POST);
+                break;
+
+                case '/maestro-delete':
+                    $controller->delete($_POST["id"]);
+                    break;
 
         default:
             echo "no se encontro ruta";
