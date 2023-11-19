@@ -17,8 +17,8 @@
         </section>
 
         <section id="admin" class="text-center">
-            <h2>estudiante</h2>
-            <p>Estudiante</p>
+            <h2>admin</h2>
+            <p>Administrador</p>
         </section>
 
         <section id="cuerpo" class="mt-2">
@@ -26,19 +26,19 @@
             <div class="flex flex-col items-center">
                 <div>
                     <span class="material-symbols-outlined">manage_accounts</span>
-                    <a href="/views/viewsAdmin/adminPermisos.php" class="ml-2">Permisos</a>
+                    <a href="/vista-permisos" class="ml-2">Permisos</a>
                 </div>
                 <div>
                     <span class="material-symbols-outlined">tv_signin</span>
-                    <a href="/views/viewsAdmin/viewsMaestrosAdmin/VistaMaestroAdmin.php" class="ml-2">Maestros</a>
+                    <a href="/vista-maestros" class="ml-2">Maestros</a>
                 </div>
                 <div>
                     <span class="material-symbols-outlined">school</span>
-                    <a href="" class="ml-2">Alumnos</a>
+                    <a href="/vista-alumnos" class="ml-2">Alumnos</a>
                 </div>
                 <div>
                     <span class="material-symbols-outlined">table_restaurant</span>
-                    <a href="" class="ml-2">Clases</a>
+                    <a href="/vista-clases" class="ml-2">Clases</a>
                 </div>
             </div>
         </section>
@@ -47,8 +47,8 @@
     <section class="w-1/2 p-4">
         <section id="home" class="flex w-full bg-white p-4 " style="width: 1450px;">
             <div>
-                <p class="ml-2"><span class="material-symbols-outlined">menu</span>
-                    home</p>
+                <a href="/vista-home" class="ml-2"><span class="material-symbols-outlined">menu</span>Home</a>
+                    
             </div>
             <div class="ml-auto">
                 <button> <span class="material-symbols-outlined">

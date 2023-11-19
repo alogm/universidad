@@ -18,18 +18,18 @@
 
         <section id="admin" class="text-center">
             <h2>Maestro</h2>
-            <p>Maestros</p>
+            <p>Maestro</p>
         </section>
 
         <section id="cuerpo" class="mt-2">
             <h2 class="text-center mb-2">MENU MAESTRO</h2>
             <div class="flex flex-col items-center">
-               
+             
                 <div>
                     <span class="material-symbols-outlined">school</span>
                     <a href="/vista-maestro-alumnos" class="ml-2">Alumnos</a>
                 </div>
-              
+
             </div>
         </section>
     </section>
@@ -49,15 +49,52 @@
         </section>
 
         <section id="Dashboard" class="mb-4">
-            <h1 class="text-center text-4xl text-black p-6">Dashboard</h1>
+            <h1 class="text-center text-4xl text-black p-6">Editar Datos de perfil</h1>
         </section>
 
-        <section id="bienvenido" class="w-full bg-white p- max-w-screen-xl">
-            <h6 class="text-left">Bienvenido</h6>
-            <p class="text-left">Selecciona la acción que quieras realizar en las pestañas del menú de la izquierda</p>
+        <section id="bienvenido" class="w-full bg-white p-6 max-w-screen-xl">
+            <h6 class="text-left">Informacion de Usuario</h6>
+            <p class="text-left"></p>
         </section>
+
+        <form action="" method="post" class="mt-4">
+            <div class="mb-2">
+                <label class="block">1.-Correo Electronico:</label>
+                <input type="text" name="correo" class="border border-gray-300 w-full rounded p-2">
+            </div>
+
+            <div class="mb-2">
+                <label class="block">2.-Contraseña ingresa para cambiar la contraseña:</label>
+                <input type="text" name="contrasena" class="border border-gray-300 w-full rounded p-2">
+            </div>
+
+            <div class="mb-2">
+                <label class="block">3.-Nombre:</label>
+                <input type="text" name="nombre" class="border border-gray-300 w-full rounded p-2">
+            </div>
+
+            <div class="mb-2">
+                <label class="block">4.-Apellido:</label>
+                <input type="text" name="apellido" class="border border-gray-300 w-full rounded p-2">
+            </div>
+
+            <div class="mb-2">
+                <label class="block">4.-Direccion:</label>
+                <input type="text" name="direccion" class="border border-gray-300 w-full rounded p-2">
+            </div>
+
+            <div class="mb-2">
+                <label class="block">4.-Fecha de nacimiento:</label>
+                <input type="date" name="fecha_nacimieno" class="border border-gray-300 w-full rounded p-2">
+            </div>
+
+            <button type="submit" name="guardar" class="bg-blue-500 hover:bg-blue-600 text-white rounded p-2 mt-4">
+                Guardar cambios
+            </button>
+        </form>
     </section>
 </body>
+
 
 
 </html>

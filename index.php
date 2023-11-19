@@ -1,6 +1,7 @@
 <?php
 require_once("./controllers/AdminController.php");
 require_once("./controllers/VistasAdminController.php");
+require_once("./controllers/VistasMaestroController.php");
 require_once("./models/AdminModel.php");
 
 $urlCompleta = $_SERVER["REQUEST_URI"];
@@ -8,7 +9,8 @@ $partes = explode("?", $urlCompleta);
 $url = $partes[0];
 
 $controller = new AdminController();
-$vistasControl = new VistasController();
+$vistasControl = new VistasAdminController();
+$vistaMaestro = new VistaMaestroController();
 
 if ($_SERVER["REQUEST_METHOD"] === "GET") {
 
@@ -38,7 +40,7 @@ if ($_SERVER["REQUEST_METHOD"] === "GET") {
             break;
 
         case '/vista-alumnos':
-            $Controller->all();
+            $vistasControl->vistaalumnos();
             break;
 
         case '/vista-clases':
@@ -48,6 +50,17 @@ if ($_SERVER["REQUEST_METHOD"] === "GET") {
         case '/crear-maestros':
             $vistasControl->crearMaestro();
             break;
+
+            case '/home-maestro';
+            $vistaMaestro->HomeMaestro();
+            break;
+ 
+            case '/vista-maestro-alumnos':
+                $vistaMaestro->MaestroVistaAlumnos();
+                break;
+
+                case '/edit-perfil-maestro';
+                $vistaMaestro->EditPerfilMaestro();
 
 
         default:

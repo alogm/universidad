@@ -1,6 +1,6 @@
 <?php
 
-class VistasController
+class VistasAdminController
 {
     public function home()
     {
