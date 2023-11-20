@@ -67,10 +67,10 @@
             <p class="text-left"></p>
         </section>
 
-        <form action="/index.php/create" method="post" class="mt-4">
+        <form action="/crear-alumno" method="post" class="mt-4">
         <div class="mb-2">
                 <label class="block">1.-DNI:</label>
-                <input type="text" name="dni" class="border border-gray-300 w-full rounded p-2">
+                <input type="text" name="matricula" class="border border-gray-300 w-full rounded p-2">
             </div>
             <div class="mb-2">
                 <label class="block">1.-Nombre:</label>
@@ -83,12 +83,7 @@
 
             <div class="mb-2">
                 <label class="block">2.-Email:</label>
-                <input type="text" name="email" class="border border-gray-300 w-full rounded p-2">
-            </div>
-
-            <div class="mb-2">
-                <label class="block">3.-Contraseña:</label>
-                <input type="text" name="contrasena" class="border border-gray-300 w-full rounded p-2">
+                <input type="text" name="correo" class="border border-gray-300 w-full rounded p-2">
             </div>
 
             <div class="mb-2">
@@ -98,7 +93,7 @@
 
             <div class="mb-2">
                 <label class="block">5.-Fecha de nacimiento:</label>
-                <input type="date" name="telefono" class="border border-gray-300 w-full rounded p-2">
+                <input type="date" name="fecha_nacimieno" class="border border-gray-300 w-full rounded p-2">
             </div>
 
             <button type="submit" name="guardar" class="bg-blue-500 hover:bg-blue-600 text-white rounded p-2 mt-4">

@@ -42,12 +42,23 @@ class AdminController
             }
         }
     }
+    //inicio muestra maestros y alumnos
     public function vistamestros()
     {
         $maestros = new Admin();
         $data = $maestros->all();
         include $_SERVER['DOCUMENT_ROOT'] . "/views/viewsAdmin/viewsMaestrosAdmin/VistaMaestroAdmin.php";
     }
+    public function vistaalumnos()
+    {
+        $alumnos = new Admin(); // Cambia a un nombre más apropiado según tus datos
+        $data = $alumnos->AllAlumnos(); // Llama al método que obtiene los datos
+    
+        include $_SERVER['DOCUMENT_ROOT'] . "/views/viewsAdmin/viewsAdminEstudiante/VistaAEstudianteAdmin.php";
+    }
+    //fin de muestra de maestros y alumnos
+
+    //crea maestros y alumnos
     public function crearMaestro($data)
     {
         $maestro = new Admin();
@@ -55,6 +66,16 @@ class AdminController
 
         include $_SERVER['DOCUMENT_ROOT'] . "/views/viewsAdmin/viewsMaestrosAdmin/VistaMaestroAdmin.php";
     }
+    public function crearAlumno($data)
+    {
+        $alumno = new Admin();
+        $newAlumno = $alumno->addAlumno($data);
+
+        include $_SERVER['DOCUMENT_ROOT'] . "/views/viewsAdmin/viewsAdminEstudiante/VistaAEstudianteAdmin.php";
+    }
+    //fin de crear alumnos y maestros
+
+    //inicia eliminacion de maestros y alumnos
     public function delete($id)
     {
         $maestro = new Admin();
@@ -62,6 +83,15 @@ class AdminController
 
         include $_SERVER['DOCUMENT_ROOT'] . "/views/viewsAdmin/viewsMaestrosAdmin/VistaMaestroAdmin.php";
     }
+    public function deleteAlumno($id)
+    {
+        $alumno = new Admin();
+        $delete = $alumno->DeleteAlumno($id);
+
+        include $_SERVER['DOCUMENT_ROOT'] . "/views/viewsAdmin/viewsAdminEstudiante/VistaAEstudianteAdmin.php";
+    }
+
+    //acaba eliminacion de alumnos
 
     public function actualizar()
     {
@@ -75,12 +105,6 @@ class AdminController
 
       include $_SERVER['DOCUMENT_ROOT'] . "/views/viewsAdmin/viewsMaestrosAdmin/VistaMaestroAdmin.php";
     }
-    public function vistaalumnos()
-{
-    $alumnosModel = new Admin(); // Cambia a un nombre más apropiado según tus datos
-    $data = $alumnosModel->AllAlumnos(); // Llama al método que obtiene los datos
 
-    include $_SERVER['DOCUMENT_ROOT'] . "/views/viewsAdmin/viewsAdminEstudiante/VistaAEstudianteAdmin.php";
-}
 
 }

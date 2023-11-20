@@ -10,6 +10,7 @@ class Admin
         $data = new Data();
         $this->connection = $data->connect();
     }
+    //se muestran todos los maestros y alumnos
     public function all()
     {
         $res = $this->connection->query("SELECT * FROM maestros");
@@ -24,6 +25,9 @@ class Admin
 
         return $alumno;
     }
+    //fin muestra maestros y alumnos
+
+    //inicia agregar Maestros y Alumnos
     public function add($data)
     {
         $nombre = $data['nombre'];
@@ -40,36 +44,58 @@ class Admin
         }
         return false;
     }
+    public function addAlumno($data)
+    {
+        $matricula = $data['matricula'];
+        $correo = $data['correo'];
+        $nombre = $data['nombre'];
+        $apellido = $data['apellido'];
+        $direccion = $data['direccion'];
+        $fechaNacimieno = $data['fecha_nacimieno'];
+
+        $res = $this->connection->query("INSERT INTO alumnos (matricula, correo, nombre, apellido, direccion, fecha_nacimieno)
+        VALUES ('$matricula', '$correo', '$nombre', '$apellido', '$direccion', '$fechaNacimieno')");
+
+        if ($res) {
+            return true;
+        }
+        return false;
+    }
+    //fin agregar maestros y alumnos
+
+    //inicia eliminar maestro y alumno
     public function Delete($id)
     {
         $this->connection->query("DELETE FROM maestros WHERE id=$id");
     }
-    
+    public function DeleteAlumno($id)
+    {
+        $this->connection->query("DELETE FROM alumnos WHERE id=$id");
+    }
 
+    //finaliza eliminar maestro y alumno
     public function update($id, $nombre, $correo, $direccion, $fecha_nacimieno)
     {
         try {
-            
+
             $statement = $this->connection->prepare("UPDATE maestros SET nombre = :nombre, correo = :correo, direccion = :direccion, fecha_nacimieno = :fecha_nacimieno WHERE id = :id");
-            
-    
+
+
             $statement->bindParam(":nombre", $nombre);
             $statement->bindParam(":correo", $correo);
             $statement->bindParam(":direccion", $direccion);
             $statement->bindParam(":fecha_nacimieno", $fecha_nacimieno);
             $statement->bindParam(":id", $id);
-        
+
             // Ejecuta la consulta
             $result = $statement->execute();
-    
+
             return $result !== false;
         } catch (PDOException $e) {
             echo "Error en la consulta de actualización: " . $e->getMessage();
             return false;
         }
     }
-    
-    
 }
 
 

@@ -39,9 +39,16 @@ if ($_SERVER["REQUEST_METHOD"] === "GET") {
             $controller->vistamestros();
             break;
 
+            // lleva solo a la vista para crear datos
         case '/crear-maestros':
             $vistasControl->crearMaestro();
             break;
+
+        case '/crear-alumnos';
+            $vistasControl->crearAlumno();
+            break;
+
+            //finaliza la ruta de solo vista 
 
         case '/vista-alumnos':
             $controller->vistaalumnos();
@@ -49,10 +56,6 @@ if ($_SERVER["REQUEST_METHOD"] === "GET") {
 
         case '/vista-clases':
             $vistasControl->vistaclases();
-            break;
-
-        case '/crear-maestros':
-            $vistasControl->crearMaestro();
             break;
 
         case '/home-maestro';
@@ -98,13 +101,26 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             $controller->login($_POST);
             break;
 
+            //crea datos de mestros y alumnos
         case '/crear-maestro':
             $controller->crearMaestro($_POST);
             break;
 
+        case '/crear-alumno';
+            $controller->crearAlumno($_POST);
+            break;
+            //finaliza creacion de datos de maestros y alumnos
+
+            //inicia eliminacion de de maestros y alumnos
         case '/maestro-delete':
             $controller->delete($_POST["id"]);
             break;
+
+        case '/alumno-delete';
+            $controller->deleteAlumno($_POST["id"]);
+            break;
+
+            //finaliza eliminacion de maestros y alumnos
 
         default:
             echo "no se encontro ruta";

@@ -55,7 +55,7 @@
                 <button> <span class="material-symbols-outlined">
                         expand_more
                     </span></button>
-                Maestro
+                Administrador
             </div>
         </section>
 
@@ -65,7 +65,7 @@
 
         <section id="bienvenido" class="w-full bg-white p-6 max-w-screen-xl flex items-center">
     <h6 class="text-left">Informacion de Alumnos</h6>
-    <a href="" class="bg-blue-500 hover:bg-blue-600 rounded-lg px-4 py-2 text-white ml-auto">
+    <a href="/crear-alumnos" class="bg-blue-500 hover:bg-blue-600 rounded-lg px-4 py-2 text-white ml-auto">
         Agregar Alumno
     </a>
 </section>
@@ -98,7 +98,7 @@
                         <td class="border border-gray-300"><?= $admin["fecha_nacimieno"] ?></td>
                         <td class="border border-gray-300 ">
 
-                           <form action="" method="post">
+                           <form action="/alumno-delete" method="post">
                            <input type="hidden" name="id" value="<?= $admin['id'] ?>"> 
                            <button type="submit">
                                 <span class="material-symbols-outlined text-red-600">delete</span>
