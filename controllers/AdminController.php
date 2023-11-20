@@ -75,4 +75,12 @@ class AdminController
 
       include $_SERVER['DOCUMENT_ROOT'] . "/views/viewsAdmin/viewsMaestrosAdmin/VistaMaestroAdmin.php";
     }
+    public function vistaalumnos()
+{
+    $alumnosModel = new Admin(); // Cambia a un nombre más apropiado según tus datos
+    $data = $alumnosModel->AllAlumnos(); // Llama al método que obtiene los datos
+
+    include $_SERVER['DOCUMENT_ROOT'] . "/views/viewsAdmin/viewsAdminEstudiante/VistaAEstudianteAdmin.php";
+}
+
 }

@@ -50,18 +50,18 @@
                 <a href="/edit-alumno"> <span class="material-symbols-outlined">
                         expand_more
                     </span></a>
-                Alumno
+                Maestro
             </div>
         </section>
         
 
         <section id="Dashboard" class="mb-4">
-            <h1 class="text-center text-4xl text-black p-6">Dashboard</h1>
+            <h1 class="text-center text-4xl text-black p-6">Calificaciones y mensajes de tus clases</h1>
         </section>
 
         <section id="bienvenido" class="w-full bg-white p- max-w-screen-xl">
-            <h6 class="text-left">Bienvenido</h6>
-            <p class="text-left">Selecciona la acción que quieras realizar en las pestañas del menú de la izquierda</p>
+            <h6 class="text-left">Calificaciones y mensajes de tus clases</h6>
+            <p class="text-left"></p>
         </section>
     </section>
 </body>

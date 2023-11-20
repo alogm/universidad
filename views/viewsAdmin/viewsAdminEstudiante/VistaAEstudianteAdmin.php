@@ -18,8 +18,8 @@
         </section>
 
         <section id="admin" class="text-center">
-            <h2>admin</h2>
-            <p>Administrador</p>
+            <h2>Alumno</h2>
+            <p>Alumno</p>
         </section>
 
         <section id="cuerpo" class="mt-2">
@@ -55,17 +55,17 @@
                 <button> <span class="material-symbols-outlined">
                         expand_more
                     </span></button>
-                Administrador
+                Maestro
             </div>
         </section>
 
         <section id="Dashboard" class="mb-4">
-            <h1 class="text-center text-4xl text-black p-6">Lista de Alumnos</h1>
+            <h1 class="text-center text-4xl text-black p-6">Lista de Alumno</h1>
         </section>
 
         <section id="bienvenido" class="w-full bg-white p-6 max-w-screen-xl flex items-center">
-    <h6 class="text-left">Informacion de Maestros</h6>
-    <a href="/crear-alumnoo" class="bg-blue-500 hover:bg-blue-600 rounded-lg px-4 py-2 text-white ml-auto">
+    <h6 class="text-left">Informacion de Alumnos</h6>
+    <a href="" class="bg-blue-500 hover:bg-blue-600 rounded-lg px-4 py-2 text-white ml-auto">
         Agregar Alumno
     </a>
 </section>
@@ -78,9 +78,10 @@
                         <th class="border border-gray-300 text-left align-middle">#</th>
                         <th class="border border-gray-300 text-left align-middle">DNI</th>
                         <th class="border border-gray-300 text-left align-middle">Nombre</th>
-                        <th class="border border-gray-300 text-left align-middle">Correo</th>
+                        <th class="border border-gray-300 text-left align-middle">Email</th>
                         <th class="border border-gray-300 text-left align-middle">Direccion</th>
                         <th class="border border-gray-300 text-left align-middle">Fecha de Nacimiento</th>
+                        <th class="border border-gray-300 text-left align-middle">Clase Asignada</th>
                         <th class="border border-gray-300 text-left align-middle">Acciones</th>
                     </tr>
                 </thead>
@@ -90,14 +91,14 @@
                     <tr class="<?= $index % 2 === 0 ? 'bg-slate-300' : 'bg-white' ?>">
                         
                         <td class="border border-gray-300"><?= $admin["id"] ?></td>
+                        <td class="border border-gray-300"><?= $admin["matricula"] ?></td>
                         <td class="border border-gray-300"><?= $admin["nombre"] ?></td>
-                        <td class="border border-gray-300"><?= $admin["email"] ?></td>
+                        <td class="border border-gray-300"><?= $admin["correo"] ?></td>
                         <td class="border border-gray-300"><?= $admin["direccion"] ?></td>
-                        <td class="border border-gray-300"><?= $admin["fecha"] ?></td>
-                        <td class="border border-gray-300"><?= $admin["clase"] ?></td>
+                        <td class="border border-gray-300"><?= $admin["fecha_nacimieno"] ?></td>
                         <td class="border border-gray-300 ">
 
-                           <form action="/index.php/delete?id=<?= $admin['id'] ?> " method="post">
+                           <form action="" method="post">
                            <input type="hidden" name="id" value="<?= $admin['id'] ?>"> 
                            <button type="submit">
                                 <span class="material-symbols-outlined text-red-600">delete</span>

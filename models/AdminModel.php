@@ -17,6 +17,13 @@ class Admin
 
         return $data;
     }
+    public function AllAlumnos()
+    {
+        $res = $this->connection->query("SELECT * FROM alumnos");
+        $alumno = $res->fetchAll(PDO::FETCH_ASSOC);
+
+        return $alumno;
+    }
     public function add($data)
     {
         $nombre = $data['nombre'];

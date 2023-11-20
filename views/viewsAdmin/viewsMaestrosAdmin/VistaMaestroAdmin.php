@@ -78,7 +78,7 @@
                         <th class="border border-gray-300 text-left align-middle">#</th>
                         <th class="border border-gray-300 text-left align-middle">Nombre</th>
                         <th class="border border-gray-300 text-left align-middle">Email</th>
-                        <th class="border border-gray-300 text-left align-middle">Diresccion</th>
+                        <th class="border border-gray-300 text-left align-middle">Direccion</th>
                         <th class="border border-gray-300 text-left align-middle">Fecha de Nacimiento</th>
                         <th class="border border-gray-300 text-left align-middle">Clase Asignada</th>
                         <th class="border border-gray-300 text-left align-middle">Acciones</th>
@@ -104,7 +104,7 @@
                            </form>
 
                             <button>
-                               <a href="/views/viewsAdmin/viewsMaestrosAdmin/EditarMaestroAdmin.php"> <span class="material-symbols-outlined">
+                               <a href=""> <span class="material-symbols-outlined">
                                     edit_square
                                 </span></a>
                             </button>

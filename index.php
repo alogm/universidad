@@ -1,7 +1,9 @@
 <?php
 require_once("./controllers/AdminController.php");
+
 require_once("./controllers/VistasAdminController.php");
 require_once("./controllers/VistasMaestroController.php");
+require_once("./controllers/VistaAlumnoController.php");
 require_once("./models/AdminModel.php");
 
 $urlCompleta = $_SERVER["REQUEST_URI"];
@@ -9,8 +11,10 @@ $partes = explode("?", $urlCompleta);
 $url = $partes[0];
 
 $controller = new AdminController();
+
 $vistasControl = new VistasAdminController();
 $vistaMaestro = new VistaMaestroController();
+$vistaAlumno = new VistaAlumnoController();
 
 if ($_SERVER["REQUEST_METHOD"] === "GET") {
 
@@ -40,7 +44,7 @@ if ($_SERVER["REQUEST_METHOD"] === "GET") {
             break;
 
         case '/vista-alumnos':
-            $vistasControl->vistaalumnos();
+            $controller->vistaalumnos();
             break;
 
         case '/vista-clases':
@@ -51,16 +55,34 @@ if ($_SERVER["REQUEST_METHOD"] === "GET") {
             $vistasControl->crearMaestro();
             break;
 
-            case '/home-maestro';
+        case '/home-maestro';
             $vistaMaestro->HomeMaestro();
             break;
- 
-            case '/vista-maestro-alumnos':
-                $vistaMaestro->MaestroVistaAlumnos();
-                break;
 
-                case '/edit-perfil-maestro';
-                $vistaMaestro->EditPerfilMaestro();
+        case '/vista-maestro-alumnos':
+            $vistaMaestro->MaestroVistaAlumnos();
+            break;
+
+        case '/edit-perfil-maestro';
+            $vistaMaestro->EditPerfilMaestro();
+            break;
+
+        case '/home-alumnos';
+            $vistaAlumno->HomeAlumno();
+            break;
+
+        case '/calificaciones-alumno';
+            $vistaAlumno->Calificaciones();
+            break;
+
+        case '/clases-alumno';
+            $vistaAlumno->ClasesAlumno();
+            break;
+
+        case '/edit-alumno';
+            $vistaAlumno->EditPerfilAlumno();
+            break;
+
 
 
         default:
@@ -76,13 +98,13 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             $controller->login($_POST);
             break;
 
-            case '/crear-maestro':
-                $controller->crearMaestro($_POST);
-                break;
+        case '/crear-maestro':
+            $controller->crearMaestro($_POST);
+            break;
 
-                case '/maestro-delete':
-                    $controller->delete($_POST["id"]);
-                    break;
+        case '/maestro-delete':
+            $controller->delete($_POST["id"]);
+            break;
 
         default:
             echo "no se encontro ruta";
