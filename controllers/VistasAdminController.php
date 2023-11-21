@@ -32,10 +32,6 @@ class VistasAdminController
     {
         include $_SERVER['DOCUMENT_ROOT'] . "/views/viewsAdmin/viewsAdminEstudiante/EditarEstudianteAdmin.php";
     }
-    public function VistaEditMaestros()
-    {
-        include $_SERVER['DOCUMENT_ROOT'] . "/views/viewsAdmin/viewsMaestrosAdmin/EditarMaestroAdmin.php";
-    }
     public function VistaEditClases()
     {
         include $_SERVER['DOCUMENT_ROOT'] . "/views/viewsAdmin/viewsClasesAdmin/EditClasesAdmin.php";

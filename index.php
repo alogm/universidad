@@ -27,11 +27,11 @@ if ($_SERVER["REQUEST_METHOD"] === "GET") {
             $vistasControl->home();
             break;
 
-        case '/home-maestro';
+        case '/home-maestro':
             $vistaMaestro->HomeMaestro();
             break;
 
-        case '/home-alumnos';
+        case '/home-alumnos':
             $vistaAlumno->HomeAlumno();
             break;
 
@@ -47,7 +47,7 @@ if ($_SERVER["REQUEST_METHOD"] === "GET") {
             $controller->vistaalumnos();
             break;
 
-        case '/vista-clases';
+        case '/vista-clases':
             $controller->AllClases();
             break;
 
@@ -67,24 +67,8 @@ if ($_SERVER["REQUEST_METHOD"] === "GET") {
             $vistasControl->crearMaestro();
             break;
 
-        case '/crear-alumnos';
+        case '/crear-alumnos':
             $vistasControl->crearAlumno();
-            break;
-
-        case '/edit-permisos':
-            $vistasControl->VistaEditPermisos();
-            break;
-
-        case '/edit-alumnos';
-            $vistasControl->VistaEditAlumnos();
-            break;
-
-        case '/edit-maestros';
-            $vistasControl->VistaEditMaestros();
-            break;
-
-        case '/edit-clases';
-            $vistasControl->VistaEditClases();
             break;
 
             // b) vistas de maestros
@@ -94,11 +78,11 @@ if ($_SERVER["REQUEST_METHOD"] === "GET") {
 
 
             // c) vistas de alumno
-        case '/calificaciones-alumno';
+        case '/calificaciones-alumno':
             $vistaAlumno->Calificaciones();
             break;
 
-        case '/clases-alumno';
+        case '/clases-alumno':
             $vistaAlumno->ClasesAlumno();
             break;
 
@@ -126,7 +110,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             $controller->crearMaestro($_POST);
             break;
 
-        case '/crear-alumno';
+        case '/crear-alumno':
             $controller->crearAlumno($_POST);
             break;
             //finaliza creacion de datos de maestros y alumnos
@@ -136,13 +120,14 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             $controller->delete($_POST["id"]);
             break;
 
-        case '/alumno-delete';
+        case '/alumno-delete':
             $controller->deleteAlumno($_POST["id"]);
             break;
 
             //finaliza eliminacion de maestros y alumnos
 
             //edita datos
+
 
 
 

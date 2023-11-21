@@ -109,21 +109,6 @@ class Admin
 
     //edita datos
 
-    public function editPermisos()
-    {
 
-    }
-    public function editAlumno()
-    {
-        
-    }
-    public function editMaestro()
-    {
-        
-    }
-    public function editClases()
-    {
-        
-    }
     
 }

@@ -78,14 +78,14 @@ class AdminController
         $maestro = new Admin();
         $newmaestro = $maestro->add($data);
 
-        include $_SERVER['DOCUMENT_ROOT'] . "/views/viewsAdmin/viewsMaestrosAdmin/VistaMaestroAdmin.php";
+        header("Location: /vista-maestros");
     }
     public function crearAlumno($data)
     {
         $alumno = new Admin();
         $newAlumno = $alumno->addAlumno($data);
 
-        include $_SERVER['DOCUMENT_ROOT'] . "/views/viewsAdmin/viewsAdminEstudiante/VistaAEstudianteAdmin.php";
+        header("Location: /vista-alumnos");
     }
     //fin de crear alumnos y maestros
 
@@ -95,51 +95,18 @@ class AdminController
         $maestro = new Admin();
         $delete = $maestro->Delete($id); 
 
-        include $_SERVER['DOCUMENT_ROOT'] . "/views/viewsAdmin/viewsMaestrosAdmin/VistaMaestroAdmin.php";
+        header("Location: /vista-maestros");
     }
     public function deleteAlumno($id)
     {
         $alumno = new Admin();
         $delete = $alumno->DeleteAlumno($id);
 
-        include $_SERVER['DOCUMENT_ROOT'] . "/views/viewsAdmin/viewsAdminEstudiante/VistaAEstudianteAdmin.php";
+        header("Location: /vista-alumnos");
     }
 
     //acaba eliminacion de alumnos
 
     //inicia editar de datos
-
-    public function UpdatePermisos()
-    {
-        $editPermiso = new Admin();
-        $update =$editPermiso->editPermisos();
-
-        include $_SERVER['DOCUMENT_ROOT'] . "/views/viewsAdmin/viewsPermisos/EditPermisosAdmin.php";
-    }
-    public function UpdateAlumnos()
-    {
-        $editAlumno = new Admin();
-        $update = $editAlumno->editAlumno();
-
-        include $_SERVER['DOCUMENT_ROOT'] . "/views/viewsAdmin/viewsAdminEstudiante/EditarEstudianteAdmin.php";
-    }
-    public function UpdateMaestros()
-    {
-        $editMaestro = new Admin();
-        $update = $editMaestro->editMaestro();
-
-        include $_SERVER['DOCUMENT_ROOT'] . "/views/viewsAdmin/viewsMaestrosAdmin/EditarMaestroAdmin.php";
-    }
-    public function UpdateClases()
-    {
-        $editClases = new Admin();
-        $update = $editClases->editClases();
-
-        include $_SERVER['DOCUMENT_ROOT'] . "/views/viewsAdmin/viewsClasesAdmin/EditClasesAdmin.php";
-    }
-    
-
-    
-
 
 }

@@ -1,3 +1,8 @@
+<?php
+session_start();
+$_SESSION["maestro_edit"] = $update["id"];
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -67,25 +72,25 @@
             <p class="text-left"></p>
         </section>
 
-        <form action="" method="post" class="mt-4">
+        <form action="/maestro/actualizar" method="post" class="mt-4">
             <div class="mb-2">
                 <label class="block">1.-Nombre:</label>
-                <input type="text" name="nombre" class="border border-gray-300 w-full rounded p-2">
+                <input type="text" name="nombre" value="<?= $update["nombre"] ?>" class="border border-gray-300 w-full rounded p-2">
             </div>
 
             <div class="mb-2">
                 <label class="block">2.-Apellido:</label>
-                <input type="text" name="apellido" class="border border-gray-300 w-full rounded p-2">
+                <input type="text" name="apellido" value="<?= $update["apellido"] ?>" class="border border-gray-300 w-full rounded p-2">
             </div>
 
             <div class="mb-2">
                 <label class="block">4.-Direccion:</label>
-                <input type="text" name="direccion" class="border border-gray-300 w-full rounded p-2">
+                <input type="text" name="direccion" value="<?= $update["direccion"] ?>" class="border border-gray-300 w-full rounded p-2">
             </div>
 
             <div class="mb-2">
                 <label class="block">5.-Fecha de nacimiento:</label>
-                <input type="date" name="fecha_nacimieno" class="border border-gray-300 w-full rounded p-2">
+                <input type="date" name="fecha_nacimieno" value="<?= $update["fecha_nacimieno"] ?>" class="border border-gray-300 w-full rounded p-2">
             </div>
 
             <select name="" id="">
