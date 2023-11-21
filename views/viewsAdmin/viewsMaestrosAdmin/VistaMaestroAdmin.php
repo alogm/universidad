@@ -103,7 +103,7 @@
                                     </button>
                                 </form>
 
-                                    <a href="/edit-maestros?id=<?= $admin['id'] ?>"> <span class="material-symbols-outlined">
+                                    <a href="/vista-edit?id=<?= $admin['id'] ?>"> <span class="material-symbols-outlined">
                                             edit_square
                                         </span></a>
 

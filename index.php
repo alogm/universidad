@@ -55,6 +55,12 @@ if ($_SERVER["REQUEST_METHOD"] === "GET") {
             $controller->Roles();
             break;
 
+            //muestra los datos de del usuario en el formulario de editar
+
+        case '/vista-edit':
+            $controller->edidMaestro($_GET["id"]);
+            break;
+
 
 
             //fin 
@@ -127,6 +133,9 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             //finaliza eliminacion de maestros y alumnos
 
             //edita datos
+        case '/maestro-update':
+            $controller->updateMaestro($_POST);
+            break;
 
 
 

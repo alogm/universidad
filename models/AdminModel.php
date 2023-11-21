@@ -107,8 +107,31 @@ class Admin
 
     //finaliza eliminar maestro y alumno
 
+    //se ven datos de maestro en el formulario de editar
+
+    public function editMaestro($id)
+    {
+        $res = $this->connection->query("SELECT * FROM maestros WHERE id =$id");
+        $data = $res->fetch(PDO::FETCH_ASSOC);
+
+        return $data;
+    }
+
     //edita datos
+    public function updateMaestro($data)
+    {
+        session_start();
+        $res = $this->connection->query("
+        UPDATE maestros 
+        SET 
+        nombre = '{$data["nombre"]}', 
+        apellido = '{$data["apellido"]}', 
+        direccion = '{$data["direccion"]}', 
+        fecha_nacimieno = '{$data["fecha_nacimieno"]}'
+        WHERE id = {$_SESSION["maestro_edit"]}
+        ");
+        $data = $res->fetch(PDO::FETCH_ASSOC);
 
-
-    
+        return $data;
+    }
 }

@@ -22,7 +22,7 @@ class AdminController
                 switch ($rol_id) {
                     case '1':
 
-                        header('Location: ./views/PrincipalAdmin.php');
+                        header('Location: /vista-home');
                         break;
 
                     case '2':
@@ -107,6 +107,24 @@ class AdminController
 
     //acaba eliminacion de alumnos
 
+    //vista de datos en el formulario de editar 
+
+    public function edidMaestro($id)
+    {
+        $res = new Admin();
+        $data = $res->editMaestro($id);
+
+        include $_SERVER['DOCUMENT_ROOT'] . "/views/viewsAdmin/viewsMaestrosAdmin/EditarMaestroAdmin.php";
+    }
+
     //inicia editar de datos
+    public function updateMaestro($data)
+    {
+        $res = new Admin();
+        $updateData = $res->updateMaestro($data);
+
+        header("Location: /vista-maestros");
+
+    }
 
 }
