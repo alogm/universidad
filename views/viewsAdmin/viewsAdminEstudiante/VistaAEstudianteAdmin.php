@@ -81,7 +81,6 @@
                         <th class="border border-gray-300 text-left align-middle">Email</th>
                         <th class="border border-gray-300 text-left align-middle">Direccion</th>
                         <th class="border border-gray-300 text-left align-middle">Fecha de Nacimiento</th>
-                        <th class="border border-gray-300 text-left align-middle">Clase Asignada</th>
                         <th class="border border-gray-300 text-left align-middle">Acciones</th>
                     </tr>
                 </thead>
@@ -104,12 +103,11 @@
                                 <span class="material-symbols-outlined text-red-600">delete</span>
                             </button>
                            </form>
-
-                            <button>
-                               <a href=""> <span class="material-symbols-outlined">
+                
+                               <a href="/edit-alumnos"> <span class="material-symbols-outlined">
                                     edit_square
                                 </span></a>
-                            </button>
+
                         </td>
 
                     </tr>

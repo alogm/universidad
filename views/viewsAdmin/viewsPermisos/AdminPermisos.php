@@ -90,7 +90,7 @@
                                 <td class="border border-gray-300">Activo</td>
                                 <td class="border border-gray-300 ">
 
-                                        <a href=""> <span class="material-symbols-outlined">
+                                        <a href="/edit-permisos"> <span class="material-symbols-outlined">
                                                 edit_square
                                             </span></a>
                                   

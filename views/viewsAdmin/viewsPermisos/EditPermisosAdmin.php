@@ -69,14 +69,23 @@
 
         <section>
             <div class="w-full p-4 overflow-x-auto">
-                <form action="">
-                    <label>Email del Usuario</label>
-                    <input type="text" value="">
-                    <label>Rol del usuario</label>
-                    <input type="text" value="">
-                    <p>Usuario Activo</p>
-                    <button class="bg-zinc-700 hover:bg-blue-600 rounded-lg px-4 py-2 text-white ml-auto">close</button>
-                    <button class="bg-blue-500 hover:bg-blue-600 rounded-lg px-4 py-2 text-white ml-auto">Guardar cambios</button>
+
+                <form action="" method="post" class="mt-4">
+                    <div class="mb-2">
+                        <label class="block">1.-Email del Usuario:</label>
+                        <input type="text" name="" class="border border-gray-300 w-full rounded p-2">
+                    </div>
+
+                    <div class="mb-2">
+                        <label class="block">2.-Rol del usuario:</label>
+                        <select name="" id="" class="border border-gray-300 w-full rounded p-2">
+
+                        </select>
+                    </div>
+                    <a href="/vista-permisos" class="bg-zinc-700 hover:bg-blue-600 rounded-lg px-4 py-2 text-white ml-auto">Regresar</a>
+                    <button type="submit" name="guardar" class="bg-blue-500 hover:bg-blue-600 text-white rounded p-2 mt-4">
+                        Guardar
+                    </button>
                 </form>
             </div>
         </section>

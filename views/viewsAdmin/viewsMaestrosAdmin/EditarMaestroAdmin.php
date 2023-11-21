@@ -67,15 +67,15 @@
             <p class="text-left"></p>
         </section>
 
-        <form action="/index.php/create" method="post" class="mt-4">
+        <form action="" method="post" class="mt-4">
             <div class="mb-2">
                 <label class="block">1.-Nombre:</label>
                 <input type="text" name="nombre" class="border border-gray-300 w-full rounded p-2">
             </div>
 
             <div class="mb-2">
-                <label class="block">2.-Email:</label>
-                <input type="text" name="correo" class="border border-gray-300 w-full rounded p-2">
+                <label class="block">2.-Apellido:</label>
+                <input type="text" name="apellido" class="border border-gray-300 w-full rounded p-2">
             </div>
 
             <div class="mb-2">
@@ -87,6 +87,10 @@
                 <label class="block">5.-Fecha de nacimiento:</label>
                 <input type="date" name="fecha_nacimieno" class="border border-gray-300 w-full rounded p-2">
             </div>
+
+            <select name="" id="">
+                
+            </select>
 
             <button type="submit" name="guardar" class="bg-blue-500 hover:bg-blue-600 text-white rounded p-2 mt-4">
                 Guardar

@@ -109,27 +109,35 @@ class AdminController
 
     //inicia editar de datos
 
-    public function editPermisos()
+    public function UpdatePermisos()
     {
         $editPermiso = new Admin();
         $update =$editPermiso->editPermisos();
 
         include $_SERVER['DOCUMENT_ROOT'] . "/views/viewsAdmin/viewsPermisos/EditPermisosAdmin.php";
     }
-    public function editAlumnos()
+    public function UpdateAlumnos()
     {
         $editAlumno = new Admin();
         $update = $editAlumno->editAlumno();
 
         include $_SERVER['DOCUMENT_ROOT'] . "/views/viewsAdmin/viewsAdminEstudiante/EditarEstudianteAdmin.php";
     }
-    public function editMaestros()
+    public function UpdateMaestros()
     {
         $editMaestro = new Admin();
         $update = $editMaestro->editMaestro();
 
         include $_SERVER['DOCUMENT_ROOT'] . "/views/viewsAdmin/viewsMaestrosAdmin/EditarMaestroAdmin.php";
     }
+    public function UpdateClases()
+    {
+        $editClases = new Admin();
+        $update = $editClases->editClases();
+
+        include $_SERVER['DOCUMENT_ROOT'] . "/views/viewsAdmin/viewsClasesAdmin/EditClasesAdmin.php";
+    }
+    
 
     
 

@@ -121,5 +121,9 @@ class Admin
     {
         
     }
+    public function editClases()
+    {
+        
+    }
     
 }

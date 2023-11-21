@@ -55,6 +55,8 @@ if ($_SERVER["REQUEST_METHOD"] === "GET") {
             $controller->Roles();
             break;
 
+
+
             //fin 
 
             // solo enrutamiento de vistas no hace ninguna accion post
@@ -67,6 +69,22 @@ if ($_SERVER["REQUEST_METHOD"] === "GET") {
 
         case '/crear-alumnos';
             $vistasControl->crearAlumno();
+            break;
+
+        case '/edit-permisos':
+            $vistasControl->VistaEditPermisos();
+            break;
+
+        case '/edit-alumnos';
+            $vistasControl->VistaEditAlumnos();
+            break;
+
+        case '/edit-maestros';
+            $vistasControl->VistaEditMaestros();
+            break;
+
+        case '/edit-clases';
+            $vistasControl->VistaEditClases();
             break;
 
             // b) vistas de maestros
@@ -83,6 +101,7 @@ if ($_SERVER["REQUEST_METHOD"] === "GET") {
         case '/clases-alumno';
             $vistaAlumno->ClasesAlumno();
             break;
+
 
 
 
@@ -125,17 +144,9 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
             //edita datos
 
-            case '/vista-edit-permisos':
-                $controller->editPermisos();
-                break;
 
-                case '/edit-alumno';
-                $controller->EditAlumnos();
-                break;
-    
-                case '/edit-maestro';
-                $controller->EditMaestros();
-                break;
+
+
 
         default:
             echo "no se encontro ruta";

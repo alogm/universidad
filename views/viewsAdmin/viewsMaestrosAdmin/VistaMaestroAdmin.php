@@ -103,11 +103,10 @@
                                     </button>
                                 </form>
 
-                                <button>
-                                    <a href=""> <span class="material-symbols-outlined">
+                                    <a href="/edit-maestros"> <span class="material-symbols-outlined">
                                             edit_square
                                         </span></a>
-                                </button>
+
                             </td>
 
                         </tr>

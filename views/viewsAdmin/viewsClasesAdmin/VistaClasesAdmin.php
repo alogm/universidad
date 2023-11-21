@@ -95,12 +95,11 @@
                                         <span class="material-symbols-outlined text-red-600">delete</span>
                                     </button>
                                 </form>
-
-                                <button>
-                                    <a href=""> <span class="material-symbols-outlined">
+                                
+                                    <a href="edit-clases"> <span class="material-symbols-outlined">
                                             edit_square
                                         </span></a>
-                                </button>
+                                
                             </td>
 
                         </tr>
