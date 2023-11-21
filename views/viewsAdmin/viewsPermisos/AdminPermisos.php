@@ -59,12 +59,12 @@
         </section>
 
         <section id="Dashboard" class="mb-4">
-            <h1 class="text-center text-4xl text-black p-6">Vista de Permisos</h1>
+            <h1 class="text-center text-4xl text-black p-6">Lista de Permisos</h1>
         </section>
 
         <section id="bienvenido" class="w-full bg-white p- max-w-screen-xl">
             <h6 class="text-left">Informacion de Permisos</h6>
-            <p class="text-left">Selecciona la acción que quieras realizar en las pestañas del menú de la izquierda</p>
+            <p class="text-left"></p>
         </section>
 
         <section>
@@ -74,23 +74,31 @@
                         <tr>
                             <th class="border border-gray-300 text-left align-middle">#</th>
                             <th class="border border-gray-300 text-left align-middle">Email/Usuario</th>
-                            <th class="border border-gray-300 text-left align-middle">permiso</th>
-                            <th class="border border-gray-300 text-left align-middle">Email</th>
+                            <th class="border border-gray-300 text-left align-middle">Permiso</th>
                             <th class="border border-gray-300 text-left align-middle">Estado</th>
+                            <th class="border border-gray-300 text-left align-middle">Acciones</th>
                         </tr>
                     </thead>
 
                     <tbody>
-                        
-                        <td class="border border-gray-300 ">
+                        <?php foreach ($data as $index => $admin) { ?>
+                            <tr class="<?= $index % 2 === 0 ? 'bg-slate-300' : 'bg-white' ?>">
 
+                                <td class="border border-gray-300"><?= $admin["usuario_id"] ?></td>
+                                <td class="border border-gray-300"><?= $admin["nombre"] ?></td>
+                                <td class="border border-gray-300"><?= $admin["rol"] ?></td>
+                                <td class="border border-gray-300">Activo</td>
+                                <td class="border border-gray-300 ">
 
-                            <button>
-                                <a href="/vista-edid-permisos"> <span class="material-symbols-outlined">
-                                        edit_square
-                                    </span></a>
-                            </button>
-                        </td>
+                                        <a href=""> <span class="material-symbols-outlined">
+                                                edit_square
+                                            </span></a>
+                                  
+                                </td>
+
+                            </tr>
+
+                        <?php } ?>
 
                     </tbody>
                 </table>

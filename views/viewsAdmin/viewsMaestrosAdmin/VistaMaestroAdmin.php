@@ -4,8 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet"
-        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <script src="https://cdn.tailwindcss.com"></script>
     <title>Document</title>
 </head>
@@ -49,7 +48,8 @@
         <section id="home" class="flex w-full bg-white p-4 " style="width: 1450px;">
             <div>
                 <p class="ml-2"><span class="material-symbols-outlined">menu</span>
-                <a href="/vista-home">Home</a> </p>
+                    <a href="/vista-home">Home</a>
+                </p>
             </div>
             <div class="ml-auto">
                 <button> <span class="material-symbols-outlined">
@@ -64,11 +64,11 @@
         </section>
 
         <section id="bienvenido" class="w-full bg-white p-6 max-w-screen-xl flex items-center">
-    <h6 class="text-left">Informacion de Maestros</h6>
-    <a href="/crear-maestros" class="bg-blue-500 hover:bg-blue-600 rounded-lg px-4 py-2 text-white ml-auto">
-        Agregar Maestro
-    </a>
-</section>
+            <h6 class="text-left">Informacion de Maestros</h6>
+            <a href="/crear-maestros" class="bg-blue-500 hover:bg-blue-600 rounded-lg px-4 py-2 text-white ml-auto">
+                Agregar Maestro
+            </a>
+        </section>
 
 
         <div class="w-full p-4 overflow-x-auto">
@@ -87,30 +87,30 @@
 
                 <tbody>
                     <?php foreach ($data as $index => $admin) { ?>
-                    <tr class="<?= $index % 2 === 0 ? 'bg-slate-300' : 'bg-white' ?>">
-                        
-                        <td class="border border-gray-300"><?= $admin["id"] ?></td>
-                        <td class="border border-gray-300"><?= $admin["nombre"] ?></td>
-                        <td class="border border-gray-300"><?= $admin["correo"] ?></td>
-                        <td class="border border-gray-300"><?= $admin["direccion"] ?></td>
-                        <td class="border border-gray-300"><?= $admin["fecha_nacimieno"] ?></td>
-                        <td class="border border-gray-300 ">
+                        <tr class="<?= $index % 2 === 0 ? 'bg-slate-300' : 'bg-white' ?>">
 
-                           <form action="/maestro-delete" method="post">
-                           <input type="hidden" name="id" value="<?= $admin['id'] ?>"> 
-                           <button type="submit">
-                                <span class="material-symbols-outlined text-red-600">delete</span>
-                            </button>
-                           </form>
+                            <td class="border border-gray-300"><?= $admin["id"] ?></td>
+                            <td class="border border-gray-300"><?= $admin["nombre"] ?></td>
+                            <td class="border border-gray-300"><?= $admin["correo"] ?></td>
+                            <td class="border border-gray-300"><?= $admin["direccion"] ?></td>
+                            <td class="border border-gray-300"><?= $admin["fecha_nacimieno"] ?></td>
+                            <td class="border border-gray-300 ">
 
-                            <button>
-                               <a href=""> <span class="material-symbols-outlined">
-                                    edit_square
-                                </span></a>
-                            </button>
-                        </td>
+                                <form action="/maestro-delete" method="post">
+                                    <input type="hidden" name="id" value="<?= $admin['id'] ?>">
+                                    <button type="submit">
+                                        <span class="material-symbols-outlined text-red-600">delete</span>
+                                    </button>
+                                </form>
 
-                    </tr>
+                                <button>
+                                    <a href=""> <span class="material-symbols-outlined">
+                                            edit_square
+                                        </span></a>
+                                </button>
+                            </td>
+
+                        </tr>
 
                     <?php } ?>
 

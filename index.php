@@ -1,45 +1,66 @@
 <?php
-require_once("./controllers/AdminController.php");
-
-require_once("./controllers/VistasAdminController.php");
-require_once("./controllers/VistasMaestroController.php");
-require_once("./controllers/VistaAlumnoController.php");
-require_once("./models/AdminModel.php");
+require_once("./controllers/AdminController.php"); //controla el agregar, editar, eliminar, de la base de datos, asi como ver todos los maestros y alumnos 
+require_once("./controllers/VistasAdminController.php"); //solo enruta la vista, no hace ninguna solicitud de post
+require_once("./controllers/VistasMaestroController.php"); //solo enruta la vista, no hace ninguna solicitud de post
+require_once("./controllers/VistaAlumnoController.php"); //solo enruta la vista, no hace ninguna solicitud de post
 
 $urlCompleta = $_SERVER["REQUEST_URI"];
 $partes = explode("?", $urlCompleta);
 $url = $partes[0];
 
-$controller = new AdminController();
-
-$vistasControl = new VistasAdminController();
-$vistaMaestro = new VistaMaestroController();
-$vistaAlumno = new VistaAlumnoController();
+$controller = new AdminController(); //controla el agregar, editar, eliminar, de la base de datos, asi como ver todos los maestros y alumnos
+$vistasControl = new VistasAdminController(); //solo enruta la vista de admin, no hace ninguna solicitud de post
+$vistaMaestro = new VistaMaestroController(); //solo enruta la vista de naestro, no hace ninguna solicitud de post
+$vistaAlumno = new VistaAlumnoController(); //solo enruta la vista de alumno, no hace ninguna solicitud de post
 
 if ($_SERVER["REQUEST_METHOD"] === "GET") {
 
     switch ($url) {
+
+            //inicio de login
         case '/index.php':
             $vistasControl->index();
             break;
 
+            // solo muestra el Dashboard de admin, estudiante y maestro
         case '/vista-home':
             $vistasControl->home();
             break;
 
-        case '/vista-permisos':
-            $vistasControl->vistapermiso();
+        case '/home-maestro';
+            $vistaMaestro->HomeMaestro();
             break;
 
-        case '/vista-edid-permisos':
-            $vistasControl->edidPermisos();
+        case '/home-alumnos';
+            $vistaAlumno->HomeAlumno();
             break;
+
+            //fin 
+
+            //muestra los todos los maestros y alumnos en admin
 
         case '/vista-maestros':
             $controller->vistamestros();
             break;
 
-            // lleva solo a la vista para crear datos
+        case '/vista-alumnos':
+            $controller->vistaalumnos();
+            break;
+
+        case '/vista-clases';
+            $controller->AllClases();
+            break;
+
+        case '/vista-permisos':
+            $controller->Roles();
+            break;
+
+            //fin 
+
+            // solo enrutamiento de vistas no hace ninguna accion post
+
+            // a) vistas de admin
+
         case '/crear-maestros':
             $vistasControl->crearMaestro();
             break;
@@ -48,32 +69,13 @@ if ($_SERVER["REQUEST_METHOD"] === "GET") {
             $vistasControl->crearAlumno();
             break;
 
-            //finaliza la ruta de solo vista 
-
-        case '/vista-alumnos':
-            $controller->vistaalumnos();
-            break;
-
-        case '/vista-clases':
-            $vistasControl->vistaclases();
-            break;
-
-        case '/home-maestro';
-            $vistaMaestro->HomeMaestro();
-            break;
-
+            // b) vistas de maestros
         case '/vista-maestro-alumnos':
             $vistaMaestro->MaestroVistaAlumnos();
             break;
 
-        case '/edit-perfil-maestro';
-            $vistaMaestro->EditPerfilMaestro();
-            break;
 
-        case '/home-alumnos';
-            $vistaAlumno->HomeAlumno();
-            break;
-
+            // c) vistas de alumno
         case '/calificaciones-alumno';
             $vistaAlumno->Calificaciones();
             break;
@@ -82,11 +84,9 @@ if ($_SERVER["REQUEST_METHOD"] === "GET") {
             $vistaAlumno->ClasesAlumno();
             break;
 
-        case '/edit-alumno';
-            $vistaAlumno->EditPerfilAlumno();
-            break;
 
 
+            //fin de enrutamiento solo vista 
 
         default:
             echo "la pagina no esta disponible ";
@@ -97,6 +97,7 @@ if ($_SERVER["REQUEST_METHOD"] === "GET") {
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
     switch ($url) {
+            //solicitud de login
         case '/inicio':
             $controller->login($_POST);
             break;
@@ -122,43 +123,22 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
             //finaliza eliminacion de maestros y alumnos
 
+            //edita datos
+
+            case '/vista-edit-permisos':
+                $controller->editPermisos();
+                break;
+
+                case '/edit-alumno';
+                $controller->EditAlumnos();
+                break;
+    
+                case '/edit-maestro';
+                $controller->EditMaestros();
+                break;
+
         default:
             echo "no se encontro ruta";
             break;
     }
 }
-
-
-
-
-/*
-
-
-
-
-if ($_SERVER["REQUEST_METHOD"] === "GET") {
-    if (end($partes) === "create") {
-        $controller->create();
-        die();
-    }
-    
-    if (end($partes) === "delete" && isset($_GET['id'])) {
-        $controller->delete($_GET['id']);
-        die();
-    }
-}
-
-if ($_SERVER["REQUEST_METHOD"] === "POST") {
-    if (end($partes) === "create") {
-        $controller->add($_POST);
-        die();
-    }
-    
-    if (end($partes) === "delete" && isset($_POST['id'])) {
-        $controller->delete($_POST['id']);
-        die();
-    }
-}
-
-
-$index = $controller->all();*/

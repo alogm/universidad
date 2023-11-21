@@ -34,7 +34,7 @@
                 </div>
                 <div>
                     <span class="material-symbols-outlined">school</span>
-                    <a href="/vista-maestros" class="ml-2">Alumnos</a>
+                    <a href="/vista-alumnos" class="ml-2">Alumnos</a>
                 </div>
                 <div>
                     <span class="material-symbols-outlined">table_restaurant</span>

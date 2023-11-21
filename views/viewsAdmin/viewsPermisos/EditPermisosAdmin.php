@@ -75,8 +75,8 @@
                     <label>Rol del usuario</label>
                     <input type="text" value="">
                     <p>Usuario Activo</p>
-                    <button>close</button>
-                    <button>Guardar cambios</button>
+                    <button class="bg-zinc-700 hover:bg-blue-600 rounded-lg px-4 py-2 text-white ml-auto">close</button>
+                    <button class="bg-blue-500 hover:bg-blue-600 rounded-lg px-4 py-2 text-white ml-auto">Guardar cambios</button>
                 </form>
             </div>
         </section>

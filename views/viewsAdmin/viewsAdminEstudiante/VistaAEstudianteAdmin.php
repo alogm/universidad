@@ -18,8 +18,8 @@
         </section>
 
         <section id="admin" class="text-center">
-            <h2>Alumno</h2>
-            <p>Alumno</p>
+            <h2>Administrador</h2>
+            <p>Administrador</p>
         </section>
 
         <section id="cuerpo" class="mt-2">

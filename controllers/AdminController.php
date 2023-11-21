@@ -56,6 +56,20 @@ class AdminController
     
         include $_SERVER['DOCUMENT_ROOT'] . "/views/viewsAdmin/viewsAdminEstudiante/VistaAEstudianteAdmin.php";
     }
+    public function AllClases()
+    {
+        $materias = new Admin();
+        $data = $materias->AllClases();
+
+        include $_SERVER['DOCUMENT_ROOT'] . "/views/viewsAdmin/viewsClasesAdmin/VistaClasesAdmin.php";
+    }
+    public function Roles()
+    {
+        $roles = new Admin();
+        $data = $roles->Roles();
+
+        include $_SERVER['DOCUMENT_ROOT'] . "/views/viewsAdmin/viewsPermisos/AdminPermisos.php";
+    }
     //fin de muestra de maestros y alumnos
 
     //crea maestros y alumnos
@@ -93,18 +107,31 @@ class AdminController
 
     //acaba eliminacion de alumnos
 
-    public function actualizar()
+    //inicia editar de datos
+
+    public function editPermisos()
     {
-        include $_SERVER["DOCUMENT_ROOT"] . "/views/viewsAdmin/viewsMaestrosAdmin/EditarMaestroAdmin.php";
+        $editPermiso = new Admin();
+        $update =$editPermiso->editPermisos();
+
+        include $_SERVER['DOCUMENT_ROOT'] . "/views/viewsAdmin/viewsPermisos/EditPermisosAdmin.php";
+    }
+    public function editAlumnos()
+    {
+        $editAlumno = new Admin();
+        $update = $editAlumno->editAlumno();
+
+        include $_SERVER['DOCUMENT_ROOT'] . "/views/viewsAdmin/viewsAdminEstudiante/EditarEstudianteAdmin.php";
+    }
+    public function editMaestros()
+    {
+        $editMaestro = new Admin();
+        $update = $editMaestro->editMaestro();
+
+        include $_SERVER['DOCUMENT_ROOT'] . "/views/viewsAdmin/viewsMaestrosAdmin/EditarMaestroAdmin.php";
     }
 
-    public function update($id, $nombre, $correo, $direccion, $fecha_nacimieno)
-    {
-      $maestro = new Admin();
-      $update = $maestro->update($id, $nombre, $correo, $direccion, $fecha_nacimieno);
-
-      include $_SERVER['DOCUMENT_ROOT'] . "/views/viewsAdmin/viewsMaestrosAdmin/VistaMaestroAdmin.php";
-    }
+    
 
 
 }

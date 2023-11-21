@@ -10,7 +10,7 @@ class Admin
         $data = new Data();
         $this->connection = $data->connect();
     }
-    //se muestran todos los maestros y alumnos
+    //se muestran todos los maestros, alumnos y clases
     public function all()
     {
         $res = $this->connection->query("SELECT * FROM maestros");
@@ -25,7 +25,39 @@ class Admin
 
         return $alumno;
     }
-    //fin muestra maestros y alumnos
+    public function AllClases()
+    {
+        $res = $this->connection->query("SELECT
+	    m.id AS id_materia,
+	    m.materia AS nombre_materia,
+	    ma.nombre AS nombre_maestro,
+	    COUNT(a.id) AS cantidad_alumnos
+	    FROM materias m
+	    JOIN maestros ma ON m.id = ma.id_materia
+	    LEFT JOIN alumnos a ON m.id = a.id_materia
+	    GROUP BY m.id, m.materia, ma.nombre;");
+        $data = $res->fetchAll(PDO::FETCH_ASSOC);
+
+        return $data;
+    }
+    public function Roles()
+    {
+        $res = $this->connection->query("SELECT
+        CASE
+            WHEN alumnos.id IS NOT NULL THEN 'Alumno'
+            WHEN maestros.id IS NOT NULL THEN 'Maestro'
+        END AS rol,
+        COALESCE(alumnos.id, maestros.id) AS usuario_id,
+        COALESCE(alumnos.nombre, maestros.nombre) AS nombre,
+        usuarios.rol_id
+        FROM usuarios
+        LEFT JOIN alumnos ON usuarios.id = alumnos.id_rol
+        LEFT JOIN maestros ON usuarios.id = maestros.id_rol;");
+        $data = $res->fetchAll(PDO::FETCH_ASSOC);
+
+        return $data;
+    }
+    //fin muestra maestros, alumnos y clases
 
     //inicia agregar Maestros y Alumnos
     public function add($data)
@@ -74,40 +106,20 @@ class Admin
     }
 
     //finaliza eliminar maestro y alumno
-    public function update($id, $nombre, $correo, $direccion, $fecha_nacimieno)
+
+    //edita datos
+
+    public function editPermisos()
     {
-        try {
 
-            $statement = $this->connection->prepare("UPDATE maestros SET nombre = :nombre, correo = :correo, direccion = :direccion, fecha_nacimieno = :fecha_nacimieno WHERE id = :id");
-
-
-            $statement->bindParam(":nombre", $nombre);
-            $statement->bindParam(":correo", $correo);
-            $statement->bindParam(":direccion", $direccion);
-            $statement->bindParam(":fecha_nacimieno", $fecha_nacimieno);
-            $statement->bindParam(":id", $id);
-
-            // Ejecuta la consulta
-            $result = $statement->execute();
-
-            return $result !== false;
-        } catch (PDOException $e) {
-            echo "Error en la consulta de actualización: " . $e->getMessage();
-            return false;
-        }
     }
-}
-
-
-/*  public function update($data)
+    public function editAlumno()
     {
-        $id = $data['id'];
-        $maestro = $data['maestro'];
-        $email = $data['email'];
-        $contrasena = $data['contrasena'];
-        $direccion = $data['direccion'];
-        $telefono = $data['telefono'];
-        $id_maestro = $data['id_maestro'];
-
-        $res = $this->connection->query("UPDATE maestros SET maestro='$maestro', email='$email', contrasena ='$contrasena', direccion='$direccion', telefono='$telefono', id_maestro='$id_maestro' WHERE id ='$id'");
-    } */
+        
+    }
+    public function editMaestro()
+    {
+        
+    }
+    
+}

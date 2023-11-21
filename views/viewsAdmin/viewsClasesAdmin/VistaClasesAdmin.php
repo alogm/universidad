@@ -59,13 +59,57 @@
         </section>
 
         <section id="Dashboard" class="mb-4">
-            <h1 class="text-center text-4xl text-black p-6">vista clases</h1>
+            <h1 class="text-center text-4xl text-black p-6">Lista clases</h1>
         </section>
 
         <section id="bienvenido" class="w-full bg-white p- max-w-screen-xl">
-            <h6 class="text-left">Bienvenido</h6>
-            <p class="text-left">Selecciona la acción que quieras realizar en las pestañas del menú de la izquierda</p>
+            <h6 class="text-left">Informacion de Clases</h6>
+            <p class="text-left"></p>
         </section>
+
+        <div class="w-full p-4 overflow-x-auto">
+            <table class="w-full border border-gray-300">
+                <thead>
+                    <tr>
+                        <th class="border border-gray-300 text-left align-middle">#</th>
+                        <th class="border border-gray-300 text-left align-middle">Clase</th>
+                        <th class="border border-gray-300 text-left align-middle">Maestro</th>
+                        <th class="border border-gray-300 text-left align-middle">Alumnos Inscritos</th>
+                        <th class="border border-gray-300 text-left align-middle">Acciones</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <?php foreach ($data as $index => $admin) { ?>
+                        <tr class="<?= $index % 2 === 0 ? 'bg-slate-300' : 'bg-white' ?>">
+
+                            <td class="border border-gray-300"><?= $admin["id_materia"] ?></td>
+                            <td class="border border-gray-300"><?= $admin["nombre_materia"] ?></td>
+                            <td class="border border-gray-300"><?= $admin["nombre_maestro"] ?></td>
+                            <td class="border border-gray-300"><?= $admin["cantidad_alumnos"] ?></td>
+                            <td class="border border-gray-300 ">
+
+                                <form action="/" method="post">
+                                    <input type="hidden" name="id_materia" value="<?= $admin['id_materia'] ?>">
+                                    <button type="submit">
+                                        <span class="material-symbols-outlined text-red-600">delete</span>
+                                    </button>
+                                </form>
+
+                                <button>
+                                    <a href=""> <span class="material-symbols-outlined">
+                                            edit_square
+                                        </span></a>
+                                </button>
+                            </td>
+
+                        </tr>
+
+                    <?php } ?>
+
+                </tbody>
+            </table>
+        </div>
     </section>
 </body>
 
