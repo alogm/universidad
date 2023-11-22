@@ -1,3 +1,8 @@
+<?php
+session_start();
+$_SESSION["alumno_edit"] = $data["id"];
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -68,35 +73,35 @@
         </section>
 
         
-        <form action="" method="post" class="mt-4">
+        <form action="/alumno-update" method="post" class="mt-4">
             <div class="mb-2">
                 <label class="block">1.-DNI:</label>
-                <input type="text" name="matricula" class="border border-gray-300 w-full rounded p-2">
+                <input type="text" name="matricula" value="<?= $data['matricula'] ?>" class="border border-gray-300 w-full rounded p-2">
             </div>
 
             <div class="mb-2">
                 <label class="block">2.-Correo Electronico:</label>
-                <input type="text" name="correo" class="border border-gray-300 w-full rounded p-2">
+                <input type="text" name="correo" value="<?= $data['correo'] ?>" class="border border-gray-300 w-full rounded p-2">
             </div>
 
             <div class="mb-2">
                 <label class="block">3.-Nombre:</label>
-                <input type="text" name="nombre" class="border border-gray-300 w-full rounded p-2">
+                <input type="text" name="nombre" value="<?= $data['nombre'] ?>" class="border border-gray-300 w-full rounded p-2">
             </div>
 
             <div class="mb-2">
                 <label class="block">4.-Apellido:</label>
-                <input type="text" name="apellido" class="border border-gray-300 w-full rounded p-2">
+                <input type="text" name="apellido" value="<?= $data['apellido'] ?>" class="border border-gray-300 w-full rounded p-2">
             </div>
 
             <div class="mb-2">
                 <label class="block">5.-Direccion:</label>
-                <input type="text" name="direccion" class="border border-gray-300 w-full rounded p-2">
+                <input type="text" name="direccion" value="<?= $data['direccion'] ?>" class="border border-gray-300 w-full rounded p-2">
             </div>
 
             <div class="mb-2">
                 <label class="block">6.-Fecha de nacimiento:</label>
-                <input type="date" name="fecha_nacimieno" class="border border-gray-300 w-full rounded p-2">
+                <input type="date" name="fecha_nacimieno" value="<?= $data['fecha_nacimieno'] ?>" class="border border-gray-300 w-full rounded p-2">
             </div>
 
             <button type="submit" name="guardar" class="bg-blue-500 hover:bg-blue-600 text-white rounded p-2 mt-4">

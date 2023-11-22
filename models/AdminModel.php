@@ -111,7 +111,16 @@ class Admin
 
     public function editMaestro($id)
     {
-        $res = $this->connection->query("SELECT * FROM maestros WHERE id =$id");
+        $res = $this->connection->query("SELECT * FROM maestros WHERE id = $id");
+
+        $data = $res->fetch(PDO::FETCH_ASSOC);
+
+        return $data;
+    }
+    public function editAlumno($id)
+    {
+        $res = $this->connection->query("SELECT * FROM alumnos WHERE id = $id");
+        
         $data = $res->fetch(PDO::FETCH_ASSOC);
 
         return $data;
@@ -134,4 +143,23 @@ class Admin
 
         return $data;
     }
+    public function updateAlumno($data)
+    {
+        session_start();
+        $res = $this->connection->query("
+        UPDATE alumnos 
+        SET 
+        matricula = '{$data["matricula"]}', 
+        correo = '{$data["correo"]}', 
+        nombre = '{$data["nombre"]}', 
+        apellido = '{$data["apellido"]}', 
+        direccion = '{$data["direccion"]}', 
+        fecha_nacimieno = '{$data["fecha_nacimieno"]}'
+        WHERE id = {$_SESSION["alumno_edit"]}
+        ");
+        $data = $res->fetch(PDO::FETCH_ASSOC);
+
+        return $data;
+    }
+
 }

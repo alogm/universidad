@@ -117,6 +117,14 @@ class AdminController
         include $_SERVER['DOCUMENT_ROOT'] . "/views/viewsAdmin/viewsMaestrosAdmin/EditarMaestroAdmin.php";
     }
 
+    public function editAlumno($id)
+    {
+        $res = new Admin();
+        $data = $res->editAlumno($id);
+
+        include $_SERVER['DOCUMENT_ROOT'] . "/views/viewsAdmin/viewsAdminEstudiante/EditarEstudianteAdmin.php";
+    }
+
     //inicia editar de datos
     public function updateMaestro($data)
     {
@@ -125,6 +133,13 @@ class AdminController
 
         header("Location: /vista-maestros");
 
+    }
+    public function updateAlumno($data)
+    {
+        $res = new Admin();
+        $updateData = $res->updateAlumno($data);
+
+        header("Location: /vista-alumnos");
     }
 
 }

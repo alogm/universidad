@@ -61,6 +61,10 @@ if ($_SERVER["REQUEST_METHOD"] === "GET") {
             $controller->edidMaestro($_GET["id"]);
             break;
 
+        case '/vista-edit-alumno':
+            $controller->editAlumno($_GET["id"]);
+            break;
+
 
 
             //fin 
@@ -136,6 +140,10 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         case '/maestro-update':
             $controller->updateMaestro($_POST);
             break;
+
+            case '/alumno-update':
+                $controller->updateAlumno($_POST);
+                break;
 
 
 
