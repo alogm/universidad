@@ -8,15 +8,14 @@ class LoginController
         $login = new Login();
         $newLogin = $login->loginModel($data);
     
-        // Verifica si se encontró un usuario
         if ($newLogin) {
-            // Extrae la información del usuario
+            
             extract($newLogin);
     
             if (password_verify($data["contrasena"], $contrasena)) {
                 session_start();
+                $_SESSION['user'] = $newLogin;
     
-                // Ajusta el nombre de la columna del rol según la tabla
                 if (isset($newLogin['rol_id'])) {
                     $rol_id = $newLogin['rol_id'];
                 } elseif (isset($newLogin['id_rol'])) {

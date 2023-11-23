@@ -1,3 +1,15 @@
+<?php
+session_start();
+// Verifica si el usuario está autenticado
+if (!isset($_SESSION['user'])) {
+    // Si no está autenticado, redirige a la página de inicio de sesión
+    header('Location: /ruta-a-tu-pagina-de-login');
+    exit();
+}
+// Accede a los datos del usuario
+$userData = $_SESSION['user'];
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -17,7 +29,7 @@
         </section>
 
         <section id="admin" class="text-center">
-            <h2>Alummno</h2>
+            <h2> <?php echo $userData['nombre']; ?></h2>
             <p>Alumno</p>
         </section>
 
