@@ -30,10 +30,10 @@ class LoginController
                         header('Location: /vista-home');
                         break;
                     case '2':
-                        header('Location: ./views/PrincilpalEstudiante.php');
+                        header('Location: /home-alumnos');
                         break;
                     case '3':
-                        header('Location: ./views/PrincipalMaestro.php');
+                        header('Location: /home-maestro');
                         break;
                     default:
                         echo "No se encontró el usuario";

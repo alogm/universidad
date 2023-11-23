@@ -1,3 +1,15 @@
+<?php
+session_start();
+
+if (!isset($_SESSION['user'])) {
+
+    header('Location: /ruta-a-tu-pagina-de-login');
+    exit();
+}
+
+$userData = $_SESSION['user'];
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -17,8 +29,8 @@
         </section>
 
         <section id="admin" class="text-center">
-            <h2>Alummno</h2>
-            <p>Alumno</p>
+        <h2>Hola <?php echo $userData['nombre']; ?></h2>
+            <p>Tu correo <?php echo $userData['correo']; ?></p>
         </section>
 
         <section id="cuerpo" class="mt-2">
