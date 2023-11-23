@@ -1,47 +1,11 @@
 <?php
 require_once($_SERVER["DOCUMENT_ROOT"] . "/models/AdminModel.php");
-require_once($_SERVER["DOCUMENT_ROOT"] . "/models/LoginModel.php");
+
 
 
 class AdminController
 {
-    public function login($data)
-    {
 
-        $login = new Login();
-        $newLogin = $login->loginModel($data);
-
-        extract($newLogin);
-
-        if (password_verify($data["contrasena"], $contrasena)) {
-
-            session_start();
-
-            if ($newLogin) {
-
-                switch ($rol_id) {
-                    case '1':
-
-                        header('Location: /vista-home');
-                        break;
-
-                    case '2':
-
-                        header('Location: ./views/PrincilpalEstudiante.php');
-                        break;
-
-                    case '3':
-                         
-                        header('Location: ./views/PrincipalMaestro.php');
-                        break;
-
-                    default:
-                        echo "no se encontro usuario";
-                        break;
-                }
-            }
-        }
-    }
     //inicio muestra maestros y alumnos
     public function vistamestros()
     {

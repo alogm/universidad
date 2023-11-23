@@ -1,5 +1,6 @@
 <?php
 require_once("./controllers/AdminController.php"); //controla el agregar, editar, eliminar, de la base de datos, asi como ver todos los maestros y alumnos 
+require_once("./controllers/LoginController.php");
 require_once("./controllers/VistasAdminController.php"); //solo enruta la vista, no hace ninguna solicitud de post
 require_once("./controllers/VistasMaestroController.php"); //solo enruta la vista, no hace ninguna solicitud de post
 require_once("./controllers/VistaAlumnoController.php"); //solo enruta la vista, no hace ninguna solicitud de post
@@ -9,6 +10,7 @@ $partes = explode("?", $urlCompleta);
 $url = $partes[0];
 
 $controller = new AdminController(); //controla el agregar, editar, eliminar, de la base de datos, asi como ver todos los maestros y alumnos
+$loginController = new LoginController();
 $vistasControl = new VistasAdminController(); //solo enruta la vista de admin, no hace ninguna solicitud de post
 $vistaMaestro = new VistaMaestroController(); //solo enruta la vista de naestro, no hace ninguna solicitud de post
 $vistaAlumno = new VistaAlumnoController(); //solo enruta la vista de alumno, no hace ninguna solicitud de post
@@ -112,7 +114,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     switch ($url) {
             //solicitud de login
         case '/inicio':
-            $controller->login($_POST);
+            $loginController->login($_POST);
             break;
 
             //crea datos de mestros y alumnos
