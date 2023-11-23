@@ -27,19 +27,26 @@ class Admin
     }
     public function AllClases()
     {
-        $res = $this->connection->query("SELECT
-	    m.id AS id_materia,
-	    m.materia AS nombre_materia,
-	    ma.nombre AS nombre_maestro,
-	    COUNT(a.id) AS cantidad_alumnos
-	    FROM materias m
-	    JOIN maestros ma ON m.id = ma.id_materia
-	    LEFT JOIN alumnos a ON m.id = a.id_materia
-	    GROUP BY m.id, m.materia, ma.nombre;");
+        $res = $this->connection->query("SELECT 
+        m.id AS id_materia,
+        m.materia AS nombre_materia,
+        ma.nombre AS nombre_maestro,
+        COUNT(a.id) AS cantidad_alumnos
+    FROM 
+        materias m
+    JOIN 
+        maestros ma ON m.id = ma.id_materia
+    LEFT JOIN 
+        alumnos a ON m.id = a.id_materia1 OR m.id = a.id_materia2 OR m.id = a.id_materia3
+                   OR m.id = a.id_materia4 OR m.id = a.id_materia5 OR m.id = a.id_materia6
+                   OR m.id = a.id_materia7
+    GROUP BY 
+        m.id, m.materia, ma.nombre;");
         $data = $res->fetchAll(PDO::FETCH_ASSOC);
 
         return $data;
     }
+    //consulta a la base de datos cuantos alumnos hay inscritos en las clases
     public function Roles()
     {
         $res = $this->connection->query("SELECT
@@ -66,6 +73,7 @@ class Admin
         $correo = $data['correo'];
         $direccion = $data['direccion'];
         $fechaNacimieno = $data['fecha_nacimieno'];
+        $idMateria = $data['id_materia'];
 
 
         $res = $this->connection->query("INSERT INTO  maestros (nombre, correo, direccion, fecha_nacimieno)
@@ -120,7 +128,7 @@ class Admin
     public function editAlumno($id)
     {
         $res = $this->connection->query("SELECT * FROM alumnos WHERE id = $id");
-        
+
         $data = $res->fetch(PDO::FETCH_ASSOC);
 
         return $data;
@@ -161,5 +169,7 @@ class Admin
 
         return $data;
     }
+
+
 
 }
