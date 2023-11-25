@@ -85,7 +85,8 @@ if ($_SERVER["REQUEST_METHOD"] === "GET") {
 
             // b) vistas de maestros
         case '/vista-maestro-alumnos':
-            $vistaMaestro->MaestroVistaAlumnos();
+            var_dump($_GET);
+            $vistaMaestro->MaestroVistaAlumnos($_GET["id"]);
             break;
 
 

@@ -1,4 +1,5 @@
 <?php
+require_once($_SERVER["DOCUMENT_ROOT"] . "/models/MaestroModel.php");
 
 class VistaMaestroController
 {
@@ -11,8 +12,11 @@ class VistaMaestroController
         include ($_SERVER["DOCUMENT_ROOT"] . "/views/viewsMaestro/editePerfil.php");
     }
   
-    public function MaestroVistaAlumnos()
+    public function MaestroVistaAlumnos($id)
     {
+        $vistaAlumnos = new Maestros();
+         $data = $vistaAlumnos->DatosAlumno($id);
+
         include ($_SERVER["DOCUMENT_ROOT"] . "/views/viewsMaestro/VistaAlumnosMaestro.php");
     }
 

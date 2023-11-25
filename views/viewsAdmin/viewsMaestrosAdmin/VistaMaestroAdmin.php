@@ -93,7 +93,7 @@
                             <td class="border border-gray-300"><?= $admin["nombre"] ?></td>
                             <td class="border border-gray-300"><?= $admin["correo"] ?></td>
                             <td class="border border-gray-300"><?= $admin["direccion"] ?></td>
-                            <td class="border border-gray-300"><?= $admin["fecha_nacimieno"] ?></td>
+                            <td class="border border-gray-300"><?= $admin["fecha_nacimiento"] ?></td>
                             <td class="border border-gray-300 ">
 
                                 <form action="/maestro-delete" method="post">

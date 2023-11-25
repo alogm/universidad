@@ -84,9 +84,9 @@
                         <tr class="<?= $index % 2 === 0 ? 'bg-slate-300' : 'bg-white' ?>">
 
                             <td class="border border-gray-300"><?= $admin["id_materia"] ?></td>
-                            <td class="border border-gray-300"><?= $admin["nombre_materia"] ?></td>
+                            <td class="border border-gray-300"><?= $admin["materia"] ?></td>
                             <td class="border border-gray-300"><?= $admin["nombre_maestro"] ?></td>
-                            <td class="border border-gray-300"><?= $admin["cantidad_alumnos"] ?></td>
+                            <td class="border border-gray-300"><?= $admin["total_alumnos"] ?></td>
                             <td class="border border-gray-300 ">
 
                                 <form action="/" method="post">

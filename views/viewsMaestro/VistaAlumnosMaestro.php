@@ -81,7 +81,9 @@ $userData = $_SESSION['user'];
                         <th class="border border-gray-300 text-left align-middle">Acciones</th>
                     </tr>
                 </thead>
-
+<?php
+var_dump($data)
+?>
                 <tbody>
                     <?php foreach ($data as $index => $admin) { ?>
                     <tr class="<?= $index % 2 === 0 ? 'bg-slate-300' : 'bg-white' ?>">

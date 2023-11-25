@@ -90,7 +90,7 @@ $_SESSION["maestro_edit"] = $data["id"];
 
             <div class="mb-2">
                 <label class="block">5.-Fecha de nacimiento:</label>
-                <input type="date" name="fecha_nacimieno" value="<?= $data["fecha_nacimieno"] ?>" class="border border-gray-300 w-full rounded p-2">
+                <input type="date" name="fecha_nacimieno" value="<?= $data["fecha_nacimiento"] ?>" class="border border-gray-300 w-full rounded p-2">
             </div>
 
             <select name="" id="">

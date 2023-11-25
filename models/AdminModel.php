@@ -27,21 +27,16 @@ class Admin
     }
     public function AllClases()
     {
-        $res = $this->connection->query("SELECT 
+        $res = $this->connection->query("  SELECT 
         m.id AS id_materia,
-        m.materia AS nombre_materia,
+        m.materia,
         ma.nombre AS nombre_maestro,
-        COUNT(a.id) AS cantidad_alumnos
-    FROM 
-        materias m
-    JOIN 
-        maestros ma ON m.id = ma.id_materia
-    LEFT JOIN 
-        alumnos a ON m.id = a.id_materia1 OR m.id = a.id_materia2 OR m.id = a.id_materia3
-                   OR m.id = a.id_materia4 OR m.id = a.id_materia5 OR m.id = a.id_materia6
-                   OR m.id = a.id_materia7
-    GROUP BY 
-        m.id, m.materia, ma.nombre;");
+        COUNT(ac.id_alumno) AS total_alumnos
+                FROM materias m
+                JOIN clases c ON m.id = c.id_materia
+                JOIN maestros ma ON c.id_maestro = ma.id
+                LEFT JOIN alumnos_clase ac ON c.id = ac.id_clase
+                GROUP BY m.id, ma.id, ma.nombre;");
         $data = $res->fetchAll(PDO::FETCH_ASSOC);
 
         return $data;
@@ -72,12 +67,12 @@ class Admin
         $nombre = $data['nombre'];
         $correo = $data['correo'];
         $direccion = $data['direccion'];
-        $fechaNacimieno = $data['fecha_nacimieno'];
+        $fechaNacimiento = $data['fecha_nacimieno'];
         $idMateria = $data['id_materia'];
 
 
-        $res = $this->connection->query("INSERT INTO  maestros (nombre, correo, direccion, fecha_nacimieno)
-                VALUES ('$nombre', '$correo', '$direccion', '$fechaNacimieno')");
+        $res = $this->connection->query("INSERT INTO  maestros (nombre, correo, direccion, fecha_nacimiento)
+                VALUES ('$nombre', '$correo', '$direccion', '$fechaNacimiento')");
 
         if ($res) {
             return true;
@@ -144,7 +139,7 @@ class Admin
         nombre = '{$data["nombre"]}', 
         apellido = '{$data["apellido"]}', 
         direccion = '{$data["direccion"]}', 
-        fecha_nacimieno = '{$data["fecha_nacimieno"]}'
+        fecha_nacimiento = '{$data["fecha_nacimieno"]}'
         WHERE id = {$_SESSION["maestro_edit"]}
         ");
         $data = $res->fetch(PDO::FETCH_ASSOC);
@@ -169,7 +164,4 @@ class Admin
 
         return $data;
     }
-
-
-
 }

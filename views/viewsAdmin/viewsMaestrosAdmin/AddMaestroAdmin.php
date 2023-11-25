@@ -72,6 +72,7 @@
                 <label class="block">1.-Nombre:</label>
                 <input type="text" name="nombre" class="border border-gray-300 w-full rounded p-2">
             </div>
+            
 
             <div class="mb-2">
                 <label class="block">2.-Email:</label>
