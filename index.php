@@ -1,8 +1,10 @@
 <?php
+
+session_start();
 require_once("./controllers/AdminController.php"); //controla el agregar, editar, eliminar, de la base de datos, asi como ver todos los maestros y alumnos 
 require_once("./controllers/LoginController.php");
 require_once("./controllers/VistasAdminController.php"); //solo enruta la vista, no hace ninguna solicitud de post
-require_once("./controllers/VistasMaestroController.php"); //solo enruta la vista, no hace ninguna solicitud de post
+require_once("./controllers/MaestroController.php"); //solo enruta la vista, no hace ninguna solicitud de post
 require_once("./controllers/VistaAlumnoController.php"); //solo enruta la vista, no hace ninguna solicitud de post
 
 $urlCompleta = $_SERVER["REQUEST_URI"];
@@ -12,7 +14,7 @@ $url = $partes[0];
 $controller = new AdminController(); //controla el agregar, editar, eliminar, de la base de datos, asi como ver todos los maestros y alumnos
 $loginController = new LoginController();
 $vistasControl = new VistasAdminController(); //solo enruta la vista de admin, no hace ninguna solicitud de post
-$vistaMaestro = new VistaMaestroController(); //solo enruta la vista de naestro, no hace ninguna solicitud de post
+$MaestroController = new MaestroController(); //solo enruta la vista de naestro, no hace ninguna solicitud de post
 $vistaAlumno = new VistaAlumnoController(); //solo enruta la vista de alumno, no hace ninguna solicitud de post
 
 if ($_SERVER["REQUEST_METHOD"] === "GET") {
@@ -30,7 +32,7 @@ if ($_SERVER["REQUEST_METHOD"] === "GET") {
             break;
 
         case '/home-maestro':
-            $vistaMaestro->HomeMaestro();
+            $MaestroController->HomeMaestro();
             break;
 
         case '/home-alumnos':
@@ -67,6 +69,12 @@ if ($_SERVER["REQUEST_METHOD"] === "GET") {
             $controller->editAlumno($_GET["id"]);
             break;
 
+            case '/edit-perfil-maestro':
+                $id_maestro = $_SESSION['user']['id'] ?? null;
+                $MaestroController->EditPerfilMaestro($id_maestro);
+                break;
+            
+
 
 
             //fin 
@@ -84,10 +92,11 @@ if ($_SERVER["REQUEST_METHOD"] === "GET") {
             break;
 
             // b) vistas de maestros
-        case '/vista-maestro-alumnos':
-            var_dump($_GET);
-            $vistaMaestro->MaestroVistaAlumnos($_GET["id"]);
-            break;
+            case '/vista-maestro-alumnos':
+                $id_maestro = $_SESSION['user']['id']; // Asume que 'id' es el campo que contiene el ID del maestro en tu sesión
+                $MaestroController->MaestroVistaAlumnos($id_maestro);
+                break;
+            
 
 
             // c) vistas de alumno
@@ -144,10 +153,14 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             $controller->updateMaestro($_POST);
             break;
 
-            case '/alumno-update':
-                $controller->updateAlumno($_POST);
-                break;
+        case '/alumno-update':
+            $controller->updateAlumno($_POST);
+            break;
 
+
+ case '/perfil-maestro-update':
+            $MaestroController->updatePerfilMaestro($_POST);
+            break;
 
 
 

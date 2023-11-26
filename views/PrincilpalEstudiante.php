@@ -1,5 +1,4 @@
 <?php
-session_start();
 
 if (!isset($_SESSION['user'])) {
 
@@ -61,8 +60,8 @@ $userData = $_SESSION['user'];
             <div class="ml-auto">
                 <a href="/edit-alumno"> <span class="material-symbols-outlined">
                         expand_more
-                    </span></a>
-                Alumno
+                    </span>Edita tu perfil</a>
+                    <h2>Hola <?php echo $userData['nombre']; ?></h2>
             </div>
         </section>
         

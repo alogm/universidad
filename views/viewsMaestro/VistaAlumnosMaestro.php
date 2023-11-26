@@ -1,9 +1,9 @@
 <?php
-session_start();
+
 
 if (!isset($_SESSION['user'])) {
 
-    header('Location: /ruta-a-tu-pagina-de-login');
+    header('Location: /index.php');
     exit();
 }
 
@@ -74,29 +74,26 @@ $userData = $_SESSION['user'];
             <table class="w-full border border-gray-300">
                 <thead>
                     <tr>
-                        <th class="border border-gray-300 text-left align-middle">#</th>
+                        
                         <th class="border border-gray-300 text-left align-middle">Nombre de alumno</th>
                         <th class="border border-gray-300 text-left align-middle">Calificacion</th>
                         <th class="border border-gray-300 text-left align-middle">Mensaje</th>
                         <th class="border border-gray-300 text-left align-middle">Acciones</th>
                     </tr>
                 </thead>
-<?php
-var_dump($data)
-?>
+
                 <tbody>
                     <?php foreach ($data as $index => $admin) { ?>
                     <tr class="<?= $index % 2 === 0 ? 'bg-slate-300' : 'bg-white' ?>">
                         
-                        <td class="border border-gray-300"><?= $admin["id"] ?></td>
-                        <td class="border border-gray-300"><?= $admin["nombre"] ?></td>
-                        <td class="border border-gray-300"><?= $admin["correo"] ?></td>
-                        <td class="border border-gray-300"><?= $admin["direccion"] ?></td>
-                        <td class="border border-gray-300"><?= $admin["fecha_nacimieno"] ?></td>
+
+                        <td class="border border-gray-300"><?= $admin["nombre_alumno"] ?></td>
+                        <td class="border border-gray-300"><?= $admin["calificacion"] ?></td>
+                        <td class="border border-gray-300"><?= $admin["comentarios"] ?></td>
                         <td class="border border-gray-300 ">
 
-                           <form action="/maestro-delete" method="post">
-                           <input type="hidden" name="id" value="<?= $admin['id'] ?>"> 
+                           <form action="" method="post">
+                           <input type="hidden" name="id" value="<?= $admin['nombre_alumno'] ?>"> 
                            <button type="submit">
                                 <span class="material-symbols-outlined text-red-600">delete</span>
                             </button>

@@ -1,9 +1,9 @@
 <?php
-session_start();
+
 
 if (!isset($_SESSION['user'])) {
 
-    header('Location: /ruta-a-tu-pagina-de-login');
+    header('Location: /index.php');
     exit();
 }
 
@@ -28,8 +28,8 @@ $userData = $_SESSION['user'];
         </section>
 
         <section id="admin" class="text-center">
-        <h2>Hola Maestro  <?php echo $userData['nombre']; ?></h2>
-            <p>Su Correo:  <?php echo $userData['correo']; ?></p>
+        <h2>Hola Maestro  <?= $userData['nombre']; ?></h2>
+            <p>Su Correo:  <?= $userData['correo']; ?></p>
         </section>
 
         <section id="cuerpo" class="mt-2">
@@ -68,10 +68,13 @@ $userData = $_SESSION['user'];
             <p class="text-left"></p>
         </section>
 
-        <form action="" method="post" class="mt-4">
+        <form action="/perfil-maestro-update" method="post" class="mt-4">
+
+        <input type="hidden" name="id" value="<?= $userData['id']; ?>">
+
             <div class="mb-2">
                 <label class="block">1.-Correo Electronico:</label>
-                <input type="text" name="correo" class="border border-gray-300 w-full rounded p-2">
+                <input type="text" name="correo" value="<?= $userData['correo']; ?>" class="border border-gray-300 w-full rounded p-2">
             </div>
 
             <div class="mb-2">
@@ -81,22 +84,22 @@ $userData = $_SESSION['user'];
 
             <div class="mb-2">
                 <label class="block">3.-Nombre:</label>
-                <input type="text" name="nombre" class="border border-gray-300 w-full rounded p-2">
+                <input type="text" name="nombre" value="<?= $userData['nombre']; ?>"  class="border border-gray-300 w-full rounded p-2">
             </div>
 
             <div class="mb-2">
                 <label class="block">4.-Apellido:</label>
-                <input type="text" name="apellido" class="border border-gray-300 w-full rounded p-2">
+                <input type="text" name="apellido" value="<?= $userData['apellido']; ?>" class="border border-gray-300 w-full rounded p-2">
             </div>
 
             <div class="mb-2">
                 <label class="block">4.-Direccion:</label>
-                <input type="text" name="direccion" class="border border-gray-300 w-full rounded p-2">
+                <input type="text" name="direccion" value="<?= $userData['direccion']; ?>" class="border border-gray-300 w-full rounded p-2">
             </div>
 
             <div class="mb-2">
                 <label class="block">4.-Fecha de nacimiento:</label>
-                <input type="date" name="fecha_nacimieno" class="border border-gray-300 w-full rounded p-2">
+                <input type="date" name="fecha_nacimieno" value="<?= $userData['fecha_nacimiento']; ?>" class="border border-gray-300 w-full rounded p-2">
             </div>
 
             <button type="submit" name="guardar" class="bg-blue-500 hover:bg-blue-600 text-white rounded p-2 mt-4">

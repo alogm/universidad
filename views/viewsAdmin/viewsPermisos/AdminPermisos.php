@@ -1,3 +1,11 @@
+<?php
+if (!isset($_SESSION['user'])) {
+
+    header('Location: /index.php');
+    exit();
+}
+$userData = $_SESSION['user'];
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -17,31 +25,32 @@
         </section>
 
         <section id="admin" class="text-center">
-            <h2>admin</h2>
-            <p>Administrador</p>
+            <h2>admin: <?php echo $userData['nombre']; ?></h2>
+            <p>admin: <?php echo $userData['correo']; ?></p>
         </section>
+    </section>
 
-        <section id="cuerpo" class="mt-2">
-            <h2 class="text-center mb-2">MENU ADMINISTRACIÓN</h2>
-            <div class="flex flex-col items-center">
-                <div>
-                    <span class="material-symbols-outlined">manage_accounts</span>
-                    <a href="/vista-permisos" class="ml-2">Permisos</a>
-                </div>
-                <div>
-                    <span class="material-symbols-outlined">tv_signin</span>
-                    <a href="/vista-maestros" class="ml-2">Maestros</a>
-                </div>
-                <div>
-                    <span class="material-symbols-outlined">school</span>
-                    <a href="/vista-alumnos" class="ml-2">Alumnos</a>
-                </div>
-                <div>
-                    <span class="material-symbols-outlined">table_restaurant</span>
-                    <a href="/vista-clases" class="ml-2">Clases</a>
-                </div>
+    <section id="cuerpo" class="mt-2">
+        <h2 class="text-center mb-2">MENU ADMINISTRACIÓN</h2>
+        <div class="flex flex-col items-center">
+            <div>
+                <span class="material-symbols-outlined">manage_accounts</span>
+                <a href="/vista-permisos" class="ml-2">Permisos</a>
             </div>
-        </section>
+            <div>
+                <span class="material-symbols-outlined">tv_signin</span>
+                <a href="/vista-maestros" class="ml-2">Maestros</a>
+            </div>
+            <div>
+                <span class="material-symbols-outlined">school</span>
+                <a href="/vista-alumnos" class="ml-2">Alumnos</a>
+            </div>
+            <div>
+                <span class="material-symbols-outlined">table_restaurant</span>
+                <a href="/vista-clases" class="ml-2">Clases</a>
+            </div>
+        </div>
+    </section>
     </section>
 
     <section class="w-1/2 p-4">
@@ -90,10 +99,10 @@
                                 <td class="border border-gray-300">Activo</td>
                                 <td class="border border-gray-300 ">
 
-                                        <a href="/edit-permisos"> <span class="material-symbols-outlined">
-                                                edit_square
-                                            </span></a>
-                                  
+                                    <a href="/edit-permisos"> <span class="material-symbols-outlined">
+                                            edit_square
+                                        </span></a>
+
                                 </td>
 
                             </tr>
