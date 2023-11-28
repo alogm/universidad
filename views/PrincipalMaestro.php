@@ -71,8 +71,8 @@ $userData = $_SESSION['user'];
             <div class="ml-auto">
                 <a href="/edit-perfil-maestro"> <span class="material-symbols-outlined">
                         expand_more
-                    </span></a>
-                Maestro
+                    </span>Edita perfil</a>
+                <h6>Maestro <?php echo $userData['nombre']; ?></h6>
             </div>
         </section>
 

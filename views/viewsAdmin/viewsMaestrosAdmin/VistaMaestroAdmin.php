@@ -88,7 +88,7 @@
                     <?php foreach ($data as $index => $admin) { ?>
                         <tr class="<?= $index % 2 === 0 ? 'bg-slate-300' : 'bg-white' ?>">
 
-                            <td class="border border-gray-300"><?= $admin["id"] ?></td>
+                            <td class="border border-gray-300"><?= $index + 1 ?></td>
                             <td class="border border-gray-300"><?= $admin["nombre"] ?></td>
                             <td class="border border-gray-300"><?= $admin["correo"] ?></td>
                             <td class="border border-gray-300"><?= $admin["direccion"] ?></td>

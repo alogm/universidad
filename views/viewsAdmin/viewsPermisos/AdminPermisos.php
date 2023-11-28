@@ -1,6 +1,5 @@
 <?php
 if (!isset($_SESSION['user'])) {
-
     header('Location: /index.php');
     exit();
 }
@@ -25,32 +24,34 @@ $userData = $_SESSION['user'];
         </section>
 
         <section id="admin" class="text-center">
-            <h2>admin: <?php echo $userData['nombre']; ?></h2>
-            <p>admin: <?php echo $userData['correo']; ?></p>
+            <h2>admin: <?= $userData['nombre']; ?></h2>
+            <p>admin: <?= $userData['correo']; ?></p>
+        </section>
+        
+        <section id="cuerpo" class="mt-2">
+            <h2 class="text-center mb-2">MENU ADMINISTRACIÓN</h2>
+            <div class="flex flex-col items-center">
+                <div>
+                    <span class="material-symbols-outlined">manage_accounts</span>
+                    <a href="/vista-permisos" class="ml-2">Permisos</a>
+                </div>
+                <div>
+                    <span class="material-symbols-outlined">tv_signin</span>
+                    <a href="/vista-maestros" class="ml-2">Maestros</a>
+                </div>
+                <div>
+                    <span class="material-symbols-outlined">school</span>
+                    <a href="/vista-alumnos" class="ml-2">Alumnos</a>
+                </div>
+                <div>
+                    <span class="material-symbols-outlined">table_restaurant</span>
+                    <a href="/vista-clases" class="ml-2">Clases</a>
+                </div>
+            </div>
         </section>
     </section>
 
-    <section id="cuerpo" class="mt-2">
-        <h2 class="text-center mb-2">MENU ADMINISTRACIÓN</h2>
-        <div class="flex flex-col items-center">
-            <div>
-                <span class="material-symbols-outlined">manage_accounts</span>
-                <a href="/vista-permisos" class="ml-2">Permisos</a>
-            </div>
-            <div>
-                <span class="material-symbols-outlined">tv_signin</span>
-                <a href="/vista-maestros" class="ml-2">Maestros</a>
-            </div>
-            <div>
-                <span class="material-symbols-outlined">school</span>
-                <a href="/vista-alumnos" class="ml-2">Alumnos</a>
-            </div>
-            <div>
-                <span class="material-symbols-outlined">table_restaurant</span>
-                <a href="/vista-clases" class="ml-2">Clases</a>
-            </div>
-        </div>
-    </section>
+
     </section>
 
     <section class="w-1/2 p-4">
@@ -84,8 +85,6 @@ $userData = $_SESSION['user'];
                             <th class="border border-gray-300 text-left align-middle">#</th>
                             <th class="border border-gray-300 text-left align-middle">Email/Usuario</th>
                             <th class="border border-gray-300 text-left align-middle">Permiso</th>
-                            <th class="border border-gray-300 text-left align-middle">Estado</th>
-                            <th class="border border-gray-300 text-left align-middle">Acciones</th>
                         </tr>
                     </thead>
 
@@ -93,18 +92,9 @@ $userData = $_SESSION['user'];
                         <?php foreach ($data as $index => $admin) { ?>
                             <tr class="<?= $index % 2 === 0 ? 'bg-slate-300' : 'bg-white' ?>">
 
-                                <td class="border border-gray-300"><?= $admin["usuario_id"] ?></td>
+                                <td class="border border-gray-300"><?= $index + 1 ?></td>
                                 <td class="border border-gray-300"><?= $admin["nombre"] ?></td>
                                 <td class="border border-gray-300"><?= $admin["rol"] ?></td>
-                                <td class="border border-gray-300">Activo</td>
-                                <td class="border border-gray-300 ">
-
-                                    <a href="/edit-permisos"> <span class="material-symbols-outlined">
-                                            edit_square
-                                        </span></a>
-
-                                </td>
-
                             </tr>
 
                         <?php } ?>

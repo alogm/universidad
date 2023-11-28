@@ -53,10 +53,9 @@ $userData = $_SESSION['user'];
                 </p>
             </div>
             <div class="ml-auto">
-                <a href="/edit-perfil-maestro"> <span class="material-symbols-outlined">
-                        expand_more
-                    </span></a>
-                Maestro
+            <div class="ml-auto">
+
+                <h6>Maestro <?php echo $userData['nombre']; ?></h6>
             </div>
         </section>
 
@@ -106,6 +105,7 @@ $userData = $_SESSION['user'];
             <button type="submit" name="guardar" class="bg-blue-500 hover:bg-blue-600 text-white rounded p-2 mt-4">
                 Guardar cambios
             </button>
+            <a href="vista-maestro-alumnos" class="bg-neutral-400 hover:bg-teal-400 text-white rounded p-2 mt-4">Cancelar</a>
         </form>
     </section>
 </body>
