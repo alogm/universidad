@@ -57,6 +57,12 @@ $userData = $_SESSION['user'];
 
                 <h6>Maestro <?php echo $userData['nombre']; ?></h6>
             </div>
+            <div>
+                <form action="/exit" method="post" class="mt-4">
+                    <button type="submit" name="logout" class="bg-red-500 text-white px-2 py-1">Exit</button>
+                </form>
+
+            </div>
         </section>
 
         <section id="Dashboard" class="mb-4">

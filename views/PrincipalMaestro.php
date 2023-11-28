@@ -36,7 +36,7 @@ $userData = $_SESSION['user'];
         <?php
         date_default_timezone_set('America/Mexico_City');
 
-        $fecha= date('Y-m-d');
+        $fecha = date('Y-m-d');
         $hora = date('H:i');
 
         echo "$fecha";
@@ -69,6 +69,13 @@ $userData = $_SESSION['user'];
                         expand_more
                     </span>Edita perfil</a>
                 <h6>Maestro <?php echo $userData['nombre']; ?></h6>
+            </div>
+            <br>
+            <div>
+                <form action="/exit" method="post" class="mt-4">
+                    <button type="submit" name="logout" class="bg-red-500 text-white px-2 py-1">Exit</button>
+                </form>
+
             </div>
         </section>
 

@@ -46,4 +46,11 @@ class LoginController
             echo "No se encontró el usuario";
         }
     }
+    public function Logout()
+    {
+        $res = new Login();
+        $data = $res->Logout();
+
+        include_once $_SERVER["DOCUMENT_ROOT"] . "/views/PrincipalAdmin.php";
+    }
 }

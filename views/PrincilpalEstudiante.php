@@ -74,6 +74,12 @@ $userData = $_SESSION['user'];
                     </span>Edita tu perfil</a>
                     <h2>Hola <?php echo $userData['nombre']; ?></h2>
             </div>
+            <div>
+                <form action="/exit" method="post" class="mt-4">
+                    <button type="submit" name="logout" class="bg-red-500 text-white px-2 py-1">Exit</button>
+                </form>
+
+            </div>
         </section>
         
 

@@ -179,6 +179,10 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             $MaestroController->updateCalificacion($_POST);
             break;
 
+            case '/exit':
+                $loginController->Logout($_POST);
+                break;
+
 
 
 

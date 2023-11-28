@@ -51,16 +51,22 @@ $userData = $_SESSION['user'];
     </section>
 
     <section class="w-1/2 p-4">
-        <section id="home" class="flex w-full bg-white p-4 " style="width: 1450px;">
+    <section id="home" class="flex w-full bg-white p-4 " style="width: 1450px;">
             <div>
                 <a href="/home-alumnos" class="ml-2"><span class="material-symbols-outlined">menu</span>Home</a>
 
             </div>
             <div class="ml-auto">
-                <a href="/edit-alumno"> <span class="material-symbols-outlined">
+                <a href="/edit-perfil-alumno"> <span class="material-symbols-outlined">
                         expand_more
-                    </span></a>
-                Alumno
+                    </span>Edita tu perfil</a>
+                    <h2>Hola <?php echo $userData['nombre']; ?></h2>
+            </div>
+            <div>
+                <form action="/exit" method="post" class="mt-4">
+                    <button type="submit" name="logout" class="bg-red-500 text-white px-2 py-1">Exit</button>
+                </form>
+
             </div>
         </section>
 
@@ -98,12 +104,6 @@ $userData = $_SESSION['user'];
                                             <span class="material-symbols-outlined text-red-600">delete</span>
                                         </button>
                                     </form>
-
-                                    <button>
-                                        <a href="/"> <span class="material-symbols-outlined">
-                                                edit_square
-                                            </span></a>
-                                    </button>
                                 </td>
 
                             </tr>

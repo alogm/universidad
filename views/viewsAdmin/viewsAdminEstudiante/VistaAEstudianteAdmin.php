@@ -72,10 +72,13 @@ $userData = $_SESSION['user'];
                 </p>
             </div>
             <div class="ml-auto">
-                <button> <span class="material-symbols-outlined">
-                        expand_more
-                    </span></button>
                 Administrador
+            </div>
+            <div>
+                <form action="/exit" method="post" class="mt-4">
+                    <button type="submit" name="logout" class="bg-red-500 text-white px-2 py-1">Exit</button>
+                </form>
+
             </div>
         </section>
 

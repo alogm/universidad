@@ -53,16 +53,22 @@ $userData = $_SESSION['user'];
     </section>
 
     <section class="w-1/2 p-4">
-        <section id="home" class="flex w-full bg-white p-4 " style="width: 1450px;">
+    <section id="home" class="flex w-full bg-white p-4 " style="width: 1450px;">
             <div>
                 <a href="/home-alumnos" class="ml-2"><span class="material-symbols-outlined">menu</span>Home</a>
 
             </div>
             <div class="ml-auto">
-                <a href="/edit-alumno"> <span class="material-symbols-outlined">
+                <a href="/edit-perfil-alumno"> <span class="material-symbols-outlined">
                         expand_more
-                    </span></a>
-                Maestro
+                    </span>Edita tu perfil</a>
+                    <h2>Hola <?php echo $userData['nombre']; ?></h2>
+            </div>
+            <div>
+                <form action="/exit" method="post" class="mt-4">
+                    <button type="submit" name="logout" class="bg-red-500 text-white px-2 py-1">Exit</button>
+                </form>
+
             </div>
         </section>
 
@@ -84,7 +90,6 @@ $userData = $_SESSION['user'];
                             <th class="border border-gray-300 text-left align-middle">Nombre de alumno</th>
                             <th class="border border-gray-300 text-left align-middle">Calificacion</th>
                             <th class="border border-gray-300 text-left align-middle">Mensaje</th>
-                            <th class="border border-gray-300 text-left align-middle">Acciones</th>
                         </tr>
                     </thead>
 
@@ -96,22 +101,6 @@ $userData = $_SESSION['user'];
                                 <td class="border border-gray-300"><?= $admin["nombre_materia"] ?></td>
                                 <td class="border border-gray-300"><?= $admin["calificacion"] ?></td>
                                 <td class="border border-gray-300"><?= $admin["comentarios"] ?></td>
-                                <td class="border border-gray-300 ">
-
-                                    <form action="" method="post">
-                                        <input type="hidden" name="id" value="<?= $admin['nombre_materia'] ?>">
-                                        <button type="submit">
-                                            <span class="material-symbols-outlined text-red-600">delete</span>
-                                        </button>
-                                    </form>
-
-                                    <button>
-                                        <a href="/"> <span class="material-symbols-outlined">
-                                                edit_square
-                                            </span></a>
-                                    </button>
-                                </td>
-
                             </tr>
 
                         <?php } ?>
