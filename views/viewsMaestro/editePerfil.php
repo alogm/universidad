@@ -15,11 +15,11 @@ $userData = $_SESSION['user'];
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet"
-        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <script src="https://cdn.tailwindcss.com"></script>
     <title>Document</title>
 </head>
+
 <body class="flex bg-gray-100">
     <section id="bloque" class="bg-zinc-700 text-gray-400 h-screen flex flex-col justify-between p-4">
         <section id="logo" class="flex items-center">
@@ -28,14 +28,14 @@ $userData = $_SESSION['user'];
         </section>
 
         <section id="admin" class="text-center">
-        <h2>Hola Maestro  <?= $userData['nombre']; ?></h2>
-            <p>Su Correo:  <?= $userData['correo']; ?></p>
+            <h2>Hola Maestro <?= $userData['nombre']; ?></h2>
+            <p>Su Correo: <?= $userData['correo']; ?></p>
         </section>
 
         <section id="cuerpo" class="mt-2">
             <h2 class="text-center mb-2">MENU MAESTRO</h2>
             <div class="flex flex-col items-center">
-             
+
                 <div>
                     <span class="material-symbols-outlined">school</span>
                     <a href="/vista-maestro-alumnos" class="ml-2">Alumnos</a>
@@ -47,9 +47,10 @@ $userData = $_SESSION['user'];
 
     <section class="w-1/2 p-4">
         <section id="home" class="flex w-full bg-white p-4 " style="width: 1450px;">
-        <div>
+            <div>
                 <p class="ml-2"><span class="material-symbols-outlined">menu</span>
-                <a href="/home-maestro">Home</a> </p>
+                    <a href="/home-maestro">Home</a>
+                </p>
             </div>
             <div class="ml-auto">
                 <a href="/edit-perfil-maestro"> <span class="material-symbols-outlined">
@@ -70,7 +71,7 @@ $userData = $_SESSION['user'];
 
         <form action="/perfil-maestro-update" method="post" class="mt-4">
 
-        <input type="hidden" name="id" value="<?= $userData['id']; ?>">
+            <input type="hidden" name="id" value="<?= $userData['id']; ?>">
 
             <div class="mb-2">
                 <label class="block">1.-Correo Electronico:</label>
@@ -84,7 +85,7 @@ $userData = $_SESSION['user'];
 
             <div class="mb-2">
                 <label class="block">3.-Nombre:</label>
-                <input type="text" name="nombre" value="<?= $userData['nombre']; ?>"  class="border border-gray-300 w-full rounded p-2">
+                <input type="text" name="nombre" value="<?= $userData['nombre']; ?>" class="border border-gray-300 w-full rounded p-2">
             </div>
 
             <div class="mb-2">

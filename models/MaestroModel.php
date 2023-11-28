@@ -56,7 +56,8 @@ class Maestros
     session_start();
 
     // Verificar si la contraseña se proporciona y no está en blanco antes de encriptarla
-    $contrasena = isset($data["contrase"]) && $data["contrase"] !== "" ? password_hash($data["contrase"], PASSWORD_DEFAULT) : null;
+    $contrasena = isset($data["contrasena"]) && $data["contrasena"] !== "" ? password_hash($data["contrasena"], PASSWORD_DEFAULT) : null;
+
 
     $stmt = $this->connection->prepare("
         UPDATE maestros 

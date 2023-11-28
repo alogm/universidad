@@ -2,7 +2,7 @@
 
 if (!isset($_SESSION['user'])) {
 
-    header('Location: /ruta-a-tu-pagina-de-login');
+    header('Location: /index.php');
     exit();
 }
 
@@ -27,7 +27,7 @@ $userData = $_SESSION['user'];
         </section>
 
         <section id="admin" class="text-center">
-        <h2>Hola <?php echo $userData['nombre']; ?></h2>
+            <h2>Hola <?php echo $userData['nombre']; ?></h2>
             <p>Tu correo <?php echo $userData['correo']; ?></p>
         </section>
 
@@ -63,7 +63,7 @@ $userData = $_SESSION['user'];
                 Alumno
             </div>
         </section>
-        
+
 
         <section id="Dashboard" class="mb-4">
             <h1 class="text-center text-4xl text-black p-6">Editar datos de perfil</h1>
@@ -71,49 +71,50 @@ $userData = $_SESSION['user'];
 
         <section id="bienvenido" class="w-full bg-white p- max-w-screen-xl">
             <h6 class="text-left">Informacion de Usuario</h6>
-            <p class="text-left"></p>
+            <p class="text-left">Los cambios realizados se veran reflejados hasta iniciar sesion nuevamente</p>
         </section>
 
         <section>
-        <form action="" method="post" class="mt-4">
-        <div class="mb-2">
-                <label class="block">1.-Matricula:</label>
-                <input type="text" name="matricula" class="border border-gray-300 w-full rounded p-2">
-            </div>
-            <div class="mb-2">
-                <label class="block">2.-Correo Electronico:</label>
-                <input type="text" name="correo" class="border border-gray-300 w-full rounded p-2">
-            </div>
+            <form action="/perfil-alumno-update" method="post" class="mt-4">
+                <input type="hidden" name="id" value="<?= $userData['id']; ?>">
+                <div class="mb-2">
+                    <label class="block">1.-Matricula:</label>
+                    <input type="text" name="matricula" value="<?= $userData['matricula']; ?>" class="border border-gray-300 w-full rounded p-2">
+                </div>
+                <div class="mb-2">
+                    <label class="block">2.-Correo Electronico:</label>
+                    <input type="text" name="correo" value="<?= $userData['correo']; ?>" class="border border-gray-300 w-full rounded p-2">
+                </div>
 
-            <div class="mb-2">
-                <label class="block">3.-Contraseña ingresa para cambiar la contraseña:</label>
-                <input type="text" name="contrasena" class="border border-gray-300 w-full rounded p-2">
-            </div>
+                <div class="mb-2">
+                    <label class="block">3.-Ingresa nueva contraseña:</label>
+                    <input type="text" name="contrasena" class="border border-gray-300 w-full rounded p-2">
+                </div>
 
-            <div class="mb-2">
-                <label class="block">3.-Nombre:</label>
-                <input type="text" name="nombre" class="border border-gray-300 w-full rounded p-2">
-            </div>
+                <div class="mb-2">
+                    <label class="block">3.-Nombre:</label>
+                    <input type="text" name="nombre" value="<?= $userData['nombre']; ?>" class="border border-gray-300 w-full rounded p-2">
+                </div>
 
-            <div class="mb-2">
-                <label class="block">4.-Apellido:</label>
-                <input type="text" name="apellido" class="border border-gray-300 w-full rounded p-2">
-            </div>
+                <div class="mb-2">
+                    <label class="block">4.-Apellido:</label>
+                    <input type="text" name="apellido" value="<?= $userData['apellido']; ?>" class="border border-gray-300 w-full rounded p-2">
+                </div>
 
-            <div class="mb-2">
-                <label class="block">4.-Direccion:</label>
-                <input type="text" name="direccion" class="border border-gray-300 w-full rounded p-2">
-            </div>
+                <div class="mb-2">
+                    <label class="block">4.-Direccion:</label>
+                    <input type="text" name="direccion" value="<?= $userData['direccion']; ?>" class="border border-gray-300 w-full rounded p-2">
+                </div>
 
-            <div class="mb-2">
-                <label class="block">4.-Fecha de nacimiento:</label>
-                <input type="date" name="fecha_nacimieno" class="border border-gray-300 w-full rounded p-2">
-            </div>
+                <div class="mb-2">
+                    <label class="block">4.-Fecha de nacimiento:</label>
+                    <input type="date" name="fecha_nacimieno" value="<?= $userData['fecha_nacimieno']; ?>" class="border border-gray-300 w-full rounded p-2">
+                </div>
 
-            <button type="submit" name="guardar" class="bg-blue-500 hover:bg-blue-600 text-white rounded p-2 mt-4">
-                Guardar cambios
-            </button>
-        </form>
+                <button type="submit" name="guardar" class="bg-blue-500 hover:bg-blue-600 text-white rounded p-2 mt-4">
+                    Guardar cambios
+                </button>
+            </form>
         </section>
     </section>
 </body>

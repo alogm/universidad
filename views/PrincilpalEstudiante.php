@@ -58,7 +58,7 @@ $userData = $_SESSION['user'];
 
             </div>
             <div class="ml-auto">
-                <a href="/edit-alumno"> <span class="material-symbols-outlined">
+                <a href="/edit-perfil-alumno"> <span class="material-symbols-outlined">
                         expand_more
                     </span>Edita tu perfil</a>
                     <h2>Hola <?php echo $userData['nombre']; ?></h2>
@@ -67,7 +67,7 @@ $userData = $_SESSION['user'];
         
 
         <section id="Dashboard" class="mb-4">
-            <h1 class="text-center text-4xl text-black p-6">Dashboard</h1>
+            <h1 class="text-center text-4xl text-black p-6">Hola <?php echo $userData['nombre']; ?></h1>
         </section>
 
         <section id="bienvenido" class="w-full bg-white p- max-w-screen-xl">

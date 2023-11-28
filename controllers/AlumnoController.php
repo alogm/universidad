@@ -1,6 +1,8 @@
 <?php
 
-class VistaAlumnoController
+require_once($_SERVER["DOCUMENT_ROOT"] . "/models/AlumnoModel.php");
+
+class AlumnoController
 {
     public function HomeAlumno()
     {
@@ -14,8 +16,19 @@ class VistaAlumnoController
     {
         include ($_SERVER['DOCUMENT_ROOT'] . "/views/viewsEstudiante/clases.php");
     }
-    public function EditPerfilAlumno()
+    public function EditPerfilAlumno($id)
     {
+        $alumno = new Alumno();
+        $data =$alumno->EditPerfilAlumno($id);
         include ($_SERVER['DOCUMENT_ROOT'] . "/views/viewsEstudiante/EditePerfil.php");
     }
+    public function updatePerfilAlumno($data)
+    {
+        $res = new Alumno();
+        $data = $res->updatePerfilAlumno($data);
+
+        header("Location: /home-alumnos");
+    }
+    
+
 }

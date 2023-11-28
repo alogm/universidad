@@ -5,7 +5,7 @@ require_once("./controllers/AdminController.php"); //controla el agregar, editar
 require_once("./controllers/LoginController.php");
 require_once("./controllers/VistasAdminController.php"); //solo enruta la vista, no hace ninguna solicitud de post
 require_once("./controllers/MaestroController.php"); //solo enruta la vista, no hace ninguna solicitud de post
-require_once("./controllers/VistaAlumnoController.php"); //solo enruta la vista, no hace ninguna solicitud de post
+require_once("./controllers/AlumnoController.php"); //solo enruta la vista, no hace ninguna solicitud de post
 
 $urlCompleta = $_SERVER["REQUEST_URI"];
 $partes = explode("?", $urlCompleta);
@@ -15,7 +15,7 @@ $controller = new AdminController(); //controla el agregar, editar, eliminar, de
 $loginController = new LoginController();
 $vistasControl = new VistasAdminController(); //solo enruta la vista de admin, no hace ninguna solicitud de post
 $MaestroController = new MaestroController(); //solo enruta la vista de naestro, no hace ninguna solicitud de post
-$vistaAlumno = new VistaAlumnoController(); //solo enruta la vista de alumno, no hace ninguna solicitud de post
+$alumnoController = new AlumnoController(); //solo enruta la vista de alumno, no hace ninguna solicitud de post
 
 if ($_SERVER["REQUEST_METHOD"] === "GET") {
 
@@ -36,7 +36,7 @@ if ($_SERVER["REQUEST_METHOD"] === "GET") {
             break;
 
         case '/home-alumnos':
-            $vistaAlumno->HomeAlumno();
+            $alumnoController->HomeAlumno();
             break;
 
             //fin 
@@ -69,13 +69,15 @@ if ($_SERVER["REQUEST_METHOD"] === "GET") {
             $controller->editAlumno($_GET["id"]);
             break;
 
-            case '/edit-perfil-maestro':
-                $id_maestro = $_SESSION['user']['id'] ?? null;
-                $MaestroController->EditPerfilMaestro($id_maestro);
-                break;
-            
+        case '/edit-perfil-maestro':
+            $id_maestro = $_SESSION['user']['id'] ?? null;
+            $MaestroController->EditPerfilMaestro($id_maestro);
+            break;
 
-
+        case '/edit-perfil-alumno':
+            $id_alumno = $_SESSION['user']['id'] ?? null;
+            $alumnoController->EditPerfilAlumno($id_alumno);
+            break;
 
             //fin 
 
@@ -92,20 +94,20 @@ if ($_SERVER["REQUEST_METHOD"] === "GET") {
             break;
 
             // b) vistas de maestros
-            case '/vista-maestro-alumnos':
-                $id_maestro = $_SESSION['user']['id']; // Asume que 'id' es el campo que contiene el ID del maestro en tu sesión
-                $MaestroController->MaestroVistaAlumnos($id_maestro);
-                break;
-            
+        case '/vista-maestro-alumnos':
+            $id_maestro = $_SESSION['user']['id']; // Asume que 'id' es el campo que contiene el ID del maestro en tu sesión
+            $MaestroController->MaestroVistaAlumnos($id_maestro);
+            break;
+
 
 
             // c) vistas de alumno
         case '/calificaciones-alumno':
-            $vistaAlumno->Calificaciones();
+            $alumnoController->Calificaciones();
             break;
 
         case '/clases-alumno':
-            $vistaAlumno->ClasesAlumno();
+            $alumnoController->ClasesAlumno();
             break;
 
 
@@ -148,7 +150,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
             //finaliza eliminacion de maestros y alumnos
 
-            //edita datos
+            //puede editar los datos el admin
         case '/maestro-update':
             $controller->updateMaestro($_POST);
             break;
@@ -157,11 +159,15 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             $controller->updateAlumno($_POST);
             break;
 
-
- case '/perfil-maestro-update':
+            // el perdil del maestro puede editar sus datos
+        case '/perfil-maestro-update':
             $MaestroController->updatePerfilMaestro($_POST);
             break;
 
+            //el perfil del alumno puede editar sus datos
+        case '/perfil-alumno-update':
+            $alumnoController->updatePerfilAlumno($_POST);
+            break;
 
 
 
