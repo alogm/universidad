@@ -100,7 +100,7 @@ $userData = $_SESSION['user'];
                     <?php foreach ($data as $index => $admin) { ?>
                         <tr class="<?= $index % 2 === 0 ? 'bg-slate-300' : 'bg-white' ?>">
 
-                            <td class="border border-gray-300"><?= $admin["id_materia"] ?></td>
+                            <td class="border border-gray-300"><?= $index + 1 ?></td>
                             <td class="border border-gray-300"><?= $admin["materia"] ?></td>
                             <td class="border border-gray-300"><?= $admin["nombre_maestro"] ?></td>
                             <td class="border border-gray-300"><?= $admin["total_alumnos"] ?></td>

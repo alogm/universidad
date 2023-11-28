@@ -28,9 +28,20 @@ $userData = $_SESSION['user'];
         </section>
 
         <section id="admin" class="text-center">
-            <h2>Hola Maestro <?php echo $userData['nombre']; ?></h2>
-            <p>Su Correo: <?php echo $userData['correo']; ?></p>
+            <h2>Hola Maestro <?= $userData['nombre']; ?></h2>
+            <p>Su Correo: <?= $userData['correo']; ?></p>
         </section>
+
+        <?php
+        date_default_timezone_set('America/Mexico_City');
+
+        $fecha = date('Y-m-d');
+        $hora = date('H:i');
+
+        echo "$fecha";
+        echo "<br>";
+        echo "$hora";
+        ?>
 
         <section id="cuerpo" class="mt-2">
             <h2 class="text-center mb-2">MENU MAESTRO</h2>
@@ -84,27 +95,21 @@ $userData = $_SESSION['user'];
                     </thead>
 
                     <tbody>
-                        <?php foreach ($data as $index => $admin) { ?>
+                        <?php foreach ($data as $row) {
+                            $alumnos_clase_id = $row['id_alumnos_clase']; ?>
                             <tr class="<?= $index % 2 === 0 ? 'bg-slate-300' : 'bg-white' ?>">
 
 
-                                <td class="border border-gray-300"><?= $admin["nombre_alumno"] ?></td>
-                                <td class="border border-gray-300"><?= $admin["calificacion"] ?></td>
-                                <td class="border border-gray-300"><?= $admin["comentarios"] ?></td>
+                                <td class="border border-gray-300"><?= $row["nombre_alumno"] ?></td>
+                                <td class="border border-gray-300"><?= $row["calificacion"] ?></td>
+                                <td class="border border-gray-300"><?= $row["comentarios"] ?></td>
                                 <td class="border border-gray-300 ">
 
-                                    <form action="" method="post">
-                                        <input type="hidden" name="id" value="<?= $admin['nombre_alumno'] ?>">
-                                        <button type="submit">
-                                            <span class="material-symbols-outlined text-red-600">delete</span>
-                                        </button>
-                                    </form>
+                                    <a href="/edit-calificaciones?id=<?= $row['id_alumnos_clase'] ?> "> <span class="material-symbols-outlined">
+                                            edit_square
+                                        </span></a>
 
-                                    <button>
-                                        <a href="/"> <span class="material-symbols-outlined">
-                                                edit_square
-                                            </span></a>
-                                    </button>
+
                                 </td>
 
                             </tr>

@@ -45,16 +45,22 @@ class Admin
     public function Roles()
     {
         $res = $this->connection->query("SELECT
+        u.nombre AS nombre_usuario,
+        r.rol,
         CASE
-            WHEN alumnos.id IS NOT NULL THEN 'Alumno'
-            WHEN maestros.id IS NOT NULL THEN 'Maestro'
-        END AS rol,
-        COALESCE(alumnos.id, maestros.id) AS usuario_id,
-        COALESCE(alumnos.nombre, maestros.nombre) AS nombre,
-        usuarios.rol_id
-        FROM usuarios
-        LEFT JOIN alumnos ON usuarios.id = alumnos.id_rol
-        LEFT JOIN maestros ON usuarios.id = maestros.id_rol;");
+            WHEN r.rol = 'maestro' THEN m.nombre
+            WHEN r.rol = 'alumno' THEN a.nombre
+            ELSE ''
+        END AS nombre_persona
+            FROM
+                usuarios u
+            JOIN
+                roles r ON u.rol_id = r.id
+            LEFT JOIN
+                maestros m ON u.id = m.id_rol
+            LEFT JOIN
+                alumnos a ON u.id = a.id_rol;
+            ");
         $data = $res->fetchAll(PDO::FETCH_ASSOC);
 
         return $data;
@@ -69,17 +75,17 @@ class Admin
         $direccion = $data['direccion'];
         $fechaNacimiento = $data['fecha_nacimieno'];
         $idMateria = $data['id_materia'];
-    
+
 
         $stmt = $this->connection->prepare("INSERT INTO maestros (nombre, correo, direccion, fecha_nacimiento) VALUES (?, ?, ?, ?)");
         $stmt->execute([$nombre, $correo, $direccion, $fechaNacimiento]);
-    
+
         $idMaestro = $this->connection->lastInsertId();
-    
-        
+
+
         $stmt = $this->connection->prepare("INSERT INTO clases (id_maestro, id_materia) VALUES (?, ?)");
         $stmt->execute([$idMaestro, $idMateria]);
-    
+
         return true;
     }
     public function obtenerListaMaterias()
@@ -88,9 +94,9 @@ class Admin
         $materias = $res->fetchAll(PDO::FETCH_ASSOC);
         return $materias;
     }
-    
 
-    
+
+
     public function addAlumno($data)
     {
         $matricula = $data['matricula'];

@@ -28,4 +28,18 @@ class MaestroController
 
         include($_SERVER["DOCUMENT_ROOT"] . "/views/viewsMaestro/VistaAlumnosMaestro.php");
     }
+    public function editCalificaciones($id)
+    {
+        $res = new Maestros();
+        $data = $res->editCalificaciones($id);
+
+        include $_SERVER['DOCUMENT_ROOT'] . "/views/viewsMaestro/editCalificaciones.php";
+    }
+    public function updateCalificacion($data)
+    {
+        $res = new Maestros();
+        $updateData = $res->updateCalificacion($data);
+
+        header("Location: /vista-maestro-alumnos");
+    }
 }

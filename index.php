@@ -79,6 +79,10 @@ if ($_SERVER["REQUEST_METHOD"] === "GET") {
             $alumnoController->EditPerfilAlumno($id_alumno);
             break;
 
+        case '/edit-calificaciones':
+            $MaestroController->editCalificaciones($_GET["id"]);
+            break;
+
             //fin 
 
             // solo enrutamiento de vistas no hace ninguna accion post
@@ -95,7 +99,7 @@ if ($_SERVER["REQUEST_METHOD"] === "GET") {
 
             // b) vistas de maestros
         case '/vista-maestro-alumnos':
-            $id_maestro = $_SESSION['user']['id']; 
+            $id_maestro = $_SESSION['user']['id'];
             $MaestroController->MaestroVistaAlumnos($id_maestro);
             break;
 
@@ -169,6 +173,10 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             //el perfil del alumno puede editar sus datos
         case '/perfil-alumno-update':
             $alumnoController->updatePerfilAlumno($_POST);
+            break;
+
+        case '/calificacion-update':
+            $MaestroController->updateCalificacion($_POST);
             break;
 
 

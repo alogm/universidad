@@ -60,7 +60,7 @@ $userData = $_SESSION['user'];
         </section>
 
         <section id="Dashboard" class="mb-4">
-            <h1 class="text-center text-4xl text-black p-6">Editar Datos de perfil</h1>
+            <h1 class="text-center text-4xl text-black p-6">Califica y comenta</h1>
         </section>
 
         <section id="bienvenido" class="w-full bg-white p-6 max-w-screen-xl">
@@ -68,45 +68,28 @@ $userData = $_SESSION['user'];
             <p class="text-left">Los cambios realizados se veran reflejados hasta iniciar sesion nuevamente</p>
         </section>
 
-        <form action="/perfil-maestro-update" method="post" class="mt-4">
+        
+        <form action="/calificacion-update" method="post" class="mt-4">
 
-            <input type="hidden" name="id" value="<?= $userData['id']; ?>">
-
-            <div class="mb-2">
-                <label class="block">1.-Correo Electronico:</label>
-                <input type="text" name="correo" value="<?= $userData['correo']; ?>" class="border border-gray-300 w-full rounded p-2">
-            </div>
+            <input type="hidden" name="id" value="<?= $data['id']; ?>">
 
             <div class="mb-2">
-                <label class="block">2.-Contraseña ingresa para cambiar la contraseña:</label>
-                <input type="text" name="contrasena" class="border border-gray-300 w-full rounded p-2">
-            </div>
+    <label class="block">1.-Calificacion:</label>
+    <input type="text" name="calificacion" value="<?= $data['calificacion']; ?>" class="border border-gray-300 w-full rounded p-2">
+</div>
+
 
             <div class="mb-2">
-                <label class="block">3.-Nombre:</label>
-                <input type="text" name="nombre" value="<?= $userData['nombre']; ?>" class="border border-gray-300 w-full rounded p-2">
-            </div>
-
-            <div class="mb-2">
-                <label class="block">4.-Apellido:</label>
-                <input type="text" name="apellido" value="<?= $userData['apellido']; ?>" class="border border-gray-300 w-full rounded p-2">
-            </div>
-
-            <div class="mb-2">
-                <label class="block">4.-Direccion:</label>
-                <input type="text" name="direccion" value="<?= $userData['direccion']; ?>" class="border border-gray-300 w-full rounded p-2">
-            </div>
-
-            <div class="mb-2">
-                <label class="block">4.-Fecha de nacimiento:</label>
-                <input type="date" name="fecha_nacimieno" value="<?= $userData['fecha_nacimiento']; ?>" class="border border-gray-300 w-full rounded p-2">
+                <label class="block">2.-Comentarios</label>
+                <input type="text" name="comentarios" value="<?= $data['comentarios']; ?>" class="border border-gray-300 w-full rounded p-2">
             </div>
 
             <button type="submit" name="guardar" class="bg-blue-500 hover:bg-blue-600 text-white rounded p-2 mt-4">
                 Guardar cambios
             </button>
-            <a href="vista-maestro-alumnos" class="bg-neutral-400 hover:bg-teal-400 text-white rounded p-2 mt-4">Cancelar</a>
+            <a href="/vista-maestro-alumnos" class="bg-neutral-400 hover:bg-teal-400 text-white rounded p-2 mt-4">Cancelar</a>
         </form>
+ 
     </section>
 </body>
 
