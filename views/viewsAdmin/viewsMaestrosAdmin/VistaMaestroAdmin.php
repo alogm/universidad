@@ -80,7 +80,6 @@
                         <th class="border border-gray-300 text-left align-middle">Email</th>
                         <th class="border border-gray-300 text-left align-middle">Direccion</th>
                         <th class="border border-gray-300 text-left align-middle">Fecha de Nacimiento</th>
-                        <th class="border border-gray-300 text-left align-middle">Clase Asignada</th>
                         <th class="border border-gray-300 text-left align-middle">Acciones</th>
                     </tr>
                 </thead>
@@ -103,9 +102,9 @@
                                     </button>
                                 </form>
 
-                                    <a href="/vista-edit?id=<?= $admin['id'] ?>"> <span class="material-symbols-outlined">
-                                            edit_square
-                                        </span></a>
+                                <a href="/vista-edit?id=<?= $admin['id'] ?>"> <span class="material-symbols-outlined">
+                                        edit_square
+                                    </span></a>
 
                             </td>
 
@@ -117,10 +116,7 @@
             </table>
         </div>
 
-
     </section>
-
-
 
 </body>
 

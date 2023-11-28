@@ -113,8 +113,7 @@ $userData = $_SESSION['user'];
                 </table>
             </div>
         </section>
-
-
+        
     </section>
 </body>
 

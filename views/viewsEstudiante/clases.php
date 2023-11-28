@@ -27,7 +27,7 @@ $userData = $_SESSION['user'];
         </section>
 
         <section id="admin" class="text-center">
-        <h2>Hola <?php echo $userData['nombre']; ?></h2>
+            <h2>Hola <?php echo $userData['nombre']; ?></h2>
             <p>Tu correo <?php echo $userData['correo']; ?></p>
         </section>
 
@@ -63,7 +63,7 @@ $userData = $_SESSION['user'];
                 Alumno
             </div>
         </section>
-        
+
 
         <section id="Dashboard" class="mb-4">
             <h1 class="text-center text-4xl text-black p-6">Esquema de Clases</h1>
@@ -72,6 +72,47 @@ $userData = $_SESSION['user'];
         <section id="bienvenido" class="w-full bg-white p- max-w-screen-xl">
             <h6 class="text-left">Tus Materias Inscritas</h6>
             <p class="text-left"></p>
+        </section>
+        <section>
+            <div class="w-full p-4 overflow-x-auto">
+                <table class="w-full border border-gray-300">
+                    <thead>
+                        <tr>
+
+                            <th class="border border-gray-300 text-left align-middle">Materia</th>
+                            <th class="border border-gray-300 text-left align-middle">Dar de baja</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <?php foreach ($data as $index => $admin) { ?>
+                            <tr class="<?= $index % 2 === 0 ? 'bg-slate-300' : 'bg-white' ?>">
+
+
+                                <td class="border border-gray-300"><?= $admin["nombre_materia"] ?></td>
+                                <td class="border border-gray-300 ">
+
+                                    <form action="" method="post">
+                                        <input type="hidden" name="id" value="<?= $admin['nombre_materia'] ?>">
+                                        <button type="submit">
+                                            <span class="material-symbols-outlined text-red-600">delete</span>
+                                        </button>
+                                    </form>
+
+                                    <button>
+                                        <a href="/"> <span class="material-symbols-outlined">
+                                                edit_square
+                                            </span></a>
+                                    </button>
+                                </td>
+
+                            </tr>
+
+                        <?php } ?>
+
+                    </tbody>
+                </table>
+            </div>
         </section>
     </section>
 </body>

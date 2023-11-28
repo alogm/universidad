@@ -11,7 +11,6 @@ class Maestros
         $data = new Data();
         $this->connection = $data->connect();
     }
-
     public function DatosAlumno($id_maestro)
     {
         $stmt = $this->connection->prepare("
@@ -32,34 +31,30 @@ class Maestros
             WHERE
                 ma.id = :id_maestro
         ");
-    
+
         $stmt->bindParam(':id_maestro', $id_maestro, PDO::PARAM_INT);
         $stmt->execute();
-    
+
         $data = $stmt->fetchAll(PDO::FETCH_ASSOC);
         return $data;
     }
-    
-
     public function editPerfilMaestro($id)
     {
         $stmt = $this->connection->prepare("SELECT * FROM maestros WHERE id = :id");
         $stmt->bindParam(':id', $id, PDO::PARAM_INT);
         $stmt->execute();
-    
+
         $data = $stmt->fetch(PDO::FETCH_ASSOC);
-    
+
         return $data;
     }
     public function updatePerfilMaestro($data)
-{
-    session_start();
+    {
+        session_start();
 
-    // Verificar si la contraseña se proporciona y no está en blanco antes de encriptarla
-    $contrasena = isset($data["contrasena"]) && $data["contrasena"] !== "" ? password_hash($data["contrasena"], PASSWORD_DEFAULT) : null;
+        $contrasena = isset($data["contrasena"]) && $data["contrasena"] !== "" ? password_hash($data["contrasena"], PASSWORD_DEFAULT) : null;
 
-
-    $stmt = $this->connection->prepare("
+        $stmt = $this->connection->prepare("
         UPDATE maestros 
         SET 
         nombre = :nombre, 
@@ -71,23 +66,18 @@ class Maestros
         WHERE id = :id
     ");
 
-    $stmt->bindParam(':nombre', $data["nombre"]);
-    $stmt->bindParam(':correo', $data["correo"]);
-    
-    // Incluir la contraseña solo si se proporciona y no está en blanco
-    if ($contrasena !== null) {
-        $stmt->bindParam(':contrasena', $contrasena);
+        $stmt->bindParam(':nombre', $data["nombre"]);
+        $stmt->bindParam(':correo', $data["correo"]);
+
+        if ($contrasena !== null) {
+            $stmt->bindParam(':contrasena', $contrasena);
+        }
+
+        $stmt->bindParam(':direccion', $data["direccion"]);
+        $stmt->bindParam(':fecha_nacimiento', $data["fecha_nacimieno"]);
+        $stmt->bindParam(':apellido', $data["apellido"]);
+        $stmt->bindParam(':id', $_SESSION['user']['id']);
+
+        $stmt->execute();
     }
-
-    $stmt->bindParam(':direccion', $data["direccion"]);
-    $stmt->bindParam(':fecha_nacimiento', $data["fecha_nacimieno"]);
-    $stmt->bindParam(':apellido', $data["apellido"]);
-    $stmt->bindParam(':id', $_SESSION['user']['id']);
-
-    $stmt->execute();
-}
-
-
-    
-
 }

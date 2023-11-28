@@ -3,20 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="/dist/output.css" rel="stylesheet">
     <title>Document</title>
 </head>
-<body>
-    <h1>login</h1>
-    <form action="/inicio" method="post">
+<body class="bg-gray-100 flex items-center justify-center h-screen">
 
-    <label for="">email</label>
-    <input type="text" name="correo">
+    <div class="bg-white p-8 rounded shadow-md max-w-xs w-full">
+       
 
-    <label for="">contraseña</label>
-    <input type="text" name="contrasena">
+        <div class="flex justify-center mb-4">
+            <img class="w-30 h-30 rounded-full" src="/img/logo.jpg" alt="logo universidad">
+        </div>
 
-    <button type="submit">enviar</button>
-    </form>
+        <form action="/inicio" method="post">
+            <label class="block mb-2" for="correo">Email</label>
+            <input class="w-full p-2 border rounded" type="text" name="correo" id="correo">
+
+            <label class="block mt-4 mb-2" for="contrasena">Contraseña</label>
+            <input class="w-full p-2 border rounded" type="password" name="contrasena" id="contrasena">
+
+            <button class="mt-4 bg-blue-500 text-white py-2 px-4 rounded" type="submit">Enviar</button>
+        </form>
+    </div>
     
 </body>
 </html>

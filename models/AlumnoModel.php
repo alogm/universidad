@@ -23,19 +23,19 @@ class Alumno
     public function updatePerfilAlumno($data)
     {
         $contrasena = isset($data["contrasena"]) && $data["contrasena"] !== "" ? password_hash($data["contrasena"], PASSWORD_DEFAULT) : null;
-        
+
         $stmt = $this->connection->prepare("
-    UPDATE alumnos 
-    SET 
-    matricula = :matricula,
-    correo = :correo,           
-    " . ($contrasena !== null ? "contrasena = :contrasena," : "") . "
-    nombre = :nombre, 
-    apellido = :apellido, 
-    direccion = :direccion, 
-    fecha_nacimieno = :fecha_nacimieno
-    WHERE id = :id
-");
+            UPDATE alumnos 
+            SET 
+            matricula = :matricula,
+            correo = :correo,           
+            " . ($contrasena !== null ? "contrasena = :contrasena," : "") . "
+            nombre = :nombre, 
+            apellido = :apellido, 
+            direccion = :direccion, 
+            fecha_nacimieno = :fecha_nacimieno
+            WHERE id = :id
+            ");
 
         $stmt->bindParam(':matricula', $data["matricula"]);
         $stmt->bindParam(':correo', $data["correo"]);
@@ -78,7 +78,7 @@ class Alumno
 
         $stmt->bindParam(':id_alumno', $id_alumno, PDO::PARAM_INT);
         $stmt->execute();
-    
+
         $data = $stmt->fetchAll(PDO::FETCH_ASSOC);
         return $data;
     }

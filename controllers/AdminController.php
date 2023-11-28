@@ -15,9 +15,9 @@ class AdminController
     }
     public function vistaalumnos()
     {
-        $alumnos = new Admin(); // Cambia a un nombre más apropiado según tus datos
-        $data = $alumnos->AllAlumnos(); // Llama al método que obtiene los datos
-    
+        $alumnos = new Admin(); 
+        $data = $alumnos->AllAlumnos(); 
+
         include $_SERVER['DOCUMENT_ROOT'] . "/views/viewsAdmin/viewsAdminEstudiante/VistaAEstudianteAdmin.php";
     }
     public function AllClases()
@@ -57,7 +57,7 @@ class AdminController
     public function delete($id)
     {
         $maestro = new Admin();
-        $delete = $maestro->Delete($id); 
+        $delete = $maestro->Delete($id);
 
         header("Location: /vista-maestros");
     }
@@ -96,7 +96,6 @@ class AdminController
         $updateData = $res->updateMaestro($data);
 
         header("Location: /vista-maestros");
-
     }
     public function updateAlumno($data)
     {
@@ -105,7 +104,4 @@ class AdminController
 
         header("Location: /vista-alumnos");
     }
-
-
-
 }

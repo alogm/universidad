@@ -108,7 +108,8 @@ if ($_SERVER["REQUEST_METHOD"] === "GET") {
             break;
 
         case '/clases-alumno':
-            $alumnoController->ClasesAlumno();
+            $id_alumno = $_SESSION['user']['id'];
+            $alumnoController->ClasesAlumno($id_alumno);
             break;
 
 

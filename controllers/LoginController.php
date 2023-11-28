@@ -7,15 +7,15 @@ class LoginController
     {
         $login = new Login();
         $newLogin = $login->loginModel($data);
-    
+
         if ($newLogin) {
-            
+
             extract($newLogin);
-    
+
             if (password_verify($data["contrasena"], $contrasena)) {
                 session_start();
                 $_SESSION['user'] = $newLogin;
-    
+
                 if (isset($newLogin['rol_id'])) {
                     $rol_id = $newLogin['rol_id'];
                 } elseif (isset($newLogin['id_rol'])) {
@@ -24,7 +24,7 @@ class LoginController
                     echo "Error: No se encontró la columna del rol";
                     return;
                 }
-    
+
                 switch ($rol_id) {
                     case '1':
                         header('Location: /vista-home');
@@ -46,6 +46,4 @@ class LoginController
             echo "No se encontró el usuario";
         }
     }
-    
-
 }

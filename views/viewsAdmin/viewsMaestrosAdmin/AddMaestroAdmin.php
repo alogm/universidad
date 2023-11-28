@@ -72,7 +72,7 @@
                 <label class="block">1.-Nombre:</label>
                 <input type="text" name="nombre" class="border border-gray-300 w-full rounded p-2">
             </div>
-            
+
 
             <div class="mb-2">
                 <label class="block">2.-Email:</label>
@@ -93,21 +93,7 @@
                 <label class="block">5.-Clase asignada</label>
             </div>
 
-            <!-- AddMaestroAdmin.php -->
-            <!-- ... tu código HTML anterior ... -->
-                    <?php print_r($data)?>
-            <label for="materia">Selecciona una materia:</label>
-            <select name="materia" id="materia">
-                
-                <?php foreach ($data as $index => $admin) :  ?>
-                
-                    <option value="<?php echo $admin['id']; ?>"><?php echo $materia['materia']; ?></option>
-                <?php endforeach; ?>
             </select>
-
-
-            <!-- ... tu código HTML posterior ... -->
-
 
             <button type="submit" name="guardar" class="bg-blue-500 hover:bg-blue-600 text-white rounded p-2 mt-4">
                 Guardar

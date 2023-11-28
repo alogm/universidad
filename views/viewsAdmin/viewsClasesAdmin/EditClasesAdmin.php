@@ -4,11 +4,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet"
-        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <script src="https://cdn.tailwindcss.com"></script>
     <title>Document</title>
 </head>
+
 <body class="flex bg-gray-100">
     <section id="bloque" class="bg-zinc-700 text-gray-400 h-screen flex flex-col justify-between p-4">
         <section id="logo" class="flex items-center">
@@ -48,7 +48,7 @@
         <section id="home" class="flex w-full bg-white p-4 " style="width: 1450px;">
             <div>
                 <a href="/vista-home" class="ml-2"><span class="material-symbols-outlined">menu</span>Home</a>
-                    
+
             </div>
             <div class="ml-auto">
                 <button> <span class="material-symbols-outlined">
@@ -67,7 +67,7 @@
             <p class="text-left"></p>
         </section>
 
-        
+
         <form action="" method="post" class="mt-4">
             <div class="mb-2">
                 <label class="block">1.-Nombre de la Materia:</label>
@@ -86,6 +86,4 @@
         </form>
     </section>
 </body>
-
-
 </html>

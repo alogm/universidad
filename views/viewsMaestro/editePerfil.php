@@ -110,6 +110,4 @@ $userData = $_SESSION['user'];
     </section>
 </body>
 
-
-
 </html>

@@ -15,11 +15,11 @@ $userData = $_SESSION['user'];
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet"
-        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <script src="https://cdn.tailwindcss.com"></script>
     <title>Document</title>
 </head>
+
 <body class="flex bg-gray-100">
     <section id="bloque" class="bg-zinc-700 text-gray-400 h-screen flex flex-col justify-between p-4">
         <section id="logo" class="flex items-center">
@@ -28,19 +28,19 @@ $userData = $_SESSION['user'];
         </section>
 
         <section id="admin" class="text-center">
-        <h2>Hola Maestro  <?php echo $userData['nombre']; ?></h2>
-            <p>Su Correo:  <?php echo $userData['correo']; ?></p>
+            <h2>Hola Maestro <?php echo $userData['nombre']; ?></h2>
+            <p>Su Correo: <?php echo $userData['correo']; ?></p>
         </section>
 
         <section id="cuerpo" class="mt-2">
             <h2 class="text-center mb-2">MENU MAESTRO</h2>
             <div class="flex flex-col items-center">
-               
+
                 <div>
                     <span class="material-symbols-outlined">school</span>
                     <a href="" class="ml-2">Alumnos</a>
                 </div>
-              
+
             </div>
         </section>
     </section>
@@ -48,10 +48,11 @@ $userData = $_SESSION['user'];
     <section class="w-1/2 p-4">
         <section id="home" class="flex w-full bg-white p-4 " style="width: 1450px;">
             <div>
-            <div>
-                <p class="ml-2"><span class="material-symbols-outlined">menu</span>
-                <a href="/home-maestro">Home</a> </p>
-            </div>
+                <div>
+                    <p class="ml-2"><span class="material-symbols-outlined">menu</span>
+                        <a href="/home-maestro">Home</a>
+                    </p>
+                </div>
             </div>
             <div class="ml-auto">
                 <a href="/edit-perfil-maestro"> <span class="material-symbols-outlined">
@@ -70,49 +71,49 @@ $userData = $_SESSION['user'];
             <p class="text-left"></p>
         </section>
         <section>
-        <div class="w-full p-4 overflow-x-auto">
-            <table class="w-full border border-gray-300">
-                <thead>
-                    <tr>
-                        
-                        <th class="border border-gray-300 text-left align-middle">Nombre de alumno</th>
-                        <th class="border border-gray-300 text-left align-middle">Calificacion</th>
-                        <th class="border border-gray-300 text-left align-middle">Mensaje</th>
-                        <th class="border border-gray-300 text-left align-middle">Acciones</th>
-                    </tr>
-                </thead>
+            <div class="w-full p-4 overflow-x-auto">
+                <table class="w-full border border-gray-300">
+                    <thead>
+                        <tr>
 
-                <tbody>
-                    <?php foreach ($data as $index => $admin) { ?>
-                    <tr class="<?= $index % 2 === 0 ? 'bg-slate-300' : 'bg-white' ?>">
-                        
+                            <th class="border border-gray-300 text-left align-middle">Nombre de alumno</th>
+                            <th class="border border-gray-300 text-left align-middle">Calificacion</th>
+                            <th class="border border-gray-300 text-left align-middle">Mensaje</th>
+                            <th class="border border-gray-300 text-left align-middle">Acciones</th>
+                        </tr>
+                    </thead>
 
-                        <td class="border border-gray-300"><?= $admin["nombre_alumno"] ?></td>
-                        <td class="border border-gray-300"><?= $admin["calificacion"] ?></td>
-                        <td class="border border-gray-300"><?= $admin["comentarios"] ?></td>
-                        <td class="border border-gray-300 ">
+                    <tbody>
+                        <?php foreach ($data as $index => $admin) { ?>
+                            <tr class="<?= $index % 2 === 0 ? 'bg-slate-300' : 'bg-white' ?>">
 
-                           <form action="" method="post">
-                           <input type="hidden" name="id" value="<?= $admin['nombre_alumno'] ?>"> 
-                           <button type="submit">
-                                <span class="material-symbols-outlined text-red-600">delete</span>
-                            </button>
-                           </form>
 
-                            <button>
-                               <a href="/views/viewsAdmin/viewsMaestrosAdmin/EditarMaestroAdmin.php"> <span class="material-symbols-outlined">
-                                    edit_square
-                                </span></a>
-                            </button>
-                        </td>
+                                <td class="border border-gray-300"><?= $admin["nombre_alumno"] ?></td>
+                                <td class="border border-gray-300"><?= $admin["calificacion"] ?></td>
+                                <td class="border border-gray-300"><?= $admin["comentarios"] ?></td>
+                                <td class="border border-gray-300 ">
 
-                    </tr>
+                                    <form action="" method="post">
+                                        <input type="hidden" name="id" value="<?= $admin['nombre_alumno'] ?>">
+                                        <button type="submit">
+                                            <span class="material-symbols-outlined text-red-600">delete</span>
+                                        </button>
+                                    </form>
 
-                    <?php } ?>
+                                    <button>
+                                        <a href="/views/viewsAdmin/viewsMaestrosAdmin/EditarMaestroAdmin.php"> <span class="material-symbols-outlined">
+                                                edit_square
+                                            </span></a>
+                                    </button>
+                                </td>
 
-                </tbody>
-            </table>
-        </div>
+                            </tr>
+
+                        <?php } ?>
+
+                    </tbody>
+                </table>
+            </div>
         </section>
     </section>
 </body>

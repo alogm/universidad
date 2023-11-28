@@ -6,18 +6,13 @@ class AlumnoController
 {
     public function HomeAlumno()
     {
-        include ($_SERVER["DOCUMENT_ROOT"] . "/views/PrincilpalEstudiante.php");
-    }
- 
-    public function ClasesAlumno()
-    {
-        include ($_SERVER['DOCUMENT_ROOT'] . "/views/viewsEstudiante/clases.php");
+        include($_SERVER["DOCUMENT_ROOT"] . "/views/PrincilpalEstudiante.php");
     }
     public function EditPerfilAlumno($id)
     {
         $alumno = new Alumno();
-        $data =$alumno->EditPerfilAlumno($id);
-        include ($_SERVER['DOCUMENT_ROOT'] . "/views/viewsEstudiante/EditePerfil.php");
+        $data = $alumno->EditPerfilAlumno($id);
+        include($_SERVER['DOCUMENT_ROOT'] . "/views/viewsEstudiante/EditePerfil.php");
     }
     public function updatePerfilAlumno($data)
     {
@@ -31,11 +26,13 @@ class AlumnoController
         $res = new Alumno();
         $data = $res->DatosMaterias($id_alumno);
 
-        include_once ($_SERVER["DOCUMENT_ROOT"] . "/views/viewsEstudiante/calificaciones.php");
+        include_once($_SERVER["DOCUMENT_ROOT"] . "/views/viewsEstudiante/calificaciones.php");
     }
+    public function ClasesAlumno($id_alumno)
+    {
+        $res = new Alumno();
+        $data = $res->DatosMaterias($id_alumno);
 
-   
-
-    
-
+        include($_SERVER['DOCUMENT_ROOT'] . "/views/viewsEstudiante/clases.php");
+    }
 }

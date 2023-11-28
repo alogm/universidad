@@ -87,7 +87,7 @@ $userData = $_SESSION['user'];
                             <th class="border border-gray-300 text-left align-middle">Acciones</th>
                         </tr>
                     </thead>
-            
+
                     <tbody>
                         <?php foreach ($data as $index => $admin) { ?>
                             <tr class="<?= $index % 2 === 0 ? 'bg-slate-300' : 'bg-white' ?>">
@@ -106,7 +106,7 @@ $userData = $_SESSION['user'];
                                     </form>
 
                                     <button>
-                                        <a href="/views/viewsAdmin/viewsMaestrosAdmin/EditarMaestroAdmin.php"> <span class="material-symbols-outlined">
+                                        <a href="/"> <span class="material-symbols-outlined">
                                                 edit_square
                                             </span></a>
                                     </button>
