@@ -22,9 +22,6 @@ class Alumno
     }
     public function updatePerfilAlumno($data)
     {
-
-        
-        // Verificar si la contraseña se proporciona y no está en blanco antes de encriptarla
         $contrasena = isset($data["contrasena"]) && $data["contrasena"] !== "" ? password_hash($data["contrasena"], PASSWORD_DEFAULT) : null;
         
         $stmt = $this->connection->prepare("
@@ -43,7 +40,6 @@ class Alumno
         $stmt->bindParam(':matricula', $data["matricula"]);
         $stmt->bindParam(':correo', $data["correo"]);
 
-        // Incluir la contraseña solo si se proporciona y no está en blanco
         if ($contrasena !== null) {
             $stmt->bindParam(':contrasena', $contrasena);
         }
@@ -59,5 +55,31 @@ class Alumno
         } catch (PDOException $e) {
             echo "Error: " . $e->getMessage();
         }
+    }
+    public function DatosMaterias($id_alumno)
+    {
+        $stmt = $this->connection->prepare(
+            "    
+            SELECT
+            m.materia AS nombre_materia,
+            ac.calificacion,
+            ac.comentarios
+        FROM
+            alumnos a
+        JOIN
+            alumnos_clase ac ON a.id = ac.id_alumno
+        JOIN
+            clases c ON ac.id_clase = c.id
+        JOIN
+            materias m ON c.id_materia = m.id
+        WHERE
+            a.id = :id_alumno;"
+        );
+
+        $stmt->bindParam(':id_alumno', $id_alumno, PDO::PARAM_INT);
+        $stmt->execute();
+    
+        $data = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        return $data;
     }
 }

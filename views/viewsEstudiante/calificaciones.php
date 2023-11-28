@@ -3,7 +3,7 @@
 
 if (!isset($_SESSION['user'])) {
 
-    header('Location: /ruta-a-tu-pagina-de-login');
+    header('Location: /index.php');
     exit();
 }
 
@@ -29,7 +29,7 @@ $userData = $_SESSION['user'];
         </section>
 
         <section id="admin" class="text-center">
-        <h2>Hola <?php echo $userData['nombre']; ?></h2>
+            <h2>Hola <?php echo $userData['nombre']; ?></h2>
             <p>Tu correo <?php echo $userData['correo']; ?></p>
         </section>
 
@@ -65,7 +65,7 @@ $userData = $_SESSION['user'];
                 Maestro
             </div>
         </section>
-        
+
 
         <section id="Dashboard" class="mb-4">
             <h1 class="text-center text-4xl text-black p-6">Calificaciones y mensajes de tus clases</h1>
@@ -75,6 +75,52 @@ $userData = $_SESSION['user'];
             <h6 class="text-left">Calificaciones y mensajes de tus clases</h6>
             <p class="text-left"></p>
         </section>
+        <section>
+            <div class="w-full p-4 overflow-x-auto">
+                <table class="w-full border border-gray-300">
+                    <thead>
+                        <tr>
+
+                            <th class="border border-gray-300 text-left align-middle">Nombre de alumno</th>
+                            <th class="border border-gray-300 text-left align-middle">Calificacion</th>
+                            <th class="border border-gray-300 text-left align-middle">Mensaje</th>
+                            <th class="border border-gray-300 text-left align-middle">Acciones</th>
+                        </tr>
+                    </thead>
+            
+                    <tbody>
+                        <?php foreach ($data as $index => $admin) { ?>
+                            <tr class="<?= $index % 2 === 0 ? 'bg-slate-300' : 'bg-white' ?>">
+
+
+                                <td class="border border-gray-300"><?= $admin["nombre_materia"] ?></td>
+                                <td class="border border-gray-300"><?= $admin["calificacion"] ?></td>
+                                <td class="border border-gray-300"><?= $admin["comentarios"] ?></td>
+                                <td class="border border-gray-300 ">
+
+                                    <form action="" method="post">
+                                        <input type="hidden" name="id" value="<?= $admin['nombre_materia'] ?>">
+                                        <button type="submit">
+                                            <span class="material-symbols-outlined text-red-600">delete</span>
+                                        </button>
+                                    </form>
+
+                                    <button>
+                                        <a href="/views/viewsAdmin/viewsMaestrosAdmin/EditarMaestroAdmin.php"> <span class="material-symbols-outlined">
+                                                edit_square
+                                            </span></a>
+                                    </button>
+                                </td>
+
+                            </tr>
+
+                        <?php } ?>
+
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </section>
     </section>
 </body>
 

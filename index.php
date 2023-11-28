@@ -95,7 +95,7 @@ if ($_SERVER["REQUEST_METHOD"] === "GET") {
 
             // b) vistas de maestros
         case '/vista-maestro-alumnos':
-            $id_maestro = $_SESSION['user']['id']; // Asume que 'id' es el campo que contiene el ID del maestro en tu sesión
+            $id_maestro = $_SESSION['user']['id']; 
             $MaestroController->MaestroVistaAlumnos($id_maestro);
             break;
 
@@ -103,7 +103,8 @@ if ($_SERVER["REQUEST_METHOD"] === "GET") {
 
             // c) vistas de alumno
         case '/calificaciones-alumno':
-            $alumnoController->Calificaciones();
+            $id_alumno = $_SESSION['user']['id'];
+            $alumnoController->DatosMaterias($id_alumno);
             break;
 
         case '/clases-alumno':

@@ -8,10 +8,7 @@ class AlumnoController
     {
         include ($_SERVER["DOCUMENT_ROOT"] . "/views/PrincilpalEstudiante.php");
     }
-    public function Calificaciones()
-    {
-        include ($_SERVER['DOCUMENT_ROOT'] . "/views/viewsEstudiante/calificaciones.php");
-    }
+ 
     public function ClasesAlumno()
     {
         include ($_SERVER['DOCUMENT_ROOT'] . "/views/viewsEstudiante/clases.php");
@@ -29,6 +26,16 @@ class AlumnoController
 
         header("Location: /home-alumnos");
     }
+    public function DatosMaterias($id_alumno)
+    {
+        $res = new Alumno();
+        $data = $res->DatosMaterias($id_alumno);
+
+        include_once ($_SERVER["DOCUMENT_ROOT"] . "/views/viewsEstudiante/calificaciones.php");
+    }
+
+   
+
     
 
 }
