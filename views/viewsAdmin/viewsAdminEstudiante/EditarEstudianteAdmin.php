@@ -1,5 +1,4 @@
 <?php
-session_start();
 $_SESSION["alumno_edit"] = $data["id"];
 ?>
 
@@ -107,6 +106,8 @@ $_SESSION["alumno_edit"] = $data["id"];
             <button type="submit" name="guardar" class="bg-blue-500 hover:bg-blue-600 text-white rounded p-2 mt-4">
                 Guardar
             </button>
+            <a href="/vista-alumnos" class="bg-blue-500 hover:bg-blue-600 text-white rounded p-2 mt-4">Cancelar</a>
+        
         </form>
     </section>
 </body>

@@ -27,7 +27,7 @@ class Admin
     }
     public function AllClases()
     {
-        $res = $this->connection->query("  SELECT 
+        $res = $this->connection->query("SELECT 
         m.id AS id_materia,
         m.materia,
         ma.nombre AS nombre_maestro,
@@ -69,16 +69,28 @@ class Admin
         $direccion = $data['direccion'];
         $fechaNacimiento = $data['fecha_nacimieno'];
         $idMateria = $data['id_materia'];
+    
 
-
-        $res = $this->connection->query("INSERT INTO  maestros (nombre, correo, direccion, fecha_nacimiento)
-                VALUES ('$nombre', '$correo', '$direccion', '$fechaNacimiento')");
-
-        if ($res) {
-            return true;
-        }
-        return false;
+        $stmt = $this->connection->prepare("INSERT INTO maestros (nombre, correo, direccion, fecha_nacimiento) VALUES (?, ?, ?, ?)");
+        $stmt->execute([$nombre, $correo, $direccion, $fechaNacimiento]);
+    
+        $idMaestro = $this->connection->lastInsertId();
+    
+        
+        $stmt = $this->connection->prepare("INSERT INTO clases (id_maestro, id_materia) VALUES (?, ?)");
+        $stmt->execute([$idMaestro, $idMateria]);
+    
+        return true;
     }
+    public function obtenerListaMaterias()
+    {
+        $res = $this->connection->query("SELECT * FROM materias");
+        $materias = $res->fetchAll(PDO::FETCH_ASSOC);
+        return $materias;
+    }
+    
+
+    
     public function addAlumno($data)
     {
         $matricula = $data['matricula'];

@@ -34,19 +34,15 @@ $userData = $_SESSION['user'];
         </section>
 
         <?php
-        // Establecer la zona horaria para la Ciudad de México
         date_default_timezone_set('America/Mexico_City');
 
-        // Obtener la fecha y hora actual
-        $fechaHoraActual = date('Y-m-d H:i:s');
+        $fecha= date('Y-m-d');
+        $hora = date('H:i');
 
-        // Mostrar la fecha y hora en la pantalla
-        echo "La fecha y hora:  ";
+        echo "$fecha";
         echo "<br>";
-        echo "$fechaHoraActual"
+        echo "$hora";
         ?>
-
-
 
         <section id="cuerpo" class="mt-2">
             <h2 class="text-center mb-2">MENU MAESTRO</h2>

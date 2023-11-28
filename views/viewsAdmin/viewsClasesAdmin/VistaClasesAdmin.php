@@ -1,3 +1,12 @@
+<?php
+if (!isset($_SESSION['user'])) {
+
+    header('Location: /index.php');
+    exit();
+}
+
+$userData = $_SESSION['user'];
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -17,9 +26,20 @@
         </section>
 
         <section id="admin" class="text-center">
-            <h2>admin</h2>
-            <p>Administrador</p>
+        <h2>admin:  <?php echo $userData['nombre']; ?></h2>
+            <p>admin:  <?php echo $userData['correo']; ?></p>
         </section>
+
+        <?php
+        date_default_timezone_set('America/Mexico_City');
+
+        $fecha= date('Y-m-d');
+        $hora = date('H:i');
+
+        echo "$fecha";
+        echo "<br>";
+        echo "$hora";
+        ?>
 
         <section id="cuerpo" class="mt-2">
             <h2 class="text-center mb-2">MENU ADMINISTRACIÓN</h2>
@@ -51,9 +71,6 @@
 
             </div>
             <div class="ml-auto">
-                <button> <span class="material-symbols-outlined">
-                        expand_more
-                    </span></button>
                 Administrador
             </div>
         </section>

@@ -32,6 +32,17 @@ $userData = $_SESSION['user'];
             <p>Tu correo <?php echo $userData['correo']; ?></p>
         </section>
 
+        <?php
+        date_default_timezone_set('America/Mexico_City');
+
+        $fecha= date('Y-m-d');
+        $hora = date('H:i');
+
+        echo "$fecha";
+        echo "<br>";
+        echo "$hora";
+        ?>
+
         <section id="cuerpo" class="mt-2">
             <h2 class="text-center mb-2">MENU ALUMNOS</h2>
             <div class="flex flex-col items-center">

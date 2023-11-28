@@ -86,7 +86,7 @@ if ($_SERVER["REQUEST_METHOD"] === "GET") {
             // a) vistas de admin
 
         case '/crear-maestros':
-            $vistasControl->crearMaestro();
+            $controller->obtenerListaMaterias();
             break;
 
         case '/crear-alumnos':

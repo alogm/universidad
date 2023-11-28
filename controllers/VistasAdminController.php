@@ -15,11 +15,6 @@ class VistasAdminController
     {
         include $_SERVER['DOCUMENT_ROOT'] . "/views/viewsAdmin/viewsAdminEstudiante/VistaAEstudianteAdmin.php";
     }
-
-    public function crearMaestro()
-    {
-        include $_SERVER['DOCUMENT_ROOT'] . "/views/viewsAdmin/viewsMaestrosAdmin/AddMaestroAdmin.php";
-    }
     public function crearAlumno()
     {
         include $_SERVER['DOCUMENT_ROOT'] . "/views/viewsAdmin/viewsAdminEstudiante/AddEstudianteAdmin.php";

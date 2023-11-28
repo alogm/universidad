@@ -20,6 +20,14 @@ class AdminController
 
         include $_SERVER['DOCUMENT_ROOT'] . "/views/viewsAdmin/viewsAdminEstudiante/VistaAEstudianteAdmin.php";
     }
+    public function obtenerListaMaterias()
+    {
+        $materias = new Admin();
+        $data = $materias->obtenerListaMaterias();
+
+        include $_SERVER['DOCUMENT_ROOT'] . "/views/viewsAdmin/viewsMaestrosAdmin/AddMaestroAdmin.php";
+    }
+
     public function AllClases()
     {
         $materias = new Admin();
@@ -40,10 +48,12 @@ class AdminController
     public function crearMaestro($data)
     {
         $maestro = new Admin();
+        $data['materias'] = $maestro->obtenerListaMaterias();
         $newmaestro = $maestro->add($data);
 
         header("Location: /vista-maestros");
     }
+
     public function crearAlumno($data)
     {
         $alumno = new Admin();
