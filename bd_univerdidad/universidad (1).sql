@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 28-11-2023 a las 17:10:32
+-- Tiempo de generación: 30-11-2023 a las 12:55:01
 -- Versión del servidor: 10.4.28-MariaDB
 -- Versión de PHP: 8.2.4
 
@@ -44,14 +44,16 @@ CREATE TABLE `alumnos` (
 --
 
 INSERT INTO `alumnos` (`id`, `matricula`, `correo`, `contrasena`, `nombre`, `apellido`, `direccion`, `fecha_nacimieno`, `id_rol`) VALUES
-(1, '7984651', 'car@car', '$2y$10$jaB3eK0PKveDj3ReuGAROO1i7xOUhNRFWfZUT/q8aPrtr4Isq2IGu', 'carlos', 'sainz', 'dmmsamd', '2002-06-11', 2),
-(2, '2', 'alumno@alumno', '$2y$10$XqeJEvv1YhXfu5SOXnlJvOUGM3aF8xIUrFmV3BYfryNQqJIsm6a5e', 'Juli', 'Castro', 'calle del silencio 25', '1982-04-06', 2),
-(3, '3', 'fer@gmail', 'ser', 'Mar', 'Gutierres', 'calle norte 17 no 85', '1945-12-24', 2),
-(4, '4', 'ger@gmail', 'ser', 'Albert', 'Tabera', 'siervo triste mz2', '2005-09-15', 2),
-(5, '5', 'lal@gmail', 'ser', 'pika', 'sainz', 'noche triste 62', '2000-04-25', 2),
-(6, '6', 'pik@gmail', 'ser', 'pedro', 'esperaza', 'belizario', '1999-12-31', 2),
-(7, '7', 'ego@gmail', 'ser', 'rogelio', 'guerrero', 'no rompas mas', '2006-06-06', 2),
-(9, '8451', '', '', 'alumno', 'alumno', NULL, NULL, NULL);
+(11, '1', 'ser@gmail', '$2y$10$FvtZdQlb7PVVfH4nXqatbehnJMfkf02L1UUbH9GNIoQlIQBNk4PVW', 'Victor', 'rosales', 'cerrada de la rinconada 8', '1991-05-08', 2),
+(12, '2', 'der@gmail', '$2y$10$FvtZdQlb7PVVfH4nXqatbehnJMfkf02L1UUbH9GNIoQlIQBNk4PVW', 'Juli', 'Castro', 'calle del silencio 25', '1982-04-06', 2),
+(13, '3', 'fer@gmail', '$2y$10$FvtZdQlb7PVVfH4nXqatbehnJMfkf02L1UUbH9GNIoQlIQBNk4PVW', 'Mar', 'Gutierres', 'calle norte 17 no 85', '1945-12-24', 2),
+(14, '4', 'ger@gmail', '$2y$10$FvtZdQlb7PVVfH4nXqatbehnJMfkf02L1UUbH9GNIoQlIQBNk4PVW', 'Albert', 'Tabera', 'siervo triste mz2', '2005-09-15', 2),
+(15, '5', 'lal@gmail', '$2y$10$FvtZdQlb7PVVfH4nXqatbehnJMfkf02L1UUbH9GNIoQlIQBNk4PVW', 'pika', 'sainz', 'noche triste 62', '2000-04-25', 2),
+(16, '6', 'pik@gmail', '$2y$10$FvtZdQlb7PVVfH4nXqatbehnJMfkf02L1UUbH9GNIoQlIQBNk4PVW', 'pedro', 'esperaza', 'belizario', '1999-12-31', 2),
+(17, '7', 'ego@gmail', '$2y$10$FvtZdQlb7PVVfH4nXqatbehnJMfkf02L1UUbH9GNIoQlIQBNk4PVW', 'rogelio', 'guerrero', 'no rompas mas', '2006-06-06', 2),
+(18, '', '', '', 'juan', '', '', '0000-00-00', NULL),
+(19, '', '', '', 'irma', '', '', '0000-00-00', NULL),
+(20, '123456', 'alumno@alumno', '$2y$10$Ndu479A4nioSFeCX3T5RROBRi3N8TXle440QuqYIkPDH53mcfZKlO', 'antonio', 'guerrero', 'porfirio diaz 52', '1993-11-30', 2);
 
 -- --------------------------------------------------------
 
@@ -72,25 +74,21 @@ CREATE TABLE `alumnos_clase` (
 --
 
 INSERT INTO `alumnos_clase` (`id`, `id_alumno`, `id_clase`, `calificacion`, `comentarios`) VALUES
-(1, 1, 1, 9, 'puedes mejorar'),
-(2, 2, 2, NULL, NULL),
-(3, 3, 3, NULL, NULL),
-(4, 4, 4, NULL, NULL),
-(5, 5, 5, NULL, NULL),
-(6, 6, 6, NULL, NULL),
-(7, 7, 7, NULL, NULL),
-(8, 2, 1, NULL, NULL),
-(9, 3, 1, NULL, NULL),
-(10, 4, 1, NULL, NULL),
-(11, 5, 1, NULL, NULL),
-(12, 1, 2, NULL, NULL),
-(13, 1, 4, NULL, NULL),
-(23, 2, 12, 6, 'hechale hanas'),
-(24, 6, 12, 8, 'muy bien '),
-(25, 5, 12, 9, 'puedes mejorar'),
-(26, 4, 12, NULL, NULL),
-(27, 3, 12, NULL, NULL),
-(28, 2, 12, NULL, NULL);
+(30, 12, 38, NULL, NULL),
+(31, 13, 39, NULL, NULL),
+(32, 14, 40, NULL, NULL),
+(33, 15, 41, NULL, NULL),
+(34, 16, 42, NULL, NULL),
+(35, 17, 46, NULL, NULL),
+(36, 20, 46, 10, 'buen trabajo'),
+(37, 11, 46, NULL, NULL),
+(38, 12, 46, NULL, NULL),
+(39, 13, 46, NULL, NULL),
+(40, 14, 46, NULL, NULL),
+(41, 20, 38, NULL, NULL),
+(42, 20, 39, NULL, NULL),
+(43, 20, 40, NULL, NULL),
+(44, 20, 41, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -109,18 +107,14 @@ CREATE TABLE `clases` (
 --
 
 INSERT INTO `clases` (`id`, `id_maestro`, `id_materia`) VALUES
-(1, 8, 1),
-(2, 9, 2),
-(3, 10, 3),
-(4, 11, 4),
-(5, 12, 5),
-(6, 13, 6),
-(7, 14, 7),
-(8, 15, 1),
-(9, 20, 6),
-(10, 21, 4),
-(11, 22, 2),
-(12, 23, 5);
+(38, 40, 25),
+(39, 41, 26),
+(40, 42, 27),
+(41, 43, 28),
+(42, 44, 29),
+(43, 45, 30),
+(45, 46, 31),
+(46, 47, 29);
 
 -- --------------------------------------------------------
 
@@ -144,18 +138,15 @@ CREATE TABLE `maestros` (
 --
 
 INSERT INTO `maestros` (`id`, `nombre`, `correo`, `contrasena`, `direccion`, `fecha_nacimiento`, `id_rol`, `apellido`) VALUES
-(8, 'charly', 'carl@carl', '$2y$10$jwnlVSO46HV/aFYjcjBkyuPx2J2e2aP/Ew4hpzjRE.eZJXSSabA.a', 'calle de la asuncion 34', '2023-11-02', 3, 'guerrero'),
-(9, 'marleniux', 'kar@kar', '$2y$10$VpaKc1xcieaTs.1kZxweJuHX65dbS78DzGNef/Q.E6HS4WxdFY28G', 'felipe 30', '2023-06-28', 3, 'sainz lara'),
-(10, 'rodrigo Guerrero', 'rod@rod', 'rod', 'av de la reforma 482', '1991-05-08', 3, 'sainz'),
-(11, 'samantha', 'sam@sam', 'sam', 'reforma socil 30', '1983-09-26', 3, 'lara'),
-(12, 'sandrik ', 'san@san', 'san', 'guanajuato}', '1980-04-06', 3, 'mercado'),
-(13, 'veronica', 'ver@ver', 'ver', 'plan de ayala', '1975-06-08', 3, 'tuzenr'),
-(14, 'leonardo', 'leo@leo', 'leo', 'deconocido', '1956-12-12', 3, 'dicaprio'),
-(15, 'pedro', '', NULL, 'tvuybinom', '2023-11-17', 3, 'chillon'),
-(20, 'antonio', 'an@an', NULL, 'svnnfvnlvfn', '2023-11-02', 3, NULL),
-(21, 'juan', 'jua@jua', NULL, 'rtyuio', '2010-03-25', 3, NULL),
-(22, 'carmen', 'carmen@carmen', NULL, 'lalalalalalal', '2023-08-30', NULL, NULL),
-(23, 'Sebastian', 'maestro@maestro', '$2y$10$yIsqkxZwNR5LF.qJL72sVOp/WqlWPDUfkIctAoFKTNBBW.yFUue.y', 'calle del refugio 85', '1989-11-15', 3, 'lopez');
+(39, 'carlos antonio', 'car@car', '$2y$10$Xkm5hPpy5Vc3xHpPG13GkuKS9SadCnO7NoxWN3c2ogRJ2eplQoWHm', 'calle de la asuncion 34', '1991-01-22', 3, NULL),
+(40, 'karla sainz', 'kar@kar', '$2y$10$Xkm5hPpy5Vc3xHpPG13GkuKS9SadCnO7NoxWN3c2ogRJ2eplQoWHm', 'felipe 30', '1991-12-24', 3, NULL),
+(41, 'rodrigo Guerrero', 'rod@rod', '$2y$10$Xkm5hPpy5Vc3xHpPG13GkuKS9SadCnO7NoxWN3c2ogRJ2eplQoWHm', 'av de la reforma 482', '1991-05-08', 3, NULL),
+(42, 'samantha', 'sam@sam', '$2y$10$Xkm5hPpy5Vc3xHpPG13GkuKS9SadCnO7NoxWN3c2ogRJ2eplQoWHm', 'reforma socil 30', '1983-09-26', 3, NULL),
+(43, 'sandrik ', 'san@san', '$2y$10$Xkm5hPpy5Vc3xHpPG13GkuKS9SadCnO7NoxWN3c2ogRJ2eplQoWHm', 'guanajuato}', '1980-04-06', 3, NULL),
+(44, 'veronica', 'ver@ver', '$2y$10$Xkm5hPpy5Vc3xHpPG13GkuKS9SadCnO7NoxWN3c2ogRJ2eplQoWHm', 'plan de ayala', '1975-06-08', 3, NULL),
+(45, 'leonardo', 'leo@leo', '$2y$10$Xkm5hPpy5Vc3xHpPG13GkuKS9SadCnO7NoxWN3c2ogRJ2eplQoWHm', 'deconocido', '1956-12-12', 3, NULL),
+(46, 'Pendiente de asignar clase', '', NULL, '', '0000-00-00', 3, NULL),
+(47, 'Marleen', 'maestro@maestro', '$2y$10$Efw0g2/YGVsDyUYR8eZ6K.ZBY.A/CtyQHPnkoUWNyAt5h0eFrD7kW', 'calle de los hermanos ', '1992-12-24', 3, 'sainz');
 
 -- --------------------------------------------------------
 
@@ -173,13 +164,13 @@ CREATE TABLE `materias` (
 --
 
 INSERT INTO `materias` (`id`, `materia`) VALUES
-(1, 'fisica'),
-(2, 'quimica'),
-(3, 'literatura'),
-(4, 'historia'),
-(5, 'filosofia'),
-(6, 'ingles'),
-(7, 'calculo');
+(25, 'quimica'),
+(26, 'literatura'),
+(27, 'historia'),
+(28, 'filosofia'),
+(29, 'ingles'),
+(30, 'calculo'),
+(31, 'danza');
 
 -- --------------------------------------------------------
 
@@ -285,31 +276,31 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de la tabla `alumnos`
 --
 ALTER TABLE `alumnos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT de la tabla `alumnos_clase`
 --
 ALTER TABLE `alumnos_clase`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
 
 --
 -- AUTO_INCREMENT de la tabla `clases`
 --
 ALTER TABLE `clases`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
 
 --
 -- AUTO_INCREMENT de la tabla `maestros`
 --
 ALTER TABLE `maestros`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
 
 --
 -- AUTO_INCREMENT de la tabla `materias`
 --
 ALTER TABLE `materias`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
 
 --
 -- AUTO_INCREMENT de la tabla `roles`
