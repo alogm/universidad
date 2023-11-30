@@ -26,14 +26,14 @@ $userData = $_SESSION['user'];
         </section>
 
         <section id="admin" class="text-center">
-        <h2>admin:  <?php echo $userData['nombre']; ?></h2>
-            <p>admin:  <?php echo $userData['correo']; ?></p>
+            <h2>admin: <?php echo $userData['nombre']; ?></h2>
+            <p>admin: <?php echo $userData['correo']; ?></p>
         </section>
 
         <?php
         date_default_timezone_set('America/Mexico_City');
 
-        $fecha= date('Y-m-d');
+        $fecha = date('Y-m-d');
         $hora = date('H:i');
 
         echo "$fecha";
@@ -109,15 +109,14 @@ $userData = $_SESSION['user'];
             <div class="mb-2">
                 <label class="block">5.-Clase asignada</label>
                 <select name="id_materia" class="border border-gray-300 w-full rounded p-2">
-    <?php
-    // Verifica si $data['materias'] está definida antes de usarla
-    
-        foreach ($data as $index => $admin) {
-            echo "<option value='{$admin['id']}'>{$admin['materia']}</option>";
-        }
-    
-    ?>
-</select>
+                    <?php
+
+                    foreach ($data as $admin ) {
+                        echo "<option value='{$admin['id']}'>{$admin['materia']}</option>";
+                    }
+
+                    ?>
+                </select>
 
             </div>
 

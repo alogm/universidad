@@ -85,25 +85,28 @@ $userData = $_SESSION['user'];
             <p class="text-left"></p>
         </section>
 
-
-
         <form action="/materia-update" method="post" class="mt-4">
-        <input type="text" name="id" value="<?= $data["id"] ?>">
-            <div class="mb-2">
-                <label class="block">1.-Nombre de la Materia:</label>
-                <input type="text" name="materia" value="<?= $data["materia"] ?>" class="border border-gray-300 w-full rounded p-2">
-            </div>
+    <input type="text" name="id" value="<?= $data["id"] ?>">
+    <div class="mb-2">
+        <label class="block">1.-Nombre de la Materia:</label>
+        <input type="text" name="materia" value="<?= $data["materia"] ?>" class="border border-gray-300 w-full rounded p-2">
+    </div>
 
-            <div class="mb-2">
-                <label class="block">2.-Maestro Asignado:</label>
-                <select name="" id="" class="border border-gray-300 w-full rounded p-2">
+    <div class="mb-2">
+        <label class="block">2.-Maestro Asignado:</label>
+        <select name="id_maestro" class="border border-gray-300 w-full rounded p-2">
+            <?php 
+            foreach ($maestros as $maestro) {  // Cambia a $maestros para evitar conflictos con $data
+                echo "<option value='{$maestro['id']}'>{$maestro['nombre']}</option>";
+            }
+            ?>
+        </select>
+    </div>
+    <button type="submit" name="guardar" class="bg-blue-500 hover:bg-blue-600 text-white rounded p-2 mt-4">
+        Guardar
+    </button>
+</form>
 
-                </select>
-            </div>
-            <button type="submit" name="guardar" class="bg-blue-500 hover:bg-blue-600 text-white rounded p-2 mt-4">
-                Guardar
-            </button>
-        </form>
     </section>
 </body>
 </html>

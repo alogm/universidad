@@ -89,10 +89,27 @@ class Admin
 
         return true;
     }
+    public function addClase($data)
+    {
+        $materia = $data['materia'];
+        $idMaestro = $data['id_maestro'];
+    
+        $stmt = $this->connection->prepare("INSERT INTO materias (materia) VALUES (?)");
+        $stmt->execute([$materia]);
+    
+        $idMateria = $this->connection->lastInsertId();
+
+        $stmt = $this->connection->prepare("INSERT INTO clases (id_maestro, id_materia) VALUES (?, ?)");
+        $stmt->execute([$idMaestro, $idMateria]);
+
+        return true;
+    }
+    
     public function obtenerListaMaterias()
     {
         $res = $this->connection->query("SELECT * FROM materias");
         $materias = $res->fetchAll(PDO::FETCH_ASSOC);
+        
         return $materias;
     }
 
@@ -116,17 +133,7 @@ class Admin
         return false;
     }
 
-    public function addClase($data)
-    {
-        $materia = $data['materia'];
-        $res = $this->connection->query("INSERT INTO materias (materia) VALUES ('$materia')");
-
-        if ($res) {
-            return true;
-        }
-        return false;
-
-    }
+ 
     //fin agregar maestros, alumnos y clases
 
     //inicia eliminar maestro y alumno
@@ -264,16 +271,24 @@ class Admin
     }
     public function updateClase($data)
     {
-        
+        $id_maestro = $data["id_maestro"];
+        $id_materia = $data["id"];  // Cambia a "id" en lugar de "id_materia"
+    
+        // Actualizar la tabla clases para asignar el nuevo maestro a la materia
         $res = $this->connection->query("
-        UPDATE materias 
-        SET 
-        materia = '{$data["materia"]}' 
-        WHERE id = {$data["id"]}
+            UPDATE clases 
+            SET 
+            id_maestro = '{$id_maestro}' 
+            WHERE id_materia = {$id_materia}
         ");
-
-        $data = $res->fetch(PDO::FETCH_ASSOC);
-
-        return $data;
+    
+        // Verificar si la actualización fue exitosa
+        if ($res) {
+            return "Actualización exitosa";
+        } else {
+            return "Error al actualizar la clase";
+        }
     }
+    
+    
 }

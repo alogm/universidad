@@ -2,25 +2,28 @@
 
 Cada cuenta reedirecciona adependiendo del rol y aparece en la pantalla el nombre del usuario de quien ingresa
 
-Cuenta Admin:
+Cuenta Admin: (completado)
 a) Permisos 
-Muestra el nombre de los usuarios y muestra sus permisos (no edita los permisos)
+-Muestra el nombre de los usuarios y muestra sus permisos (no edita los permisos)
 
-b) Maestros
+b) Maestros (todo el CRUD listo)
 
-Muestra todos los maestros con datos, 
-agrega maestros nuevos junto con su materia asignada, 
-elimina maestros
-edita maestros
+-Muestra todos los maestros con datos, 
+-agrega maestros nuevos junto con su materia asignada, 
+-elimina maestros auque tenga clase asignada pero no elimina la materia que es bueno ya que las materias se eliminan en la pantalla de clases
+-edita maestros
 
-c) Alumnos
+c) Alumnos (todo el CRUD listo)
 Muestra todos los alumnos en que con datos, 
 agrega nuevos alumnos, 
 elimina alumnos,
 edita datos de los alumnos
 
-d) Clases
-muestra todas las clases, asi como los maestros que dan las clases y cuantos alumnos estan tomando cada clase 
+d) Clases (todo el CRUD listo)
+-muestra todas las clases, asi como los maestros que dan las clases y cuantos alumnos estan tomando cada clase 
+-agrega materias junto con un maestro que este en la base de datos, o bien se puede agregar la clase y escoger la opcion "Pendiente de asignar clase" 
+-edita materias aqui se puede seleccionar al maestro que se puede cambiar para dar la clase
+-elimina materias pero no elimina al maestro que es bueno ya que el maestro puede quedar sin clase y despues asignarlo a otra materia
 
 Cuenta maestro
 

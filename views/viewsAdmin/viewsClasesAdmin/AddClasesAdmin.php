@@ -89,6 +89,17 @@ $userData = $_SESSION['user'];
                 <label class="block">1.-Clase Nueva:</label>
                 <input type="text" name="materia" class="border border-gray-300 w-full rounded p-2">
             </div>
+    
+            <div class="mb-2">
+                <label class="block">2.-Maestro</label>
+                <select name="id_maestro" class="border border-gray-300 w-full rounded p-2">
+                    <?php 
+                    foreach ($data as $admin) {
+                        echo "<option value='{$admin['id']}'>{$admin['nombre']}</option>";
+                    }
+                    ?>
+                </select>
+            </div>
 
             <button type="submit" name="guardar" class="bg-blue-500 hover:bg-blue-600 text-white rounded p-2 mt-4">
                 Guardar

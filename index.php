@@ -106,7 +106,7 @@ if ($_SERVER["REQUEST_METHOD"] === "GET") {
             break;
 
             case '/add-materia';
-            $vistasControl->VistaEditClases();
+            $controller->VistaEditClases();
             break;
 
             // b) vistas de maestros

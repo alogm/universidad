@@ -27,10 +27,7 @@ class VistasAdminController
     {
         include $_SERVER['DOCUMENT_ROOT'] . "/views/viewsAdmin/viewsAdminEstudiante/EditarEstudianteAdmin.php";
     }
-    public function VistaEditClases()
-    {
-        include $_SERVER['DOCUMENT_ROOT'] . "/views/viewsAdmin/viewsClasesAdmin/AddClasesAdmin.php";
-    }
+  
 
     //finaliza lleva a la vista de crear (no hace la funcion de crear)
 }

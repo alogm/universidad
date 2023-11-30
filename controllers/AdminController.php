@@ -12,6 +12,8 @@ class AdminController
         $maestros = new Admin();
         $data = $maestros->all();
         include $_SERVER['DOCUMENT_ROOT'] . "/views/viewsAdmin/viewsMaestrosAdmin/VistaMaestroAdmin.php";
+
+        
     }
     public function vistaalumnos()
     {
@@ -27,6 +29,13 @@ class AdminController
 
         include $_SERVER['DOCUMENT_ROOT'] . "/views/viewsAdmin/viewsMaestrosAdmin/AddMaestroAdmin.php";
     }
+    public function VistaEditClases()
+    {
+        $maestro = new Admin();
+        $data = $maestro->all();
+        include $_SERVER['DOCUMENT_ROOT'] . "/views/viewsAdmin/viewsClasesAdmin/AddClasesAdmin.php";
+    }
+
 
     public function AllClases()
     {
@@ -117,6 +126,7 @@ class AdminController
     {
         $res = new Admin();
         $data = $res->editClases($id);
+        $maestros = $res->all();
 
         include $_SERVER['DOCUMENT_ROOT'] . "/views/viewsAdmin/viewsClasesAdmin/EditClasesAdmin.php";
     }
