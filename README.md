@@ -25,13 +25,13 @@ d) Clases (todo el CRUD listo)
 -edita materias aqui se puede seleccionar al maestro que se puede cambiar para dar la clase
 -elimina materias pero no elimina al maestro que es bueno ya que el maestro puede quedar sin clase y despues asignarlo a otra materia
 
-Cuenta maestro
+Cuenta maestro (completado)
 
 a)Puede editar datos propios, la contraseña no se cambia sino se modifica a nose escriba algo en el input
 
 b)El maestro puede poner calificacio y comentarios a los alumnos
 
-Cuenta ALumnos
+Cuenta Alumnos
 
 a) Puede ver sus calificaciones y los mensajes de los profesores, no puede eliminar ni agregar lo siento 
 

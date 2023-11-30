@@ -114,6 +114,25 @@ $userData = $_SESSION['user'];
                 </table>
             </div>
         </section>
+        <section>
+            
+        <div class="mb-2">
+           <form action="">
+           <label class="block">Materias pendientes</label>
+                <select name="id_materia" class="border border-gray-300 w-full rounded p-2">
+                    <?php
+
+                    foreach ($materias as $admin ) {
+                        echo "<option value='{$admin['id']}'>{$admin['materia']}</option>";
+                    }
+
+                    ?>
+                </select>
+                <button type="submit" name="guardar" class="bg-blue-500 hover:bg-blue-600 text-white rounded p-2 mt-4">
+                Agregar
+            </button>
+           </form>
+        </section>
     </section>
 </body>
 

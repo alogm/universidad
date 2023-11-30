@@ -32,7 +32,9 @@ class AlumnoController
     {
         $res = new Alumno();
         $data = $res->DatosMaterias($id_alumno);
-
+        $materias = $res->todasMaterias();
         include($_SERVER['DOCUMENT_ROOT'] . "/views/viewsEstudiante/clases.php");
     }
+
+
 }

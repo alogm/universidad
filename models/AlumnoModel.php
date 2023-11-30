@@ -82,4 +82,11 @@ class Alumno
         $data = $stmt->fetchAll(PDO::FETCH_ASSOC);
         return $data;
     }
+    public function todasMaterias()
+    {
+        $res = $this->connection->query("SELECT * FROM materias");
+        $data = $res->fetchAll(PDO::FETCH_ASSOC);
+
+        return $data;
+    }
 }
