@@ -1,5 +1,11 @@
 <?php
-$_SESSION["alumno_edit"] = $data["id"];
+if (!isset($_SESSION['user'])) {
+
+    header('Location: /index.php');
+    exit();
+}
+
+$userData = $_SESSION['user'];
 ?>
 
 <!DOCTYPE html>
@@ -73,6 +79,7 @@ $_SESSION["alumno_edit"] = $data["id"];
 
 
         <form action="/alumno-update" method="post" class="mt-4">
+        <input type="text" name="alumno_edit" value="<?= $data["id"] ?>">
             <div class="mb-2">
                 <label class="block">1.-DNI:</label>
                 <input type="text" name="matricula" value="<?= $data['matricula'] ?>" class="border border-gray-300 w-full rounded p-2">

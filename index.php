@@ -69,18 +69,26 @@ if ($_SERVER["REQUEST_METHOD"] === "GET") {
             $controller->editAlumno($_GET["id"]);
             break;
 
+        case '/edit-clases':
+            $controller->editClases($_GET["id"]);
+            break;
+
+        
+
+                // edita la pantalla individual de cada maestor y cada alumno
+
         case '/edit-perfil-maestro':
             $id_maestro = $_SESSION['user']['id'] ?? null;
             $MaestroController->EditPerfilMaestro($id_maestro);
             break;
 
+            case '/edit-calificaciones':
+                $MaestroController->editCalificaciones($_GET["id"]);
+                break;
+
         case '/edit-perfil-alumno':
             $id_alumno = $_SESSION['user']['id'] ?? null;
             $alumnoController->EditPerfilAlumno($id_alumno);
-            break;
-
-        case '/edit-calificaciones':
-            $MaestroController->editCalificaciones($_GET["id"]);
             break;
 
             //fin 
@@ -116,9 +124,6 @@ if ($_SERVER["REQUEST_METHOD"] === "GET") {
             $alumnoController->ClasesAlumno($id_alumno);
             break;
 
-
-
-
             //fin de enrutamiento solo vista 
 
         default:
@@ -143,6 +148,10 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         case '/crear-alumno':
             $controller->crearAlumno($_POST);
             break;
+
+        case '/crear-materia':
+            $controller->crearMateria($_POST);
+            break;
             //finaliza creacion de datos de maestros y alumnos
 
             //inicia eliminacion de de maestros y alumnos
@@ -165,6 +174,10 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             $controller->updateAlumno($_POST);
             break;
 
+        case '/materia-update';
+        echo "entrando mal";
+            //$controller->updateClase($_POST);
+
             // el perdil del maestro puede editar sus datos
         case '/perfil-maestro-update':
             $MaestroController->updatePerfilMaestro($_POST);
@@ -179,9 +192,9 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             $MaestroController->updateCalificacion($_POST);
             break;
 
-            case '/exit':
-                $loginController->Logout($_POST);
-                break;
+        case '/exit':
+            $loginController->Logout($_POST);
+            break;
 
 
 

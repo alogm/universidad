@@ -113,13 +113,13 @@ $userData = $_SESSION['user'];
                             <td class="border border-gray-300 ">
 
                                 <form action="/" method="post">
-                                    <input type="hidden" name="id_materia" value="<?= $admin['id_materia'] ?>">
+                                    <input type="hidden" name="materia" value="<?= $admin['id_materia'] ?>">
                                     <button type="submit">
                                         <span class="material-symbols-outlined text-red-600">delete</span>
                                     </button>
                                 </form>
 
-                                <a href="edit-clases"> <span class="material-symbols-outlined">
+                                <a href="edit-clases?id=<?= $admin['id_materia'] ?>"> <span class="material-symbols-outlined">
                                         edit_square
                                     </span></a>
 

@@ -61,6 +61,14 @@ class AdminController
 
         header("Location: /vista-alumnos");
     }
+    public function crearMateria($data)
+    {
+        $alumno = new Admin();
+        $newAlumno = $alumno->addClase($data);
+
+        header("Location: /vista-clases");
+    }
+
     //fin de crear alumnos y maestros
 
     //inicia eliminacion de maestros y alumnos
@@ -98,6 +106,13 @@ class AdminController
 
         include $_SERVER['DOCUMENT_ROOT'] . "/views/viewsAdmin/viewsAdminEstudiante/EditarEstudianteAdmin.php";
     }
+    public function editClases($id)
+    {
+        $res = new Admin();
+        $data = $res->editClases($id);
+
+        include $_SERVER['DOCUMENT_ROOT'] . "/views/viewsAdmin/viewsClasesAdmin/EditClasesAdmin.php";
+    }
 
     //inicia editar de datos
     public function updateMaestro($data)
@@ -114,4 +129,17 @@ class AdminController
 
         header("Location: /vista-alumnos");
     }
+    public function updateClase($data)
+    {
+        $res = new Admin();
+        $updateData = $res->updateClase($data);
+
+        echo "Llegué a la redirección";
+        exit();
+    
+        header("Location: /vista-clases");
+        exit(); 
+    }
+
+
 }

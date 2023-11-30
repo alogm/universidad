@@ -32,11 +32,12 @@ class Admin
         m.materia,
         ma.nombre AS nombre_maestro,
         COUNT(ac.id_alumno) AS total_alumnos
-                FROM materias m
-                JOIN clases c ON m.id = c.id_materia
-                JOIN maestros ma ON c.id_maestro = ma.id
-                LEFT JOIN alumnos_clase ac ON c.id = ac.id_clase
-                GROUP BY m.id, ma.id, ma.nombre;");
+    FROM materias m
+    LEFT JOIN clases c ON m.id = c.id_materia
+    LEFT JOIN maestros ma ON c.id_maestro = ma.id
+    LEFT JOIN alumnos_clase ac ON c.id = ac.id_clase
+    GROUP BY m.id, ma.id, ma.nombre;
+    ");
         $data = $res->fetchAll(PDO::FETCH_ASSOC);
 
         return $data;
@@ -114,7 +115,19 @@ class Admin
         }
         return false;
     }
-    //fin agregar maestros y alumnos
+
+    public function addClase($data)
+    {
+        $materia = $data['materia'];
+        $res = $this->connection->query("INSERT INTO materias (materia) VALUES ('$materia')");
+
+        if ($res) {
+            return true;
+        }
+        return false;
+
+    }
+    //fin agregar maestros, alumnos y clases
 
     //inicia eliminar maestro y alumno
     public function Delete($id)
@@ -146,19 +159,28 @@ class Admin
 
         return $data;
     }
+    public function editClases($id)
+    {
+        $res = $this->connection->query("SELECT * FROM materias WHERE id = $id");
+
+        $data = $res->fetch(PDO::FETCH_ASSOC);
+
+        return $data;
+    }
 
     //edita datos
     public function updateMaestro($data)
     {
-        session_start();
+        
         $res = $this->connection->query("
         UPDATE maestros 
         SET 
         nombre = '{$data["nombre"]}', 
-        apellido = '{$data["apellido"]}', 
+        apellido = '{$data["apellido"]}',
+        correo = '{$data["correo"]}', 
         direccion = '{$data["direccion"]}', 
         fecha_nacimiento = '{$data["fecha_nacimieno"]}'
-        WHERE id = {$_SESSION["maestro_edit"]}
+        WHERE id = {$data["maestro_edit"]}
         ");
         $data = $res->fetch(PDO::FETCH_ASSOC);
 
@@ -166,7 +188,7 @@ class Admin
     }
     public function updateAlumno($data)
     {
-        session_start();
+       
         $res = $this->connection->query("
         UPDATE alumnos 
         SET 
@@ -176,8 +198,22 @@ class Admin
         apellido = '{$data["apellido"]}', 
         direccion = '{$data["direccion"]}', 
         fecha_nacimieno = '{$data["fecha_nacimieno"]}'
-        WHERE id = {$_SESSION["alumno_edit"]}
+        WHERE id = {$data["alumno_edit"]}
         ");
+        $data = $res->fetch(PDO::FETCH_ASSOC);
+
+        return $data;
+    }
+    public function updateClase($data)
+    {
+        
+        $res = $this->connection->query("
+        UPDATE materias 
+        SET 
+        materia = '{$data["materia"]}' 
+        WHERE id = {$data["id"]}
+        ");
+
         $data = $res->fetch(PDO::FETCH_ASSOC);
 
         return $data;

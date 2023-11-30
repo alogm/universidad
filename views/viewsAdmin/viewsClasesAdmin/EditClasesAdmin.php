@@ -86,10 +86,11 @@ $userData = $_SESSION['user'];
         </section>
 
 
-        <form action="" method="post" class="mt-4">
+        <form action="/materia-update" method="post" class="mt-4">
+        <input type="text" name="id" value="<?= $data["id"] ?>">
             <div class="mb-2">
                 <label class="block">1.-Nombre de la Materia:</label>
-                <input type="text" name="materia" class="border border-gray-300 w-full rounded p-2">
+                <input type="text" name="materia" value="<?= $data["materia"] ?>" class="border border-gray-300 w-full rounded p-2">
             </div>
 
             <div class="mb-2">
