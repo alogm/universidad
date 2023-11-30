@@ -140,20 +140,20 @@ class Admin
     public function Delete($id)
     {
         try {
-            // Inicia una transacción
+            
             $this->connection->beginTransaction();
     
-            // Elimina registros en la tabla alumnos_clase que tienen referencia a clases
+            
             $stmt = $this->connection->prepare("DELETE FROM alumnos_clase WHERE id_clase IN (SELECT id FROM clases WHERE id_maestro = :id)");
             $stmt->bindParam(':id', $id, PDO::PARAM_INT);
             $stmt->execute();
     
-            // Elimina registros en la tabla clases que tienen referencia al maestro
+            
             $stmt = $this->connection->prepare("DELETE FROM clases WHERE id_maestro = :id");
             $stmt->bindParam(':id', $id, PDO::PARAM_INT);
             $stmt->execute();
     
-            // Elimina al maestro de la tabla maestros
+           
             $stmt = $this->connection->prepare("DELETE FROM maestros WHERE id = :id");
             $stmt->bindParam(':id', $id, PDO::PARAM_INT);
             $stmt->execute();
@@ -161,7 +161,7 @@ class Admin
             
             $this->connection->commit();
         } catch (PDOException $e) {
-            // Revierte la transacción en caso de error
+           
             $this->connection->rollBack();
             echo "Error: " . $e->getMessage();
         }
@@ -176,27 +176,27 @@ class Admin
     public function DeleteMateria($id)
     {
         try {
-            // Inicia una transacción
+            
             $this->connection->beginTransaction();
     
-            // Elimina registros en la tabla alumnos_clase que tienen referencia a clases
+           
             $stmt = $this->connection->prepare("DELETE FROM alumnos_clase WHERE id_clase IN (SELECT id FROM clases WHERE id_materia = :id)");
             $stmt->bindParam(':id', $id, PDO::PARAM_INT);
             $stmt->execute();
     
-            // Elimina registros en la tabla clases que tienen referencia a la materia
+            
             $stmt = $this->connection->prepare("DELETE FROM clases WHERE id_materia = :id");
             $stmt->bindParam(':id', $id, PDO::PARAM_INT);
             $stmt->execute();
     
-            // Elimina la materia de la tabla materias
+          
             $stmt = $this->connection->prepare("DELETE FROM materias WHERE id = :id");
             $stmt->bindParam(':id', $id, PDO::PARAM_INT);
             $stmt->execute();
     
             $this->connection->commit();
         } catch (PDOException $e) {
-            // Revierte la transacción en caso de error
+            
             $this->connection->rollBack();
             echo "Error: " . $e->getMessage();
         }
@@ -272,9 +272,8 @@ class Admin
     public function updateClase($data)
     {
         $id_maestro = $data["id_maestro"];
-        $id_materia = $data["id"];  // Cambia a "id" en lugar de "id_materia"
-    
-        // Actualizar la tabla clases para asignar el nuevo maestro a la materia
+        $id_materia = $data["id"];  
+
         $res = $this->connection->query("
             UPDATE clases 
             SET 

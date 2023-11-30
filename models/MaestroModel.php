@@ -84,25 +84,25 @@ class Maestros
     }
     public function editCalificaciones($id)
     {
-        // Establece $_SESSION["calificacion_edit"] con el valor de $id
+        
         $_SESSION["calificacion_edit"] = $id;
-    
+
         $stmt = $this->connection->prepare("SELECT * FROM alumnos_clase WHERE id = :id");
         $stmt->bindParam(':id', $id, PDO::PARAM_INT);
         $stmt->execute();
-    
+
         $data = $stmt->fetch(PDO::FETCH_ASSOC);
-    
+
         return $data;
     }
-    
+
     public function updateCalificacion($data)
     {
         if (!isset($_SESSION["calificacion_edit"])) {
-     
+
             return false;
         }
-    
+
         try {
             $stmt = $this->connection->prepare("
                 UPDATE alumnos_clase 
@@ -111,23 +111,19 @@ class Maestros
                 comentarios = :comentarios
                 WHERE id = :id_alumnos_clase
             ");
-    
+
             $stmt->bindParam(':calificacion', $data['calificacion'], PDO::PARAM_INT);
             $stmt->bindParam(':comentarios', $data['comentarios'], PDO::PARAM_STR);
             $stmt->bindParam(':id_alumnos_clase', $_SESSION["calificacion_edit"], PDO::PARAM_INT);
-    
+
             $stmt->execute();
-    
-     
+
+
             return $stmt->rowCount() > 0;
         } catch (PDOException $e) {
-         
+
             echo "Error de PDO: " . $e->getMessage();
             return false;
         }
     }
-    
-
-    
-
 }

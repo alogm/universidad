@@ -19,36 +19,30 @@ class Login
         $dataUsuario = $stmt->fetch(PDO::FETCH_ASSOC);
 
         if (!$dataUsuario) {
-           
+
             $stmt = $this->connection->query("SELECT * FROM alumnos WHERE correo = '$correo'");
             $dataUsuario = $stmt->fetch(PDO::FETCH_ASSOC);
 
             if (!$dataUsuario) {
-            
+
                 $stmt = $this->connection->query("SELECT * FROM maestros WHERE correo = '$correo'");
                 $dataUsuario = $stmt->fetch(PDO::FETCH_ASSOC);
-
             }
         }
 
         return $dataUsuario;
     }
     public function Logout()
-{
-    
-    if (session_status() == PHP_SESSION_NONE) {
-        session_start();
+    {
+        if (session_status() == PHP_SESSION_NONE) {
+            session_start();
+        }
+
+        $_SESSION = array();
+
+        session_destroy();
+
+        header("location: ../index.php");
+        exit();
     }
-
-    
-    $_SESSION = array();
-
-   
-    session_destroy();
-
-   
-    header("location: ../index.php");
-    exit(); 
-}
-
 }

@@ -151,7 +151,7 @@ class AdminController
         $res = new Admin();
         $updateData = $res->updateClase($data);
     
-        header("Location: /vista-clases"); // no encuentro el motivo por el cual despued de actualizar me manda a /home-maestro
+        header("Location: /vista-clases"); 
         exit(); 
     }
 
