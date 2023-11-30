@@ -86,6 +86,13 @@ class AdminController
 
         header("Location: /vista-alumnos");
     }
+    public function DeleteMateria($id)
+    {
+        $alumno = new Admin();
+        $delete = $alumno->DeleteMateria($id);
+
+        header("Location: /vista-clases");
+    }
 
     //acaba eliminacion de alumnos
 
@@ -133,11 +140,8 @@ class AdminController
     {
         $res = new Admin();
         $updateData = $res->updateClase($data);
-
-        echo "Llegué a la redirección";
-        exit();
     
-        header("Location: /vista-clases");
+        header("Location: /vista-clases"); // no encuentro el motivo por el cual despued de actualizar me manda a /home-maestro
         exit(); 
     }
 

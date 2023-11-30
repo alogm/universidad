@@ -85,9 +85,11 @@ $userData = $_SESSION['user'];
             <h1 class="text-center text-4xl text-black p-6">Lista clases</h1>
         </section>
 
-        <section id="bienvenido" class="w-full bg-white p- max-w-screen-xl">
-            <h6 class="text-left">Informacion de Clases</h6>
-            <p class="text-left"></p>
+        <section id="bienvenido" class="w-full bg-white p-6 max-w-screen-xl flex items-center">
+            <h6 class="text-left">Informacion de Materias</h6>
+            <a href="/add-materia" class="bg-blue-500 hover:bg-blue-600 rounded-lg px-4 py-2 text-white ml-auto">
+                Agregar Materia
+            </a>
         </section>
 
         <div class="w-full p-4 overflow-x-auto">
@@ -112,8 +114,8 @@ $userData = $_SESSION['user'];
                             <td class="border border-gray-300"><?= $admin["total_alumnos"] ?></td>
                             <td class="border border-gray-300 ">
 
-                                <form action="/" method="post">
-                                    <input type="hidden" name="materia" value="<?= $admin['id_materia'] ?>">
+                                <form action="/materia-delete" method="post">
+                                    <input type="hidden" name="id" value="<?= $admin['id_materia'] ?>">
                                     <button type="submit">
                                         <span class="material-symbols-outlined text-red-600">delete</span>
                                     </button>

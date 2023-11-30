@@ -132,12 +132,70 @@ class Admin
     //inicia eliminar maestro y alumno
     public function Delete($id)
     {
-        $this->connection->query("DELETE FROM maestros WHERE id=$id");
+        try {
+            // Inicia una transacción
+            $this->connection->beginTransaction();
+    
+            // Elimina registros en la tabla alumnos_clase que tienen referencia a clases
+            $stmt = $this->connection->prepare("DELETE FROM alumnos_clase WHERE id_clase IN (SELECT id FROM clases WHERE id_maestro = :id)");
+            $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+            $stmt->execute();
+    
+            // Elimina registros en la tabla clases que tienen referencia al maestro
+            $stmt = $this->connection->prepare("DELETE FROM clases WHERE id_maestro = :id");
+            $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+            $stmt->execute();
+    
+            // Elimina al maestro de la tabla maestros
+            $stmt = $this->connection->prepare("DELETE FROM maestros WHERE id = :id");
+            $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+            $stmt->execute();
+    
+            
+            $this->connection->commit();
+        } catch (PDOException $e) {
+            // Revierte la transacción en caso de error
+            $this->connection->rollBack();
+            echo "Error: " . $e->getMessage();
+        }
     }
+    
+    
     public function DeleteAlumno($id)
     {
+        // si me elimina a alumnos en la pagina de administrador 
         $this->connection->query("DELETE FROM alumnos WHERE id=$id");
     }
+    public function DeleteMateria($id)
+    {
+        try {
+            // Inicia una transacción
+            $this->connection->beginTransaction();
+    
+            // Elimina registros en la tabla alumnos_clase que tienen referencia a clases
+            $stmt = $this->connection->prepare("DELETE FROM alumnos_clase WHERE id_clase IN (SELECT id FROM clases WHERE id_materia = :id)");
+            $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+            $stmt->execute();
+    
+            // Elimina registros en la tabla clases que tienen referencia a la materia
+            $stmt = $this->connection->prepare("DELETE FROM clases WHERE id_materia = :id");
+            $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+            $stmt->execute();
+    
+            // Elimina la materia de la tabla materias
+            $stmt = $this->connection->prepare("DELETE FROM materias WHERE id = :id");
+            $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+            $stmt->execute();
+    
+            $this->connection->commit();
+        } catch (PDOException $e) {
+            // Revierte la transacción en caso de error
+            $this->connection->rollBack();
+            echo "Error: " . $e->getMessage();
+        }
+    }
+    
+
 
     //finaliza eliminar maestro y alumno
 

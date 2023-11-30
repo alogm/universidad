@@ -105,6 +105,10 @@ if ($_SERVER["REQUEST_METHOD"] === "GET") {
             $vistasControl->crearAlumno();
             break;
 
+            case '/add-materia';
+            $vistasControl->VistaEditClases();
+            break;
+
             // b) vistas de maestros
         case '/vista-maestro-alumnos':
             $id_maestro = $_SESSION['user']['id'];
@@ -163,6 +167,10 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             $controller->deleteAlumno($_POST["id"]);
             break;
 
+        case '/materia-delete':
+            $controller->DeleteMateria($_POST["id"]);
+            break;
+
             //finaliza eliminacion de maestros y alumnos
 
             //puede editar los datos el admin
@@ -174,9 +182,10 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             $controller->updateAlumno($_POST);
             break;
 
-        case '/materia-update';
-        echo "entrando mal";
-            //$controller->updateClase($_POST);
+case '/materia-update':
+    
+    $controller->updateClase($_POST);
+    break;
 
             // el perdil del maestro puede editar sus datos
         case '/perfil-maestro-update':
